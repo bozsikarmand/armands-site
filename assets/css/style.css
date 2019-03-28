@@ -24,8 +24,7 @@ footer, header, hgroup, menu, nav, section {
   display: block; }
 
 body {
-  line-height: 1;
-  overflow: hidden; }
+  line-height: 1; }
 
 ol, ul {
   list-style: none; }
@@ -141,7 +140,7 @@ body.page-landing {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    overflow: auto; }
+    overflow: hidden; }
     @media (max-width: 800px) {
       .sp-landing .content {
         width: 100%;
