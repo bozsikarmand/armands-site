@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/bozsikarmand
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://armands.site
+  * I am bozsikarmand (https://keybase.io/bozsikarmand) on keybase.
+  * I have a public key with fingerprint 7CA6 6157 BAEF E723 5468  7CE0 8D8A EE52 CAE3 BB81
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "010175b53056b8f89f91d5c1d05c5f5cfe43ea5957c3a2154b9e2e846f8a1d6b2d770a",
+      "fingerprint": "7ca66157baefe72354687ce08d8aee52cae3bb81",
+      "host": "keybase.io",
+      "key_id": "8d8aee52cae3bb81",
+      "kid": "010175b53056b8f89f91d5c1d05c5f5cfe43ea5957c3a2154b9e2e846f8a1d6b2d770a",
+      "uid": "80edd760b2ea05db85f04099af75f119",
+      "username": "bozsikarmand"
+    },
+    "service": {
+      "hostname": "armands.site",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1549531692,
+  "expire_in": 157680000,
+  "prev": "e070e49c9e47a8c625ebea5abe0fcd5a84bc763106d0d8416a670af1f194c1eb",
+  "seqno": 39,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.80
+Comment: https://keybase.io/crypto
+
+yMInAnicrVJLaNVAFH211tYHQhFRUBSJVQSfdSbJTJKnoBVFsYq1FAQtPGcyN214
+Nnkm6au/lqoFEdQu1E3xs1AXYkFb/IKKfSh+KlqloFIQwYqCulBx4bdO/OxcOpth
+5p5z7rmHe2NccSJZxHfNGf3w9bofRf19h5sT9eu/zN2mcF9sUdLblCz8umCjgDDK
+ZF2hpBWEETYIJxoilJuOaTkWFsTGAhGbOMR2QNeAEYsYtsZUTHRugQqmTh2TYUG5
+KgwDMSWlOK7XAEEucL1Iyho2oxQTgzNwwFA1olPTsAGZwmQARLUZaJybWBIb/TBm
+SHOchVDp+vJPPjK/7P0D/599N//ug0AIgyKuAkNEcJM4SEeWxRyDOBhbMTCEwGNN
+INHc3xq6WRY0MU8orSlFVvKuDXG48TR/UL/rYWXoRiD5ucCPfNvfKCuNUZQL0zEz
+2pKLoS3AM39EMtz1hMxSMvIQhK7vKWkskXbkxqpyEotomFpqSoHNOTeAjBsjiEFN
+JE/cB/JSEpCBQLdsC3SDmTZVCXAZCOOAHFsQZurcNqiGERVImDqmjMpAHOxgS7cx
+cCUea5PnK2nNkj5Zg9QM3QaPRc0BKK2F6/WjE0XJxJiSUfGSJZJjy/+u3j6/dKRq
+//zxlfnpJ9vHL6jquTX8rv/i9/KBjku4r3vJ+x83H1yet8p6efb9BV7YW9X3LLvm
+VK53R2tbRZ020Yg6k2P9e49Xdq8rFHp3rnhl1U5IVHdlb5+ZVTFJWVianVu2aeGj
+wc76geDgUKiKF/NrHk37NrWlafeUi5/fnnk+lF9eerjnVU3uRs32S8sODB1pnzHS
+fX7m8bLyTx09H054hbalM88WEiMlbkNCWbK9+EtXb+fXrm91h859TDlRsu9DTcvT
+Gbu11W/m0ZbhyRvut+mL2k/dvdq1cnb1nVTrtY662lEapcGVz9m1bdW1IyV7Bp/s
+smsfVlekj+bK0l9XnV6wfPriY2t+AkdsQ2g=
+=s3bC
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bozsikarmand
+
+==================================================================

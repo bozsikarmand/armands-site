@@ -1,0 +1,6 @@
+/assets/css/style.css
+  Cache-Control = "public, max-age=604800"
+/assets/js/modernizr.min.js
+  Cache-Control = "public, max-age=604800"
+/images/main.png
+  Cache-Control = "public, max-age=604800"
