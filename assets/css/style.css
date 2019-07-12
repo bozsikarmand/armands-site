@@ -548,3 +548,7 @@ picture img {
     box-sizing: border-box;
     text-transform: uppercase
 }
+/* Button contact (header in index) */
+.button-contact-header {
+  float: right;
+}
