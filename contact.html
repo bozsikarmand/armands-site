@@ -59,7 +59,7 @@
 				    <a href="#">
                                     	<i class="fas fa-blog"></i> Blog
                                     </a>
-				    <a href="contact.html" class="button-contact-header">
+				    <a href="#" class="button-contact-header">
                                     	<i class="fas fa-envelope"></i> Contact me!
                                     </a>
                                 </li>
@@ -68,18 +68,32 @@
                     </nav>
                     <div class="introduction">
                         <h1>Hello, my name is Armand Bozsik</h1>
-                        <span class="self-identification">I am a Geek. Student. Dev.</span>
+                        <span class="self-identification">Get in touch!</span>
                     </div>
-                    <div class="biography">
-                        <form action="https://github.com/bozsikarmand/">
-                            <p>I am a student at the University of Szeged learning Computer Science.
-                                Feel free to check my Curriculum Vitae.
-                                Please take a look at my current works in my
-                                <a href="https://www.linkedin.com/in/bozsikarmand/">repositories</a> at GitHub.
-                                You can always contact me via the links below.
-                            </p>
-                            <button class="button-github">
-                                <i class="fab fa-github"></i> Feel free to check my GitHub profile!
+                    <div class="contact">
+                        <form name="Contact Form" class="form-contact" method="post" enctype="multipart/form-data" data-netlify-recaptcha="true" data-netlify="true">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="form-contact-name" required>
+                            <label for="email">Email address:</label>
+                            <input type="email" id="email" name="form-contact-email" required>
+                            <label for="tel">Telephone:</label>
+                            <input type="tel" id="tel" name="form-contact-tel">
+                            <label for="topics">Topics:</label>
+                            <select title="Available topics:" required name="form-contact-topics" size="1" id="topics">
+                                <option label="&nbsp;" value="" disabled></option>
+                                <optgroup label="Please choose from the topics below:" class="form-contact-topic-available">
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Problem with account">Problem with account</option>
+                                    <option value="Error report">Error report</option>
+                                </optgroup>
+                            </select>
+                            <label for="message">Message:</label>
+                            <textarea name="form-contact-message" id="message" required></textarea>
+                            <br>
+                            <label for="file">Upload file:</label>
+                            <input type="file" name="form-contact-file-upload" id="file">
+                            <button class="button-contact-submit" name="form-contact-submit">
+                                <i class="fa fa-arrow-alt-circle-right"></i> Submit
                             </button>
                         </form>
                     </div>
