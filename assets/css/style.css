@@ -671,6 +671,7 @@ picture img {
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  resize: none;
 }
 #topics {
   font-family: "Lora", sans-serif;
