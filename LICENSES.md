@@ -9,4 +9,4 @@ In this document I would like to note the copyright and license information for 
 
 ## Copyright and license information <a name="Copyright-and-license-info"></a>
 
-* [Inputmask](README.md) is available under the MIT license [(as of 17-07-2019)](https://github.com/RobinHerbots/Inputmask/blob/5.x/LICENSE.txt). The text version of the license can be read [here](licenses/inputmask/LICENSE.md).
+* [Cleave.js](README.md) is available under the Apache License 2.0 license [(as of 18-07-2019)](https://github.com/nosir/cleave.js/blob/master/LICENSE). The text version of the license can be read [here](licenses/cleave.js/LICENSE.txt).
