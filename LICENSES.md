@@ -10,3 +10,4 @@ In this document I would like to note the copyright and license information for 
 ## Copyright and license information <a name="Copyright-and-license-info"></a>
 
 * [Cleave.js](README.md) is available under the Apache License 2.0 license [(as of 18-07-2019)](https://github.com/nosir/cleave.js/blob/master/LICENSE). The text version of the license can be read [here](licenses/cleave.js/LICENSE.txt).
+* [FontAwesome Free](README.md) is available under the following license [(as of 18-07-2019)](https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt) The text version of the license can be read [here](licenses/FontAwesome-Free/LICENSE.txt).
