@@ -175,9 +175,7 @@
                     </footer>
                     <div class="copyright">
                         <p class="copyright-year">
-                            &copy;
-                            <script>document.write(new Date().getFullYear());</script>
-                            Armand Bozsik
+                            <script>document.getElementsByClassName("copyright-year")[0].innerHTML = "\u00A9 " + new Date().getFullYear() + " Armand Bozsik";</script>
                         </p>
                     </div>
                 </div>
