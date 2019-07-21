@@ -36,6 +36,8 @@
         <link rel='stylesheet' href='assets/fonts/fontawesome/css/all.min.css' type='text/css' media='screen'/>
 
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+        <script async src="assets/js/footer.js"></script>
     </head>
 
     <body id="single-page" class="page-landing">
@@ -71,7 +73,7 @@
                         <span class="self-identification">Get in touch!</span>
                     </div>
                     <div class="contact">
-                        <form name="Contact Form" action="" class="form-contact" method="post" data-netlify="true">
+                        <form name="Contact Form" action="" class="form-contact" method="post" data-netlify-recaptcha="true" data-netlify="true">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="form-contact-name" required>
                             <label for="email">Email address:</label>
@@ -91,7 +93,8 @@
                             <br>
                             <label for="file">Upload file:</label>
                             <input type="file" name="form-contact-file-upload" id="file">
-                            <button class="button-contact-submit" name="form-contact-submit">
+                            <div data-netlify-recaptcha="true"></div>
+                            <button class="button-contact-submit" name="form-contact-submit" type="submit">
                                 <i class="fa fa-arrow-alt-circle-right"></i> Submit
                             </button>
                         </form>
@@ -174,7 +177,6 @@
                     </footer>
                     <div class="copyright">
                         <p class="copyright-year">
-                            <script>document.getElementsByClassName("copyright-year")[0].innerHTML = "\u00A9 " + new Date().getFullYear() + " Armand Bozsik";</script>
                         </p>
                     </div>
                 </div>
