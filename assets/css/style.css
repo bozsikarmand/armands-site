@@ -140,7 +140,7 @@ body.page-landing {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    overflow: hidden; }
+    overflow: auto; }
     @media (max-width: 800px) {
       .sp-landing .content {
         width: 100%;
