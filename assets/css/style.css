@@ -690,3 +690,6 @@ picture img {
 .grecaptcha-badge {
   visibility: hidden;
 }
+.recaptcha-info-text {
+  font-size: 1.4vw;
+}
