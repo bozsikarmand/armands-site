@@ -685,3 +685,8 @@ picture img {
   box-sizing: border-box;
   font-size: 14px;
 }
+
+/* Hide ReCaptcha badge */
+.grecaptcha-badge {
+  visibility: hidden;
+}
