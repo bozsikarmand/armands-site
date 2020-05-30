@@ -705,6 +705,10 @@ picture img {
   font-size: 0.625em;
 }
 
+input[type="file"] {
+  display: none;
+}
+
 .upload-file {
   border: 1px solid #ccc;
   display: grid;
