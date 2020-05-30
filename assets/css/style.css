@@ -46,6 +46,7 @@ table {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -moz-font-feature-settings: "liga" on;
+  font-feature-settings: "liga" on;
   margin: 0; }
 
 img.alignright {
