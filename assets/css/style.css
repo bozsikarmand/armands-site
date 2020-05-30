@@ -704,3 +704,9 @@ picture img {
 .recaptcha-info-text {
   font-size: 0.625em;
 }
+
+.upload-file {
+  border: 1px solid #ccc;
+  display: grid;
+  cursor: pointer;
+}
