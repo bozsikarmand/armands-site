@@ -1,10 +1,13 @@
 [[headers]]
   for = "/assets/css/style.css"
   [headers.values]
+[[headers]]
   Cache-Control = "public, max-age=604800"
   for = "/assets/fonts/fontawesome/css/all.min.css"
+[[headers]]
   [headers.values]
   Cache-Control = "public, max-age=604800"f
   for = "/images/main.png"
+[[headers]]
   [headers.values]
   Cache-Control = "public, max-age=604800"
