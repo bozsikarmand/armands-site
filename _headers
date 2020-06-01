@@ -1,6 +1,10 @@
-/assets/css/style.css
+[[headers]]
+  for = "/assets/css/style.css"
+  [headers.values]
   Cache-Control = "public, max-age=604800"
-/assets/fonts/fontawesome/css/all.min.css
-  Cache-Control = "public, max-age=604800"
-/images/main.png
+  for = "/assets/fonts/fontawesome/css/all.min.css"
+  [headers.values]
+  Cache-Control = "public, max-age=604800"f
+  for = "/images/main.png"
+  [headers.values]
   Cache-Control = "public, max-age=604800"
