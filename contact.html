@@ -97,10 +97,12 @@
                             <label for="message">Message:</label>
                             <textarea name="form-contact-message" id="message" required></textarea>
                             <br>
-                            <label for="file" class="upload-file">Upload file
-                                <i class="fas fa-cloud-upload-alt"></i>
-                            </label>
-                            <input type="file" name="form-contact-file-upload" id="file">
+
+                            <div class="button-upload">
+                                <input type="file" id="file" />
+                                <label for="file" class="btn-upload"><span>Upload a file</span></label>
+                            </div>
+
                             <button class="button-contact-submit g-recaptcha" data-sitekey="6Ldrvq4UAAAAAEr7Wx02DHBmRO3ykU9pkFNgnbjy" data-callback='onSubmit' name="form-contact-submit">
                                 <i class="fa fa-arrow-alt-circle-right"></i> Submit
                             </button>
