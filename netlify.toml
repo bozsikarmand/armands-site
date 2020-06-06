@@ -11,15 +11,15 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 [[redirects]]
-  from = "/"
-  to = "/en"
+  from = "/*"
+  to = "/en/:splat"
   status = 301
   force = true
   query = {path = ":path"}
   conditions = {Language = ["en"]}
 [[redirects]]
-  from = "/"
-  to = "/hu"
+  from = "/*"
+  to = "/hu/:splat"
   status = 301
   force = true
   query = {path = ":path"}
