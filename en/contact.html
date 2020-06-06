@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+        <!-- SEO -->
+        <title>Contact me</title>
+        <meta name="description" content="Here you can contact me if you wish."/>
+        <meta name="robots" content="index, follow"/>
+        <meta name="referrer" content="always"/>
+        <meta name="theme-color" content="#000000"/>
+
+        <!-- Facebook & Twitter -->
+        <meta property="og:title" content="Contact me!"/>
+        <meta property="og:description" content="Here you can contact me if you wish."/>
+        <meta property="og:image" content="https://armands.site/assets/images/main.jpg">
+        <meta property="og:url" content="https://armands.site/"/>
+        <meta name="twitter:title" content="Contact me!">
+        <meta name="twitter:description" content="Here you can contact me if you wish."/>
+        <meta name="twitter:image" content="https://armands.site/assets/images/main.jpg"/>
+        <meta name="twitter:site" content="@bozsikarmand"/>
+        <meta name="twitter:creator" content="@bozsikarmand"/>
+
+        <!-- Favicon -->
+
+        <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
+        <link rel="manifest" href="../assets/icons/site.webmanifest">
+        <link rel="mask-icon" href="../assets/icons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+
+        <link rel='stylesheet' href='../assets/css/style.css' type='text/css' media='screen'/>
+        <link rel='stylesheet' href='../assets/fonts/fontawesome/css/all.min.css' type='text/css' media='screen'/>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+        <script src="../assets/js/footer.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script>
+            function onSubmit(token) {
+              document.getElementById("formContact").submit();
+            }
+        </script>
+    </head>
+
+    <body id="single-page" class="page-landing">
+        <div class="sp-landing">
+            <div class="image">
+                <picture>
+                    <source srcset="../assets/images/main.webp" type="image/webp">
+                    <source srcset="../assets/images/main.png" type="image/png">
+                    <img src="../assets/images/main.png" alt="My profile picture">
+                </picture>
+            </div>
+            <div class="content">
+                <div class="center">
+				    <nav class="navigation-links">
+                        <div class="navigation-link">
+                            <ul>
+                                <li>
+                                    <a href="index.html">
+                                    	<i class="fas fa-home"></i> Home
+                                    </a>
+				                    <a href="https://armands.blog/">
+                                    	<i class="fas fa-blog"></i> Blog
+                                    </a>
+				                    <a href="contact.html" class="button-contact-header">
+                                    	<i class="fas fa-envelope"></i> Contact me!
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="introduction">
+                        <h1>Hello, my name is Armand Bozsik</h1>
+                        <span class="self-identification">Get in touch!</span>
+                    </div>
+                    <div class="contact">
+                        <form name="Contact Form" action="https://armands.site/modules/contact/redirect/onsuccess" class="form-contact" id="formContact" method="post" data-netlify-recaptcha="true" data-netlify="true">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="form-contact-name" required>
+                            <label for="email">Email address:</label>
+                            <input type="email" id="email" name="form-contact-email" required>
+                            <label for="tel">Telephone:</label>
+                            <input type="tel" id="tel" name="form-contact-tel">
+                            <label for="topics">Topics:</label>
+                            <select title="Available topics:" required name="form-contact-topics" size="1" id="topics">
+                                <option label="&nbsp;" value="" disabled></option>
+                                <optgroup label="Please choose from the topics below:" class="form-contact-topic-available">
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Error report">Error report</option>
+                                </optgroup>
+                            </select>
+                            <label for="message">Message:</label>
+                            <textarea name="form-contact-message" id="message" required></textarea>
+                            <br>
+
+                            <div class="button-upload">
+                                <input type="file" id="file" />
+                                <label for="file" class="btn-upload"><span>Drag or select a file to upload</span></label>
+                            </div>
+
+                            <button class="button-contact-submit g-recaptcha" data-sitekey="6Ldrvq4UAAAAAEr7Wx02DHBmRO3ykU9pkFNgnbjy" data-callback='onSubmit' name="form-contact-submit">
+                                <i class="fa fa-arrow-alt-circle-right"></i> Submit
+                            </button>
+                            <small class="recaptcha-info-text">
+                                This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                            </small>
+                        </form>
+                    </div>
+                    <div class="social-media-profiles">
+                        <div class="social-media-profile">
+                            <h3>Connect</h3>
+                            <ul>
+                                <li>
+                                    <a href="https://instagram.com/bozsikarmand">
+                                        <i class="fab fa-instagram"></i> Instagram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://t.me/bozsikarmand">
+                                        <i class="fab fa-telegram-plane"></i> Telegram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://dribbble.com/bozsikarmand">
+                                        <i class="fab fa-dribbble"></i> Dribbble
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="social-media-profile">
+                            <h3>Social</h3>
+                            <ul>
+                                <li>
+                                    <a href="https://twitter.com/bozsikarmand">
+                                        <i class="fab fa-twitter"></i> Twitter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://reddit.com/u/armandbozsik">
+                                        <i class="fab fa-reddit"></i> Reddit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://join.skype.com/invite/oZJ23LGdNogZ">
+                                        <i class="fab fa-skype"></i> Skype
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="social-media-profile">
+                            <h3>Network</h3>
+                            <ul>
+                                <li>
+                                    <a href="https://facebook.com/bozsikarmand">
+                                        <i class="fab fa-facebook"></i> Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://www.youtube.com/c/ArmandBozsik">
+                                        <i class="fab fa-youtube"></i> YouTube
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://keybase.io/bozsikarmand">
+                                        <i class="fab fa-keybase"></i> Keybase
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <footer class="footer-links">
+                        <div class="footer-link">
+                            <ul>
+                                <li>
+                                   <a href="privacy-policy.html">
+                                        <i class="fas fa-user-secret"></i> Privacy Policy
+                                    </a>
+                                    <a href="cookie-policy.html">
+                                        <i class="fas fa-cookie-bite"></i> Cookie Policy
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="copyright">
+                            <p class="copyright-year">
+                                &copy; <script>document.write(new Date().getFullYear());</script> Armand Bozsik | Drawing is made by <a href="https://www.facebook.com/doracsavajdart">Dóra Csavajda</a> | Flags are made by <a href="https://www.flaticon.com/authors/freepik">freepik</a>
+                            </p>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
