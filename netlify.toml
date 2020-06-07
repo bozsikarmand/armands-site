@@ -10,17 +10,3 @@
   for = "/images/main.png"
   [headers.values]
     Cache-Control = "public, max-age=604800"
-[[redirects]]
-  from = "/*"
-  to = "/en/:splat"
-  status = 301
-  force = true
-  query = {path = ":path"}
-  conditions = {Language = ["en"]}
-[[redirects]]
-  from = "/*"
-  to = "/hu/:splat"
-  status = 301
-  force = true
-  query = {path = ":path"}
-  conditions = {Language = ["hu"]}
