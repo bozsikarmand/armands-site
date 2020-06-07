@@ -67,7 +67,7 @@ window.onload = function() {
 
     myApp.SetCookie('lang_redirect', ln);
 
-    if(ln == 'en'){
+    if(ln == 'en' || ln == 'en-*'){
         window.location.href = 'en/index.html';
     }else if(ln == 'hu'){
         window.location.href = 'hu/index.html'; 
