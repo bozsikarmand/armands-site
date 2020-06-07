@@ -67,11 +67,10 @@ window.onload = function() {
 
     myApp.SetCookie('lang_redirect', ln);
 
-    if(ln == 'en' || ln == 'en-*'){
+    if(ln == 'en' || 'en-*'){
         window.location.href = 'en/index.html';
-    }else if(ln == 'hu'){
+    }else if(ln == 'hu' || ln == 'hu-*'){
         window.location.href = 'hu/index.html'; 
     }
-
 }
 </script>
