@@ -1,76 +1,68 @@
 <script>
-// Source: https://stackoverflow.com/a/53469115
+// Source: https://github.com/alexandre1985/language-redirector
 
-window.onload = function() {
+// do you want to make distinctions of countries with the same language?
+const doDistinctionsOfCountriesWithTheSameLanguage = false
 
-    var ln = window.navigator.language||navigator.browserLanguage;
-    var myApp = {}
+// put in here all the languages of your website
+// if you DON'T want to make distinctions of countries with the same language put the root language in this variable, such as, en or es or pt (instead of en-US or pt-BR or es-MX)
+const languagesOfWebsite = [ 'en', 'hu' ]
 
-    /**
-     * Gets cookie value by name
-     * @param  {string} name Name of cookie to retrieve
-     * @return {string}      Value of cookie if found
-     */
-    myApp.ReadCookie = function(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    };
+// default language
+const languageOfRootWebpage = languagesOfWebsite[0];
 
-    /**
-    * Removes cookie value
-    * @param  {string} name Name of cookie
-    */
-    myApp.EraseCookie = function(name) {
-        if ( myApp.ReadCookie(name) )
-        document.cookie = name+'=';
-        console.log(name+' erased.');
-    };
+const pathnamesOfAllLanguagesOfWebsite= languagesOfWebsite.map(lang => `/${lang}/`)
 
-    /**
-    * Deletes cookie reference
-    * @param  {string} name Name of cookie
-    */
-    myApp.DeleteCookie = function(name) {
-        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-        console.log(name+' deleted.');
-    };
+// browser language
+let browserLang = navigator.language ? navigator.language : navigator.userLanguage;
 
-    /**
-    * Set cookie value
-    * @param  {string} name Name of cookie
-    */
-    myApp.SetCookie = function(name, value, expires) {
+if ( (browserLang) && (! doDistinctionsOfCountriesWithTheSameLanguage) ) {
+	const separatorIndex = browserLang.indexOf('-')
+	browserLang = (separatorIndex) ? browserLang.substr(0, separatorIndex) : browserLang
+}
 
-        var cookiestring = [[name, '=', encodeURIComponent( value )].join('')];
-        var expire_time = '';
+const isBrowserLanguageSameLanguageAsRootWebpage = ( browserLang === languageOfRootWebpage )
 
-        if ( expires ) {
-            expire_time = new Date();
-            expire_time.setTime( expire_time.getTime() + expires );
-            expire_time = expire_time.toGMTString();
-            cookiestring.push( ['expires=', expire_time ].join('') );
-        }
-        cookiestring = cookiestring.join(';')+';';
-        document.cookie = cookiestring;
-        console.log( 'SetCookie: '+ name +' set to "'+ value +'"', 'Expires?', expire_time );
-    };
+// is language being forced
+let urlParams = new URLSearchParams(location.search);
+const automaticLanguageRedirectionStatus = urlParams.get('languageRedirection')
 
-    if(myApp.ReadCookie('lang_redirect')) {
-        return;
-    }
+const isPathnameTheDefaultLanguage = ( location.pathname === pathnamesOfAllLanguagesOfWebsite[0] )
 
-    myApp.SetCookie('lang_redirect', ln);
+const actualPathname = isPathnameTheDefaultLanguage ? '/' : location.pathname
 
-    if(ln == 'en' || 'en-*'){
-        window.location.href = 'en/index.html';
-    }else if(ln == 'hu' || ln == 'hu-*'){
-        window.location.href = 'hu/index.html'; 
-    }
+const hashOfLocation = location.hash
+
+let doAutomaticLanguageRedirection
+switch(automaticLanguageRedirectionStatus) {
+    case 'no':
+    case 'false':
+    case 'done':
+        doAutomaticLanguageRedirection = false
+        break;
+    case 'yes':
+    case 'true':
+        doAutomaticLanguageRedirection = true
+        break;
+    default:
+        doAutomaticLanguageRedirection = (actualPathname === '/' && (! hashOfLocation)) ? true : false
+}
+
+
+// this is an assumption that browserLang (pt or pt-PT, for example) corresponds to the pathname (/pt/ or /pt-PT/, following the example)
+const languageTargetPathname = (isBrowserLanguageSameLanguageAsRootWebpage) ? '/' : ( isPathnameTheDefaultLanguage ? '/' : `/${browserLang}/` )
+
+// if you are not on a language page (or locale page); dont do redirection
+if ( ! pathnamesOfAllLanguagesOfWebsite.find(str => str.startsWith(actualPathname)) ) {
+    doAutomaticLanguageRedirection = false
+}
+
+
+// maybe do the redirection ??
+if (doAutomaticLanguageRedirection) {
+    urlParams.set('languageRedirection', "done")
+    const urlParamsString = urlParams.toString()
+    const targetHref = `${location.origin}${languageTargetPathname}?${urlParamsString}${hashOfLocation}`
+    location.replace(targetHref)
 }
 </script>
