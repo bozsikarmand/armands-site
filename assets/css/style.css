@@ -1060,38 +1060,3 @@ input[type="file"] {
   margin: 1rem 0;
   text-align: center;
 }
-
-/*Country flags */
-
-/*.flag-icon-background {
-  background-size: contain;
-  background-position: 50%;
-  background-repeat: no-repeat;
-}
-.flag-icon {
-  background-size: contain;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  position: relative;
-  display: inline-block;
-  width: 1.33333333em;
-  line-height: 1em;
-}
-.flag-icon:before {
-  content: "\00a0";
-}
-.flag-icon.flag-icon-squared {
-  width: 1em;
-}
-.flag-icon-gb-eng.flag-icon-squared {
-  background-image: url(../flags/gb.svg);
-}
-.flag-icon-hu.flag-icon-squared {
-  background-image: url(../flags/hu.svg);
-}*/
-
-/* Language Selector */
-
-/*.link-language-selector-footer {
-  float: right !important;
-}*/
