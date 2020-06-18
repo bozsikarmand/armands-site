@@ -1063,7 +1063,7 @@ input[type="file"] {
 
 /*Country flags */
 
-.flag-icon-background {
+/*.flag-icon-background {
   background-size: contain;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -1088,10 +1088,10 @@ input[type="file"] {
 }
 .flag-icon-hu.flag-icon-squared {
   background-image: url(../flags/hu.svg);
-}
+}*/
 
 /* Language Selector */
 
-.link-language-selector-footer {
+/*.link-language-selector-footer {
   float: right !important;
-}
+}*/
