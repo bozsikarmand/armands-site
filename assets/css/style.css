@@ -647,7 +647,7 @@ picture img {
 }
 
 
-/*Privacy policy print button */
+/* Privacy policy print button */
 
 .button-privacy-policy-print {
   background-color: #cc3300;
@@ -745,7 +745,6 @@ picture img {
 .introduction .cookie-policy {
   color: #cccccc;
 }
-
 
 /*Cookie policy print button */
 
@@ -1047,7 +1046,7 @@ input[type="file"] {
 }
 [type="file"] + label.btn-upload:hover span {
   -webkit-transform: translateY(300%);
-          transform: translateY(300%);
+  transform: translateY(300%);
 }
 [type="file"] + label.btn-upload:hover::before {
   top: 0;
