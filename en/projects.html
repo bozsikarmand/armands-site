@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="hu-HU">
+<html lang="en">
     <head>
         <meta charset="UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
         <!-- SEO -->
-        <title>Lépj kapcsolatba velem</title>
-        <meta name="description" content="Amennyiben kérdésed adódna, itt felveheted velem a kapcsolatot."/>
+        <title>Armand Bozsik</title>
+        <meta name="description" content="Here you can take a look at my CV and contact me if you wish."/>
         <meta name="robots" content="index, follow"/>
         <meta name="referrer" content="always"/>
         <meta name="theme-color" content="#000000"/>
 
         <!-- Facebook & Twitter -->
-        <meta property="og:title" content="Lépj kapcsolatba velem"/>
-        <meta property="og:description" content="Amennyiben kérdésed adódna, itt felveheted velem a kapcsolatot."/>
+        <meta property="og:title" content="Armand Bozsik"/>
+        <meta property="og:description" content="Here you can take a look at my CV and contact me if you wish."/>
         <meta property="og:image" content="https://armands.site/assets/images/main.jpg">
         <meta property="og:url" content="https://armands.site/"/>
-        <meta name="twitter:title" content="Lépj kapcsolatba velem">
-        <meta name="twitter:description" content="Amennyiben kérdésed adódna, itt felveheted velem a kapcsolatot."/>
+        <meta name="twitter:title" content="Armand Bozsik">
+        <meta name="twitter:description" content="Armand Bozsik"/>
         <meta name="twitter:image" content="https://armands.site/assets/images/main.jpg"/>
         <meta name="twitter:site" content="@bozsikarmand"/>
         <meta name="twitter:creator" content="@bozsikarmand"/>
@@ -35,14 +35,6 @@
         <link rel='stylesheet' href='../assets/fonts/fontawesome/css/all.min.css' type='text/css' media='screen'/>
 
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
-
-        <script src="../assets/js/footer.js" async defer></script>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script>
-            function onSubmit(token) {
-              document.getElementById("formContact").submit();
-            }
-        </script>
     </head>
 
     <body id="single-page" class="page-landing">
@@ -51,7 +43,7 @@
                 <picture>
                     <source srcset="../assets/images/main.webp" type="image/webp">
                     <source srcset="../assets/images/main.png" type="image/png">
-                    <img src="../assets/images/main.png" alt="Profilképem">
+                    <img src="../assets/images/main.jpg" alt="My profile picture">
                 </picture>
             </div>
             <div class="content">
@@ -60,76 +52,43 @@
                         <div class="navigation-link">
                             <ul>
                                 <li>
-                                    <a href="index.html">
-                                    	<i class="fas fa-home"></i> Főoldal
+				                    <a href="index.html">
+                                    	<i class="fas fa-home"></i> Home
                                     </a>
 				                    <a href="https://armands.blog/">
                                     	<i class="fas fa-blog"></i> Blog
                                     </a>
                                     <a href="projects.html">
-                                    	<i class="fas fa-chalkboard-teacher"></i> Projektek
+                                    	<i class="fas fa-chalkboard-teacher"></i> Projects
                                     </a>
 				                    <a href="contact.html" class="button-contact-header">
-                                    	<i class="fas fa-envelope"></i> Lépj kapcsolatba velem!
+                                    	<i class="fas fa-envelope"></i> Contact me!
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                     <div class="introduction">
-                        <h1>Üdvözöllek, Bozsik Armand vagyok</h1>
-                        <span class="self-identification">Lépj kapcsolatba velem!</span>
+                        <h1>Hello, my name is Armand Bozsik</h1>
+                        <span class="self-identification">My projects</span>
                     </div>
-                    <div class="contact">
-                        <form name="Contact Form" action="https://armands.site/modules/contact/redirect/onsuccess" class="form-contact" id="formContact" method="post" data-netlify-recaptcha="true" data-netlify="true">
-                            <label for="name">Teljes név:</label>
-                            <input type="text" id="name" name="form-contact-name" required>
-                            <label for="email">Email cím:</label>
-                            <input type="email" id="email" name="form-contact-email" required>
-                            <label for="tel">Telefonszám:</label>
-                            <input type="tel" id="tel" name="form-contact-tel">
-                            <label for="topics">Érdeklődésed tárgya:</label>
-                            <select title="Tárgyak:" required name="form-contact-topics" size="1" id="topics">
-                                <option label="&nbsp;" value="" disabled></option>
-                                <optgroup label="Kérlek válassz az alább felsorolt tárgyak közül:" class="form-contact-topic-available">
-                                    <option value="Általános érdeklődés">Általános érdeklődés</option>
-                                    <option value="Hiba jelentése">Hiba jelentése</option>
-                                </optgroup>
-                            </select>
-                            <label for="message">Üzenet:</label>
-                            <textarea name="form-contact-message" id="message" required></textarea>
-                            <br>
-
-                            <div class="button-upload">
-                                <input type="file" id="file" />
-                                <label for="file" class="btn-upload"><span>Fájl feltöltése:</span></label>
-                            </div>
-
-                            <button class="button-contact-submit g-recaptcha" data-sitekey="6Ldrvq4UAAAAAEr7Wx02DHBmRO3ykU9pkFNgnbjy" data-callback='onSubmit' name="form-contact-submit">
-                                <i class="fa fa-arrow-alt-circle-right"></i> Submit
-                            </button>
-                            <small class="recaptcha-info-text">
-                                Jelen oldalt a reCAPTCHA védi a levélszemét ellen, így a Google adatvédelmi irányelvei illetve felhasználási feltételei vannak érvényben. Ezekről bővebb tájékoztatást a Google
-                                <a href="https://policies.google.com/privacy">adatvédelmi irányelvek</a> és
-                                <a href="https://policies.google.com/terms">szolgáltatási feltételek</a> oldalain találsz.
-                            </small>
-                        </form>
+                    <div class="biography">
                     </div>
                     <div class="social-media-profiles">
                         <div class="social-media-profile">
-                            <h3>Elérhetőségeim</h3>
+                            <h3>Connect</h3>
                             <ul>
-                                <li>
+				                <li>
                                     <a href="https://instagram.com/bozsikarmand">
                                         <i class="fab fa-instagram"></i> Instagram
                                     </a>
                                 </li>
-                                <li>
+				                <li>
                                     <a href="https://t.me/bozsikarmand">
                                         <i class="fab fa-telegram-plane"></i> Telegram
                                     </a>
                                 </li>
-                                <li>
+				                <li>
                                     <a href="https://dribbble.com/bozsikarmand">
                                         <i class="fab fa-dribbble"></i> Dribbble
                                     </a>
@@ -137,14 +96,14 @@
                             </ul>
                         </div>
                         <div class="social-media-profile">
-                            <h3>Közösségi</h3>
+                            <h3>Social</h3>
                             <ul>
                                 <li>
                                     <a href="https://twitter.com/bozsikarmand">
                                         <i class="fab fa-twitter"></i> Twitter
                                     </a>
                                 </li>
-                                <li>
+				                <li>
                                     <a href="https://reddit.com/u/armandbozsik">
                                         <i class="fab fa-reddit"></i> Reddit
                                     </a>
@@ -157,14 +116,14 @@
                             </ul>
                         </div>
                         <div class="social-media-profile">
-                            <h3>Hálózatokon</h3>
+                            <h3>Network</h3>
                             <ul>
                                 <li>
                                     <a href="https://facebook.com/bozsikarmand">
                                         <i class="fab fa-facebook"></i> Facebook
                                     </a>
                                 </li>
-                                <li>
+				                <li>
                                     <a href="http://www.youtube.com/c/ArmandBozsik">
                                         <i class="fab fa-youtube"></i> YouTube
                                     </a>
@@ -181,21 +140,21 @@
                         <div class="footer-link">
                             <ul>
                                 <li>
-                                   <a href="privacy-policy.html">
-                                        <i class="fas fa-user-secret"></i> Adatvédelmi irányelveim
+                                   <a href="#">
+                                        <i class="fas fa-user-secret"></i> Privacy Policy
                                     </a>
-                                    <a href="cookie-policy.html">
-                                        <i class="fas fa-cookie-bite"></i> Süti szabályzatom
+                                    <a href="#">
+                                        <i class="fas fa-cookie-bite"></i> Cookie Policy
                                     </a>
-                                    <span class="flag-icon flag-icon-squared flag-icon-gb-eng link-language-selector-footer">
-                                        <a href="https://armands.site/en"></a>
+                                    <span class="flag-icon flag-icon-squared flag-icon-hu link-language-selector-footer">
+                                        <a href="https://armands.site/hu"></a>
                                     </span>
                                 </li>
                             </ul>
                         </div>
                         <div class="copyright">
                             <p class="copyright-year">
-                                &copy; <script>document.write(new Date().getFullYear());</script> Bozsik Armand | Portrémat <a href="https://www.facebook.com/doracsavajdart">Csavajda Dóra</a> készítette
+                                &copy; <script>document.write(new Date().getFullYear());</script> Armand Bozsik | Drawing is made by <a href="https://www.facebook.com/doracsavajdart">Dóra Csavajda</a>
                             </p>
                         </div>
                     </footer>
