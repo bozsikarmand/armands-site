@@ -406,9 +406,9 @@ body.page-landing p {
 }
 
 
-/* GitLab Button */
+/* GitHub Button */
 
-.button-gitlab {
+.button-github {
   background-color: #cc3300;
   border: 6px solid #cc3300;
   display: inline-block;
@@ -428,7 +428,7 @@ body.page-landing p {
   box-sizing: border-box;
 }
 
-.button-gitlab:hover {
+.button-github:hover {
   border-radius: 42px;
   -moz-border-radius: 42px;
   -webkit-border-radius: 42px;
@@ -441,7 +441,7 @@ body.page-landing p {
   text-transform: uppercase
 }
 
-.button-gitlab:active {
+.button-github:active {
   outline: none;
   position: relative;
   top: 4px;
@@ -451,7 +451,7 @@ body.page-landing p {
   text-transform: uppercase
 }
 
-.button-gitlab:focus {
+.button-github:focus {
   outline: none;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
