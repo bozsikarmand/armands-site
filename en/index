@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
     <head>
         <meta charset="UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
         <!-- SEO -->
-        <title>Bozsik Armand Viktor</title>
-        <meta name="description" content="Megtekintheted önéletrajzomat, és kapcsolatba is léphetsz velem."/>
+        <title>Armand Viktor Bozsik</title>
+        <meta name="description" content="Have a look at my CV and contact me if you wish."/>
         <meta name="robots" content="index, follow"/>
         <meta name="referrer" content="always"/>
         <meta name="theme-color" content="#000000"/>
 
         <!-- Facebook & Twitter -->
-        <meta property="og:title" content="Bozsik Armand Viktor"/>
-        <meta property="og:description" content="Megtekintheted önéletrajzomat, és kapcsolatba is léphetsz velem."/>
+        <meta property="og:title" content="Armand Viktor Bozsik"/>
+        <meta property="og:description" content="Have a look at my CV and contact me if you wish."/>
         <meta property="og:image" content="https://armands.site/assets/images/main.jpg">
         <meta property="og:url" content="https://armands.site/"/>
-        <meta name="twitter:title" content="Bozsik Armand Viktor">
-        <meta name="twitter:description" content="Bozsik Armand Viktor"/>
+        <meta name="twitter:title" content="Armand Viktor Bozsik">
+        <meta name="twitter:description" content="Armand Viktor Bozsik"/>
         <meta name="twitter:image" content="https://armands.site/assets/images/main.jpg"/>
         <meta name="twitter:site" content="@bozsikarmand"/>
         <meta name="twitter:creator" content="@bozsikarmand"/>
@@ -43,7 +43,7 @@
                 <picture>
                     <source srcset="/assets/images/main.webp" type="image/webp">
                     <source srcset="/assets/images/main.png" type="image/png">
-                    <img src="/assets/images/main.jpg" alt="Profilképem">
+                    <img src="/assets/images/main.jpg" alt="My profile picture">
                 </picture>
             </div>
             <div class="content">
@@ -52,41 +52,41 @@
                         <div class="navigation-link">
                             <ul>
                                 <li>
-				                    <a href="index.html">
-                                    	<i class="fas fa-home"></i> Főoldal
+				                    <a href="index">
+                                    	<i class="fas fa-home"></i> Home
                                     </a>
 				                    <a href="https://armands.blog/">
                                     	<i class="fas fa-blog"></i> Blog
                                     </a>
-                                    <a href="projects.html">
-                                    	<i class="fas fa-chalkboard-teacher"></i> Projektek
+                                    <a href="projects">
+                                    	<i class="fas fa-chalkboard-teacher"></i> Projects
                                     </a>
-				                    <a href="contact.html" class="button-contact-header">
-                                    	<i class="fas fa-envelope"></i> Lépj kapcsolatba velem!
+				                    <a href="contact" class="button-contact-header">
+                                    	<i class="fas fa-envelope"></i> Contact me!
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                     <div class="introduction">
-                        <h1>Üdvözöllek, Bozsik Armand Viktor vagyok</h1>
-                        <span class="self-identification">Geek. Hallgató. Fejlesztő.</span>
+                        <h1>Hello, my name is Armand Viktor Bozsik</h1>
+                        <span class="self-identification">I am a Geek. Student. Dev.</span>
                     </div>
                     <div class="biography">
                         <form action="https://github.com/bozsikarmand/">
-                            <p>Programtervező Informatikus végzettséggel rendelkezem, melyet a Szegedi Tudományegyetemen szereztem 2020 júniusában.
-                                A következő linken megtekintheted <a href="https://www.linkedin.com/in/bozsikarmand/">önéletrajzomat</a>.
-                                Munkáimat a GitHub repozitóriumomban éred el, az alábbi gomb megnyomásával.
-                                Az oldal alján található linkek használatával bármikor felveheted velem a kapcsolatot.
+                            <p>I have earned my degree in Computer Science at the University of Szeged in June 2020.
+                                Feel free to check my <a href="https://www.linkedin.com/in/bozsikarmand/">resume</a>.
+                                Please have a look at my current works on GitHub.
+                                You can always contact me via the links below. 
                             </p>
                             <button class="button-github">
-                                <i class="fab fa-github"></i> Tekintsd meg GitHub profilom!
+                                <i class="fab fa-github"></i> Feel free to check my GitHub profile!
                             </button>
                         </form>
                     </div>
                     <div class="social-media-profiles">
                         <div class="social-media-profile">
-                            <h3>Elérhetőségeim</h3>
+                            <h3>Connect</h3>
                             <ul>
 				                <li>
                                     <a href="https://instagram.com/bozsikarmand">
@@ -106,7 +106,7 @@
                             </ul>
                         </div>
                         <div class="social-media-profile">
-                            <h3>Közösségi</h3>
+                            <h3>Social</h3>
                             <ul>
                                 <li>
                                     <a href="https://twitter.com/bozsikarmand">
@@ -126,7 +126,7 @@
                             </ul>
                         </div>
                         <div class="social-media-profile">
-                            <h3>Hálózatokon</h3>
+                            <h3>Network</h3>
                             <ul>
                                 <li>
                                     <a href="https://facebook.com/bozsikarmand">
@@ -150,21 +150,21 @@
                         <div class="footer-link">
                             <ul>
                                 <li>
-                                   <a href="privacy-policy.html">
-                                        <i class="fas fa-user-secret"></i> Adatvédelmi irányelveim
+                                   <a href="#">
+                                        <i class="fas fa-user-secret"></i> Privacy Policy
                                     </a>
-                                    <a href="cookie-policy.html">
-                                        <i class="fas fa-cookie-bite"></i> Süti szabályzatom
+                                    <a href="#">
+                                        <i class="fas fa-cookie-bite"></i> Cookie Policy
                                     </a>
-                                    <span class="flag-icon flag-icon-squared flag-icon-gb-eng link-language-selector-footer">
-                                        <a href="https://armands.site/en"></a>
+                                    <span class="flag-icon flag-icon-squared flag-icon-hu link-language-selector-footer">
+                                        <a href="https://armands.site/hu"></a>
                                     </span>
                                 </li>
                             </ul>
                         </div>
                         <div class="copyright">
                             <p class="copyright-year">
-                                &copy; <script>document.write(new Date().getFullYear());</script> Bozsik Armand Viktor | Portrémat <a href="https://www.facebook.com/doracsavajdart">Csavajda Dóra</a> készítette
+                                &copy; <script>document.write(new Date().getFullYear());</script> Armand Viktor Bozsik | Drawing is made by <a href="https://www.facebook.com/doracsavajdart">Dóra Csavajda</a>
                             </p>
                         </div>
                     </footer>

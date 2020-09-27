@@ -1,118 +1,3 @@
-/*
-
-  --body-background-color: #FFFFFF;
-  --bpa-hover-color: #000000;
-  --html-background-color: #003333;
-  --body-page-landing-background-color: #003333;
-  --body-page-landing-color: #999999;
-
-  --body-page-landing-p-color: #999999;
-  --sp-landing-content-background-color: #000000;
-
-  --introduction-h1-color: #FF7575;
-  --introduction-self-identification-color: #CCCCCC;
-
-  --biography-p-color: #999999;
-  --biography-a-color: #999999;
-  --biography-a-border-bottom-color: #999999;
-  --biography-a-hover-color: #CC3333;
-  --biography-a-hover-border-bottom: #CC3333;
-
-  --social-media-profiles-social-media-profile-h3-color: #999999;
-  --social-media-profiles-social-media-profile-ul-li-a-color: #999999;
-  --social-media-profiles-social-media-profile-ul-li-a-hover-color: #CC3333;
-
-  --copyright-p-a: #999999;
-
-  --button-github-background-color: #CC3300;
-  --button-github-border: #CC3300;
-  --button-github-color: #FFFFFF;
-  --button-github-hover-background-color: transparent;
-  --button-github-hover-border: #BB3553;
-
-  --footer-links-footer-link-ul-li-a-color: #999999;
-  --footer-links-footer-link-ul-li-a-hover-color: #CC3333;
-  
-  --navigation-links-navigation-link-ul-li-a-color: #999999;
-  --navigation-links-navigation-link-ul-li-a-hover-color: #CC3333;
-  --navigation-links-navigation-link-ul-li-a-active-color: #CC3333;
-
-  --privacy-policy-text-p-color: #999999;
-  --privacy-policy-text-a-color: #999999;
-  --privacy-policy-text-a-hover-color: #CC3333;
-  --privacy-policy-text-a-hover-border-bottom: #CC3333;
-
-  --introduction-privacy-policy-color: #CCCCCC;
-
-  --button-privacy-policy-print-background-color: #CC3300;
-  --button-privacy-policy-print-border: #CC3300;
-  --button-privacy-policy-print-color: #FFFFFF; 
-  --button-privacy-policy-print-hover-background-color: transparent;
-  --button-privacy-policy-print-hover-border: #BB3553;
-
-  --cookie-policy-text-p-color: #999999;
-  --cookie-policy-text-a-color: #999999;
-  --cookie-policy-text-a-border-bottom: #999999;
-  --cookie-policy-text-a-hover-color: #CC3333;
-  --cookie-policy-text-a-hover-border-bottom: #CC3333;
-
-  --introduction-cookie-policy-color: #CCCCCC;
-
-  --button-cookie-policy-print-background-color: #CC3300;
-  --button-cookie-policy-print-border: #CC3300;
-  --button-cookie-policy-print-color: #FFFFFF; 
-  --button-cookie-policy-print-hover-background-color: transparent;
-  --button-cookie-policy-print-hover-border: #BB3553;
-
-  --button-contact-submit-background-color: #CC3300;
-  --button-contact-submit-border: #CC3300;
-  --button-contact-submit-color: #FFFFFF;
-
-  --button-contact-submit-hover-background-color: transparent;
-  --button-contact-submit-hover-border-color: #BB3553;
-  
-  --form-contact-input-background: #444444;
-  --form-contact-input-color: #323232;
-
-  --contact-p-color: #999999;
-
-  --contact-a-color: #999999;
-  --contact-a-border-bottom: #999999;
-
-  --contact-a-hover-color: #CC3333;
-  --contact-a-hover-border-bottom: #CC3333;
-
-  --message-background: #444444;
-  --message-color: #999999;
-
-  --topics-background: #444444;
-  --topics-color: #999999;
-
-  --upload-file-border: #CCCCCC;
-
-  --file-label-background: #DD3333;
-  --file-label-border: #999999;
-  --file-label-color: #FFFFFF;
-
-  --file-label-button-upload-background-color: #DD3333;
-  --file-label-button-upload-before-color: #FFFFFF;
-  --file-label-button-upload-hover-background-color: #FF00FF;
-  
-*/
-
-/* ------------------------------------------------------------------------- */
-/* ------------------------------------------------------------------------- */
-
-
-:root {
-  /* light colours */
-}
-
-[data-theme="dark"] {
-  
-  
-}
-
 /* -- CSS Reset -- */
 
 html,
@@ -1098,6 +983,11 @@ input[type="file"] {
   display: grid;
   cursor: pointer;
 }
+
+/*a:focus {
+  border-bottom: 5px solid;
+  background: #ffdd00;
+}*/
 
 [type="file"] {
   height: 0;

@@ -5,19 +5,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
         <!-- SEO -->
-        <title>Armand Bozsik</title>
-        <meta name="description" content="Projects I am proud of."/>
+        <title>Your message is successfully sent!</title>
+        <meta name="description" content="I will get back to you shortly!"/>
         <meta name="robots" content="index, follow"/>
         <meta name="referrer" content="always"/>
         <meta name="theme-color" content="#000000"/>
 
         <!-- Facebook & Twitter -->
-        <meta property="og:title" content="Armand Viktor Bozsik"/>
-        <meta property="og:description" content="Here you can have a look at my recent projects."/>
+        <meta property="og:title" content="Your message is successfully sent!"/>
+        <meta property="og:description" content="I will get back to you shortly!"/>
         <meta property="og:image" content="https://armands.site/assets/images/main.jpg">
         <meta property="og:url" content="https://armands.site/"/>
-        <meta name="twitter:title" content="Armand Viktor Bozsik">
-        <meta name="twitter:description" content="Armand Viktor Bozsik"/>
+        <meta name="twitter:title" content="Your message is successfully sent!">
+        <meta name="twitter:description" content="I will get back to you shortly!"/>
         <meta name="twitter:image" content="https://armands.site/assets/images/main.jpg"/>
         <meta name="twitter:site" content="@bozsikarmand"/>
         <meta name="twitter:creator" content="@bozsikarmand"/>
@@ -35,6 +35,14 @@
         <link rel='stylesheet' href='/assets/fonts/fontawesome/stylesheets/all.min.css' type='text/css' media='screen'/>
 
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+        <script src="/assets/scripts/footer.js" async defer></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script>
+            function onSubmit(token) {
+              document.getElementById("formContact").submit();
+            }
+        </script>
     </head>
 
     <body id="single-page" class="page-landing">
@@ -43,7 +51,7 @@
                 <picture>
                     <source srcset="/assets/images/main.webp" type="image/webp">
                     <source srcset="/assets/images/main.png" type="image/png">
-                    <img src="/assets/images/main.jpg" alt="My profile picture">
+                    <img src="/assets/images/main.png" alt="My profile picture">
                 </picture>
             </div>
             <div class="content">
@@ -52,16 +60,16 @@
                         <div class="navigation-link">
                             <ul>
                                 <li>
-				                    <a href="index.html">
+                                    <a href="index">
                                     	<i class="fas fa-home"></i> Home
                                     </a>
 				                    <a href="https://armands.blog/">
                                     	<i class="fas fa-blog"></i> Blog
                                     </a>
-                                    <a href="projects.html">
+                                    <a href="projects">
                                     	<i class="fas fa-chalkboard-teacher"></i> Projects
                                     </a>
-				                    <a href="contact.html" class="button-contact-header">
+				                    <a href="contact" class="button-contact-header">
                                     	<i class="fas fa-envelope"></i> Contact me!
                                     </a>
                                 </li>
@@ -70,28 +78,54 @@
                     </nav>
                     <div class="introduction">
                         <h1>Hello, my name is Armand Viktor Bozsik</h1>
-                        <span class="self-identification">My projects</span>
+                        <span class="self-identification">Get in touch!</span>
                     </div>
-                    <div class="biography">
-                        <p>
-                            <a href="https://bar.armands.dev/">Bar Project (for Computer Graphics Course)</a>
-                        </p>
+                    <div class="contact">
+                        <form name="Contact Form" action="" class="form-contact" id="formContact" method="post" data-netlify-recaptcha="true" data-netlify="true">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="form-contact-name" required>
+                            <label for="email">Email address:</label>
+                            <input type="email" id="email" name="form-contact-email" required>
+                            <label for="tel">Telephone:</label>
+                            <input type="tel" id="tel" name="form-contact-tel">
+                            <label for="topics">Topics:</label>
+                            <select title="Available topics:" required name="form-contact-topics" size="1" id="topics">
+                                <option label="&nbsp;" value="" disabled></option>
+                                <optgroup label="Please choose from the topics below:" class="form-contact-topic-available">
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Error report">Error report</option>
+                                </optgroup>
+                            </select>
+                            <label for="message">Message:</label>
+                            <textarea name="form-contact-message" id="message" required></textarea>
+                            <br>
+                            <label for="file">Upload file:</label>
+                            <input type="file" name="form-contact-file-upload" id="file">
+                            <button class="button-contact-submit g-recaptcha" data-sitekey="6Ldrvq4UAAAAAEr7Wx02DHBmRO3ykU9pkFNgnbjy" data-callback='onSubmit' name="form-contact-submit">
+                                <i class="fa fa-arrow-alt-circle-right"></i> Submit
+                            </button>
+                            <small class="recaptcha-info-text">
+                                This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                            </small>
+                        </form>
                     </div>
                     <div class="social-media-profiles">
                         <div class="social-media-profile">
                             <h3>Connect</h3>
                             <ul>
-				                <li>
+                                <li>
                                     <a href="https://instagram.com/bozsikarmand">
                                         <i class="fab fa-instagram"></i> Instagram
                                     </a>
                                 </li>
-				                <li>
+                                <li>
                                     <a href="https://t.me/bozsikarmand">
                                         <i class="fab fa-telegram-plane"></i> Telegram
                                     </a>
                                 </li>
-				                <li>
+                                <li>
                                     <a href="https://dribbble.com/bozsikarmand">
                                         <i class="fab fa-dribbble"></i> Dribbble
                                     </a>
@@ -106,7 +140,7 @@
                                         <i class="fab fa-twitter"></i> Twitter
                                     </a>
                                 </li>
-				                <li>
+                                <li>
                                     <a href="https://reddit.com/u/armandbozsik">
                                         <i class="fab fa-reddit"></i> Reddit
                                     </a>
@@ -126,7 +160,7 @@
                                         <i class="fab fa-facebook"></i> Facebook
                                     </a>
                                 </li>
-				                <li>
+                                <li>
                                     <a href="http://www.youtube.com/c/ArmandBozsik">
                                         <i class="fab fa-youtube"></i> YouTube
                                     </a>
@@ -143,10 +177,10 @@
                         <div class="footer-link">
                             <ul>
                                 <li>
-                                   <a href="#">
+                                   <a href="privacy-policy">
                                         <i class="fas fa-user-secret"></i> Privacy Policy
                                     </a>
-                                    <a href="#">
+                                    <a href="cookie-policy">
                                         <i class="fas fa-cookie-bite"></i> Cookie Policy
                                     </a>
                                     <span class="flag-icon flag-icon-squared flag-icon-hu link-language-selector-footer">
