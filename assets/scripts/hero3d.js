@@ -35,8 +35,8 @@
     await img.decode();
 
     var isSmall = Math.min(window.innerWidth, window.innerHeight) < 720;
-    var SAMPLE_W = isSmall ? 120 : 220;
-    var GAP = 3;
+    var SAMPLE_W = isSmall ? 100 : 180;
+    var GAP = isSmall ? 3 : 2;
     var scale = SAMPLE_W / img.naturalWidth;
     var SAMPLE_H = Math.round(img.naturalHeight * scale);
 
@@ -47,7 +47,7 @@
     ctx.drawImage(img, 0, 0, SAMPLE_W, SAMPLE_H);
     var data = ctx.getImageData(0, 0, SAMPLE_W, SAMPLE_H).data;
 
-    var INK_MAX_LUM = 0.62;   // ennél sötétebb = körvonal
+    var INK_MAX_LUM = 0.72;   // ennél sötétebb = körvonal
 
     var ink = { homes: [], colors: [], delays: [], jitter: [] };
     var fill = { homes: [], colors: [], delays: [], jitter: [] };
@@ -128,7 +128,7 @@
         map: sprite,
         vertexColors: true,
         transparent: true,
-        alphaTest: 0.28,
+        alphaTest: 0.22,
         depthWrite: false,
         sizeAttenuation: true,
       });
@@ -165,8 +165,8 @@
       basePointSize = scalePx * GAP * 1.1;
 
       if (!inkCloud) {
-        inkCloud = makeCloud(ink, 1.65);
-        fillCloud = makeCloud(fill, 0.8);
+        inkCloud = makeCloud(ink, 1.5);
+        fillCloud = makeCloud(fill, 0.7);
         buildAmbient();
       } else {
         // újraméretezés: otthonpontok frissítése
@@ -178,7 +178,7 @@
             ud.homes[i3] = originX + bucket.homes[i3] * imgW;
             ud.homes[i3 + 1] = originY + bucket.homes[i3 + 1] * imgH;
           }
-          pts.material.size = basePointSize * (idx === 0 ? 1.65 : 0.8);
+          pts.material.size = basePointSize * (idx === 0 ? 1.5 : 0.7);
         });
       }
     }
@@ -221,7 +221,7 @@
     if (photoImg) photoImg.style.visibility = 'hidden';
     if (photoBox) {
       // A kép eredeti kék háttere (sarokátlag színminta)
-      photoBox.style.backgroundColor = '#798eb6';
+      photoBox.style.backgroundColor = '#4d6a9e';
       photoBox.style.backgroundImage = 'none';
     }
 
@@ -265,7 +265,7 @@
           continue;
         }
 
-        var wave = Math.sin(t * 1.2 + ud.jitter[i]) * 0.5;
+        var wave = Math.sin(t * 1.2 + ud.jitter[i]) * 0.3;
         ud.vel[i3] += (hx - arr[i3]) * K;
         ud.vel[i3 + 1] += (hy - arr[i3 + 1]) * K;
         ud.vel[i3 + 2] += (hz + wave - arr[i3 + 2]) * K;
