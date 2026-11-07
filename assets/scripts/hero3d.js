@@ -313,10 +313,10 @@
       animateCloud(fillCloud, now, p, introDone);
       animateAmbient(now, p);
 
-      // Kamera-parallax: a nézet finoman követi az egeret
+      // Kamera-parallax: finom eltolás, képtengely-rotation NÉLKÜL
+      // (a lookAt elforgatná a nézetet és középre tolná a képet)
       camera.position.x = mouse.x * 2.4;
       camera.position.y = mouse.y * 1.6;
-      if (cloudCenter) camera.lookAt(cloudCenter);
 
       renderer.render(scene, camera);
     }
