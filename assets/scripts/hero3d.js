@@ -151,17 +151,18 @@
       viewH = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
       viewW = viewH * camera.aspect;
 
-      var maxW = viewW * 0.4;
-      var maxH = viewH * 0.88;
-      var imgAspect = SAMPLE_W / SAMPLE_H;
-      imgW = Math.min(maxW, maxH * imgAspect);
-      imgH = imgW / imgAspect;
-      // Pontosan a bal fele középre igazítva
-      originX = -viewW / 2 + (viewW * 0.5 - imgW) / 2;
-      originY = -imgH / 2;
-      cloudCenter = new THREE.Vector3(originX + imgW / 2, 0, 0);
+      // Cover-méretezés: a kép töltse ki a bal felet széltől szélig,
+      // középről körbevágva – pont mint az eredeti <img> a dizájnban
+      var targetW = viewW * 0.5;
+      var targetH = viewH;
+      var scalePx = Math.max(targetW / SAMPLE_W, targetH / SAMPLE_H);
+      imgW = SAMPLE_W * scalePx;
+      imgH = SAMPLE_H * scalePx;
+      originX = -viewW / 2 - (imgW - targetW) / 2;
+      originY = -targetH / 2 - (imgH - targetH) / 2;
+      cloudCenter = new THREE.Vector3(-viewW / 2 + targetW / 2, 0, 0);
 
-      basePointSize = (imgW / (SAMPLE_W / GAP)) * 1.25;
+      basePointSize = scalePx * GAP * 1.1;
 
       if (!inkCloud) {
         inkCloud = makeCloud(ink, 1.65);
