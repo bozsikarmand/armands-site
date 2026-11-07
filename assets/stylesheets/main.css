@@ -1232,3 +1232,8 @@ input[type="file"] {
 .no-canvas #hero-canvas {
   display: none;
 }
+
+/* Ambient por átsütése a tartalmi panelen */
+.sp-landing .content {
+  background-color: rgba(0, 0, 0, 0.9);
+}
