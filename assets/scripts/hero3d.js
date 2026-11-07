@@ -151,12 +151,13 @@
       viewH = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
       viewW = viewH * camera.aspect;
 
-      var maxW = viewW * 0.44;
-      var maxH = viewH * 0.9;
+      var maxW = viewW * 0.4;
+      var maxH = viewH * 0.88;
       var imgAspect = SAMPLE_W / SAMPLE_H;
       imgW = Math.min(maxW, maxH * imgAspect);
       imgH = imgW / imgAspect;
-      originX = -viewW / 2 + (viewW * 0.5 - imgW) / 2 + viewW * 0.015;
+      // Pontosan a bal fele középre igazítva
+      originX = -viewW / 2 + (viewW * 0.5 - imgW) / 2;
       originY = -imgH / 2;
       cloudCenter = new THREE.Vector3(originX + imgW / 2, 0, 0);
 
@@ -183,7 +184,7 @@
 
     // Ambient por: lassan sodródó halvány pontok a teljes hero-n
     function buildAmbient() {
-      var N = 200;
+      var N = 140;
       var pos = new Float32Array(N * 3);
       var seeds = new Float32Array(N * 2);
       var cols = new Float32Array(N * 3);
@@ -202,7 +203,7 @@
       geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
       geo.setAttribute('color', new THREE.BufferAttribute(cols, 3));
       var mat = new THREE.PointsMaterial({
-        size: 1.15, map: sprite, vertexColors: true, transparent: true,
+        size: 0.9, map: sprite, vertexColors: true, transparent: true,
         opacity: 0, alphaTest: 0.2, depthWrite: false, sizeAttenuation: true,
       });
       ambientCloud = new THREE.Points(geo, mat);
@@ -218,8 +219,8 @@
     var photoBox = document.querySelector('.sp-landing .image');
     if (photoImg) photoImg.style.visibility = 'hidden';
     if (photoBox) {
-      photoBox.style.backgroundColor = 'rgb(' + Math.round(fill.colors[0] * 255) + ',' +
-        Math.round(fill.colors[1] * 255) + ',' + Math.round(fill.colors[2] * 255) + ')';
+      // A kép eredeti kék háttere (sarokátlag színminta)
+      photoBox.style.backgroundColor = '#798eb6';
       photoBox.style.backgroundImage = 'none';
     }
 
@@ -288,7 +289,7 @@
     function animateAmbient(now, p) {
       var ud = ambientCloud.userData;
       var arr = ambientCloud.geometry.attributes.position.array;
-      ambientCloud.material.opacity = p * 0.4;
+      ambientCloud.material.opacity = p * 0.22;
       for (var i = 0; i < ud.count; i++) {
         var i3 = i * 3, i2 = i * 2;
         arr[i3] += Math.sin(t * 0.2 + ud.seeds[i2]) * 0.012 * ud.seeds[i2 + 1];
@@ -312,8 +313,8 @@
       animateAmbient(now, p);
 
       // Kamera-parallax: a nézet finoman követi az egeret
-      camera.position.x = mouse.x * 3.2;
-      camera.position.y = mouse.y * 2.0;
+      camera.position.x = mouse.x * 2.4;
+      camera.position.y = mouse.y * 1.6;
       if (cloudCenter) camera.lookAt(cloudCenter);
 
       renderer.render(scene, camera);
