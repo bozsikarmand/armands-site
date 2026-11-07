@@ -37,6 +37,8 @@
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
         <script src="/assets/scripts/footer.js" async defer></script>
+        <script src="/assets/scripts/year.js" defer></script>
+        <script src="/assets/scripts/contact-actions.js" defer></script>
     </head>
 
     <body id="single-page" class="page-landing">
@@ -82,24 +84,10 @@
                             <a class="button-contact-submit" href="mailto:hello@armands.site" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
                                 <i class="fa fa-envelope"></i> hello@armands.site
                             </a>
-                            <button type="button" class="button-contact-submit" id="copy-email-btn" data-email="hello@armands.site" style="margin-left:10px; cursor:pointer;">
+                            <button type="button" class="button-contact-submit" id="copy-email-btn" data-email="hello@armands.site" data-copied="Copied!" style="margin-left:10px; cursor:pointer;">
                                 <i class="fa fa-copy"></i> <span>Copy address</span>
                             </button>
                         </div>
-                        <script>
-                        (function () {
-                            var btn = document.getElementById('copy-email-btn');
-                            if (!btn || !navigator.clipboard) return;
-                            btn.addEventListener('click', function () {
-                                var label = btn.querySelector('span');
-                                navigator.clipboard.writeText(btn.dataset.email).then(function () {
-                                    var orig = label.textContent;
-                                    label.textContent = 'Copied!';
-                                    setTimeout(function () { label.textContent = orig; }, 1600);
-                                });
-                            });
-                        })();
-                        </script>
                     </div>
                     <div class="social-media-profiles">
                         <div class="social-media-profile">
@@ -181,7 +169,7 @@
                         </div>
                         <div class="copyright">
                             <p class="copyright-year">
-                                &copy; <script>document.write(new Date().getFullYear());</script> Armand Viktor Bozsik | Drawing is made by <a href="https://www.facebook.com/doracsavajdart">Dóra Csavajda</a>
+                                &copy; <span data-year>2026</span> Armand Viktor Bozsik | Drawing is made by <a href="https://www.facebook.com/doracsavajdart">Dóra Csavajda</a>
                             </p>
                         </div>
                     </footer>
