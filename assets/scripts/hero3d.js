@@ -1,11 +1,12 @@
-/* 3D hero: a profilkép porrá/hommokká bontva (image-to-particles), v2.
+/* 3D hero: a profilkép porrá/hommokká bontva (image-to-particles), v3.
  *
  * - Kétfelhős felépítés: a "tinta" (sötét körvonalak) nagyobb, közelebbi
- *   pontokból áll, a világos háttér finomabb por – így a rajz jól kivehető.
- * - Ambient por a teljes hero-n (a tartalmi panel mögött is, áttetsző panellel).
- * - Kamera-parallax: a nézet finoman dől/követ az egérrel.
- * - Bevezető: szétszórt porból összeállás; egér hatására kirepülés,
- *   rugó-fizikával visszaállás.
+ *   pontokból áll, a világos háttér finomabb por.
+ * - Cover-méretezés: a kép kitölti a bal felet, mint az eredeti <img>.
+ * - Egérhatás 1:1 a képernyővel; rugós visszaállás.
+ * - Scroll-reakció: a tartalmi panel görgetésére a kép finoman szétszálld
+ *   és a kamera hátrazoomol.
+ * - Váltógomb: eredeti rajz <-> 3D (visszakapcsoláskor újraösszeáll).
  * Fallback: prefers-reduced-motion / nincs WebGL / képhiba – az eredeti <img>. */
 
 (function () {
@@ -49,7 +50,7 @@
     ctx.drawImage(img, 0, 0, SAMPLE_W, SAMPLE_H);
     var data = ctx.getImageData(0, 0, SAMPLE_W, SAMPLE_H).data;
 
-    var INK_MAX_LUM = 0.72;   // ennél sötétebb = körvonal
+    var INK_MAX_LUM = 0.72;
 
     var ink = { homes: [], colors: [], delays: [], jitter: [] };
     var fill = { homes: [], colors: [], delays: [], jitter: [] };
@@ -81,10 +82,10 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     var scene = new THREE.Scene();
+    var CAM_Z = 100;
     var camera = new THREE.PerspectiveCamera(50, 1, 1, 400);
-    camera.position.z = 100;
+    camera.position.z = CAM_Z;
 
-    // Kerek, puha sprite
     var spriteCanvas = document.createElement('canvas');
     spriteCanvas.width = spriteCanvas.height = 32;
     var sctx = spriteCanvas.getContext('2d');
@@ -98,35 +99,20 @@
 
     var viewH, viewW, imgW, imgH, originX, originY, basePointSize, cloudCenter;
 
-    function makeCloud(bucket, sizeMul, sizeOverride) {
+    function makeCloud(bucket, sizeMul) {
       var count = bucket.delays.length;
       var pos = new Float32Array(count * 3);
       var homes = new Float32Array(count * 3);
+      var disp = new Float32Array(count * 3);
       var scatter = new Float32Array(count * 3);
       var vel = new Float32Array(count * 3);
-
-      for (var i = 0; i < count; i++) {
-        var i3 = i * 3;
-        homes[i3] = originX + bucket.homes[i3] * imgW;
-        homes[i3 + 1] = originY + bucket.homes[i3 + 1] * imgH;
-        var lum = 0.299 * bucket.colors[i3] + 0.587 * bucket.colors[i3 + 1] + 0.114 * bucket.colors[i3 + 2];
-        // Dombormű: sötét körvonalak közelebb, erősebb relief
-        var hz = (0.75 - lum) * 16 + (Math.random() - 0.5) * 1.6;
-        if (lum < INK_MAX_LUM) hz -= 3; // tinta még előrébb ugrik
-        homes[i3 + 2] = hz;
-
-        scatter[i3] = homes[i3] + (Math.random() - 0.5) * viewW * 1.2;
-        scatter[i3 + 1] = homes[i3 + 1] + (Math.random() - 0.5) * viewH * 1.6 + viewH * 0.4;
-        scatter[i3 + 2] = hz + 60 + Math.random() * 80;
-        pos[i3] = scatter[i3]; pos[i3 + 1] = scatter[i3 + 1]; pos[i3 + 2] = scatter[i3 + 2];
-      }
 
       var geo = new THREE.BufferGeometry();
       geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
       geo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(bucket.colors), 3));
 
       var mat = new THREE.PointsMaterial({
-        size: sizeOverride || basePointSize * sizeMul,
+        size: 1,
         map: sprite,
         vertexColors: true,
         transparent: true,
@@ -136,56 +122,46 @@
       });
 
       var pts = new THREE.Points(geo, mat);
-      pts.userData = { homes: homes, scatter: scatter, vel: vel, delays: bucket.delays, jitter: bucket.jitter, count: count };
+      pts.userData = {
+        bucket: bucket, homes: homes, disp: disp, scatter: scatter, vel: vel,
+        delays: bucket.delays, jitter: bucket.jitter, count: count, sizeMul: sizeMul,
+      };
       scene.add(pts);
       return pts;
     }
 
-    var inkCloud, fillCloud, ambientCloud;
+    function layoutCloud(pts) {
+      var ud = pts.userData;
+      var bucket = ud.bucket;
+      var cx = originX + imgW / 2;
+      var cy = originY + imgH / 2;
+      for (var i = 0; i < ud.count; i++) {
+        var i3 = i * 3;
+        var hx = originX + bucket.homes[i3] * imgW;
+        var hy = originY + bucket.homes[i3 + 1] * imgH;
+        var lum = 0.299 * bucket.colors[i3] + 0.587 * bucket.colors[i3 + 1] + 0.114 * bucket.colors[i3 + 2];
+        var hz = (0.75 - lum) * 16 + (Math.random() - 0.5) * 1.6;
+        if (lum < INK_MAX_LUM) hz -= 3;
+        ud.homes[i3] = hx; ud.homes[i3 + 1] = hy; ud.homes[i3 + 2] = hz;
 
-    function layout() {
-      var w = canvas.clientWidth || window.innerWidth;
-      var h = canvas.clientHeight || window.innerHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
+        // Scroll-szétszóródás iránya: a kép középpontjától kifelé
+        var dx = hx - cx, dy = hy - cy;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var mag = 8 + Math.random() * 16;
+        ud.disp[i3] = (dx / len) * mag;
+        ud.disp[i3 + 1] = (dy / len) * mag;
+        ud.disp[i3 + 2] = 4 + Math.random() * 14;
 
-      viewH = 2 * Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
-      viewW = viewH * camera.aspect;
-
-      // Cover-méretezés: a kép töltse ki a bal felet széltől szélig,
-      // középről körbevágva – pont mint az eredeti <img> a dizájnban
-      var targetW = viewW * 0.5;
-      var targetH = viewH;
-      var scalePx = Math.max(targetW / SAMPLE_W, targetH / SAMPLE_H);
-      imgW = SAMPLE_W * scalePx;
-      imgH = SAMPLE_H * scalePx;
-      originX = -viewW / 2 - (imgW - targetW) / 2;
-      originY = -targetH / 2 - (imgH - targetH) / 2;
-      cloudCenter = new THREE.Vector3(-viewW / 2 + targetW / 2, 0, 0);
-
-      basePointSize = scalePx * GAP * 1.1;
-
-      if (!inkCloud) {
-        inkCloud = makeCloud(ink, 1.5);
-        fillCloud = makeCloud(fill, 0.7);
-        buildAmbient();
-      } else {
-        // újraméretezés: otthonpontok frissítése
-        [inkCloud, fillCloud].forEach(function (pts, idx) {
-          var bucket = idx === 0 ? ink : fill;
-          var ud = pts.userData;
-          for (var i = 0; i < ud.count; i++) {
-            var i3 = i * 3;
-            ud.homes[i3] = originX + bucket.homes[i3] * imgW;
-            ud.homes[i3 + 1] = originY + bucket.homes[i3 + 1] * imgH;
-          }
-          pts.material.size = basePointSize * (idx === 0 ? 1.5 : 0.7);
-        });
+        ud.scatter[i3] = hx + (Math.random() - 0.5) * viewW * 1.2;
+        ud.scatter[i3 + 1] = hy + (Math.random() - 0.5) * viewH * 1.6 + viewH * 0.4;
+        ud.scatter[i3 + 2] = hz + 60 + Math.random() * 80;
+        ud.vel[i3] = ud.vel[i3 + 1] = ud.vel[i3 + 2] = 0;
       }
+      pts.material.size = basePointSize * ud.sizeMul;
     }
 
-    // Ambient por: lassan sodródó halvány pontok a teljes hero-n
+    var ambientCloud;
+
     function buildAmbient() {
       var N = 140;
       var pos = new Float32Array(N * 3);
@@ -214,15 +190,45 @@
       scene.add(ambientCloud);
     }
 
+    var inkCloud, fillCloud;
+
+    function layout() {
+      var w = canvas.clientWidth || window.innerWidth;
+      var h = canvas.clientHeight || window.innerHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+
+      viewH = 2 * Math.tan((camera.fov * Math.PI) / 360) * CAM_Z;
+      viewW = viewH * camera.aspect;
+
+      var targetW = viewW * 0.5;
+      var targetH = viewH;
+      var scalePx = Math.max(targetW / SAMPLE_W, targetH / SAMPLE_H);
+      imgW = SAMPLE_W * scalePx;
+      imgH = SAMPLE_H * scalePx;
+      originX = -viewW / 2 - (imgW - targetW) / 2;
+      originY = -targetH / 2 - (imgH - targetH) / 2;
+      cloudCenter = new THREE.Vector3(-viewW / 2 + targetW / 2, 0, 0);
+
+      basePointSize = scalePx * GAP * 1.1;
+
+      if (!inkCloud) {
+        inkCloud = makeCloud(ink, 1.5);
+        fillCloud = makeCloud(fill, 0.7);
+        buildAmbient();
+      }
+      layoutCloud(inkCloud);
+      layoutCloud(fillCloud);
+    }
+
     layout();
     window.addEventListener('resize', layout, { passive: true });
 
-    // Siker: az eredeti kép helyett a point cloud lesz látható
     var photoImg = document.querySelector('.sp-landing .image img');
     var photoBox = document.querySelector('.sp-landing .image');
     if (photoImg) photoImg.style.visibility = 'hidden';
     if (photoBox) {
-      // A kép eredeti kék háttere (sarokátlag színminta)
       photoBox.style.backgroundColor = '#4d6a9e';
       photoBox.style.backgroundImage = 'none';
     }
@@ -238,7 +244,6 @@
         if (particlesOn) {
           document.body.classList.remove('no-canvas');
           if (photoImg) photoImg.style.visibility = 'hidden';
-          // újraösszeállás: a porból újra felépül a kép
           [inkCloud, fillCloud].forEach(function (pts) {
             var ud = pts.userData;
             var arr = pts.geometry.attributes.position.array;
@@ -268,10 +273,20 @@
       target.y = -((e.clientY / window.innerHeight) * 2 - 1);
     }, { passive: true });
 
+    // ---- Scroll-reakció ----
+    var scrollTarget = 0, scrollP = 0;
+    var scrollBox = document.querySelector('.sp-landing .content');
+    if (scrollBox) {
+      scrollBox.addEventListener('scroll', function () {
+        var max = scrollBox.scrollHeight - scrollBox.clientHeight;
+        scrollTarget = max > 0 ? Math.min(1, scrollBox.scrollTop / max) : 0;
+      }, { passive: true });
+    }
+
     var running = true;
     var loopActive = false;
     document.addEventListener('visibilitychange', function () {
-      running = !document.hidden;
+      running = !document.hidden && particlesOn;
       if (running && !loopActive) { loopActive = true; requestAnimationFrame(tick); }
     });
 
@@ -279,11 +294,10 @@
     var introStart = performance.now();
     var INTRO_MS = 1700;
 
-    function animateCloud(pts, now, p, introDone) {
+    function animateCloud(pts, p, introDone) {
       var ud = pts.userData;
       var arr = pts.geometry.attributes.position.array;
       var K = 0.045, DAMP = 0.86, FORCE = 2.6;
-      // Egér pozíciója világkoordinátában – 1:1 a képernyővel
       var mx = mouse.x * (viewW / 2);
       var my = mouse.y * (viewH / 2);
       var R = imgW * 0.08;
@@ -291,7 +305,9 @@
 
       for (var i = 0; i < ud.count; i++) {
         var i3 = i * 3;
-        var hx = ud.homes[i3], hy = ud.homes[i3 + 1], hz = ud.homes[i3 + 2];
+        var hx = ud.homes[i3] + ud.disp[i3] * scrollP;
+        var hy = ud.homes[i3 + 1] + ud.disp[i3 + 1] * scrollP;
+        var hz = ud.homes[i3 + 2] + ud.disp[i3 + 2] * scrollP;
 
         if (!introDone) {
           var lp = Math.max(0, Math.min(1, p * 1.6 - ud.delays[i]));
@@ -324,7 +340,7 @@
       pts.geometry.attributes.position.needsUpdate = true;
     }
 
-    function animateAmbient(now, p) {
+    function animateAmbient(p) {
       var ud = ambientCloud.userData;
       var arr = ambientCloud.geometry.attributes.position.array;
       ambientCloud.material.opacity = p * 0.22;
@@ -342,18 +358,18 @@
 
       t += 0.016;
       mouse.lerp(target, 0.06);
+      scrollP += (scrollTarget - scrollP) * 0.08;
 
       var p = Math.min(1, (now - introStart) / INTRO_MS);
       var introDone = p >= 1;
 
-      animateCloud(inkCloud, now, p, introDone);
-      animateCloud(fillCloud, now, p, introDone);
-      animateAmbient(now, p);
+      animateCloud(inkCloud, p, introDone);
+      animateCloud(fillCloud, p, introDone);
+      animateAmbient(p);
 
-      // Kamera-parallax: finom eltolás, képtengely-rotation NÉLKÜL
-      // (a lookAt elforgatná a nézetet és középre tolná a képet)
       camera.position.x = mouse.x * 2.4;
       camera.position.y = mouse.y * 1.6;
+      camera.position.z = CAM_Z + scrollP * 14;
 
       renderer.render(scene, camera);
     }
