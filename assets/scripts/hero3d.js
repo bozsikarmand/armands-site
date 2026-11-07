@@ -14,6 +14,8 @@
 
   function showFallback() {
     document.body.classList.add('no-canvas');
+    var tb = document.getElementById('view-toggle');
+    if (tb) tb.style.display = 'none';
   }
 
   if (!canvas || prefersReducedMotion) {
@@ -281,7 +283,8 @@
       var ud = pts.userData;
       var arr = pts.geometry.attributes.position.array;
       var K = 0.045, DAMP = 0.86, FORCE = 2.6;
-      var mx = mouse.x * (viewW / 2) * 0.5 + cloudCenter.x;
+      // Egér pozíciója világkoordinátában – 1:1 a képernyővel
+      var mx = mouse.x * (viewW / 2);
       var my = mouse.y * (viewH / 2);
       var R = imgW * 0.08;
       var R2 = R * R;
