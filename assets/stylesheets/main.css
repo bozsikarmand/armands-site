@@ -1237,3 +1237,28 @@ input[type="file"] {
 .sp-landing .content {
   background-color: rgba(0, 0, 0, 0.9);
 }
+
+/* 3D / rajz váltógomb a fotó felett */
+.sp-landing .image #view-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  color: #dddddd;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.sp-landing .image #view-toggle:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+}

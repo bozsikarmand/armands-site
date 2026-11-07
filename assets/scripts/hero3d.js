@@ -225,6 +225,39 @@
       photoBox.style.backgroundImage = 'none';
     }
 
+    // ---- 3D / rajz váltógomb ----
+    var toggleBtn = document.getElementById('view-toggle');
+    var particlesOn = true;
+    if (toggleBtn) {
+      var labelSpan = toggleBtn.querySelector('span');
+      var labelDrawing = labelSpan ? labelSpan.textContent : 'Drawing';
+      toggleBtn.addEventListener('click', function () {
+        particlesOn = !particlesOn;
+        if (particlesOn) {
+          document.body.classList.remove('no-canvas');
+          if (photoImg) photoImg.style.visibility = 'hidden';
+          // újraösszeállás: a porból újra felépül a kép
+          [inkCloud, fillCloud].forEach(function (pts) {
+            var ud = pts.userData;
+            var arr = pts.geometry.attributes.position.array;
+            for (var i = 0; i < ud.count * 3; i++) { arr[i] = ud.scatter[i]; ud.vel[i] = 0; }
+            pts.geometry.attributes.position.needsUpdate = true;
+          });
+          introStart = performance.now();
+          running = true;
+          if (!loopActive) { loopActive = true; requestAnimationFrame(tick); }
+          toggleBtn.setAttribute('aria-pressed', 'true');
+          if (labelSpan) labelSpan.textContent = labelDrawing;
+        } else {
+          running = false;
+          document.body.classList.add('no-canvas');
+          if (photoImg) photoImg.style.visibility = 'visible';
+          toggleBtn.setAttribute('aria-pressed', 'false');
+          if (labelSpan) labelSpan.textContent = '3D';
+        }
+      });
+    }
+
     // ---- Egér ----
     var mouse = new THREE.Vector2(0, 0);
     var target = new THREE.Vector2(0, 0);
@@ -234,9 +267,10 @@
     }, { passive: true });
 
     var running = true;
+    var loopActive = false;
     document.addEventListener('visibilitychange', function () {
       running = !document.hidden;
-      if (running) requestAnimationFrame(tick);
+      if (running && !loopActive) { loopActive = true; requestAnimationFrame(tick); }
     });
 
     var t = 0;
@@ -249,7 +283,7 @@
       var K = 0.045, DAMP = 0.86, FORCE = 2.6;
       var mx = mouse.x * (viewW / 2) * 0.5 + cloudCenter.x;
       var my = mouse.y * (viewH / 2);
-      var R = imgW * 0.14;
+      var R = imgW * 0.08;
       var R2 = R * R;
 
       for (var i = 0; i < ud.count; i++) {
@@ -300,7 +334,7 @@
     }
 
     function tick(now) {
-      if (!running) return;
+      if (!running) { loopActive = false; return; }
       requestAnimationFrame(tick);
 
       t += 0.016;
@@ -321,6 +355,7 @@
       renderer.render(scene, camera);
     }
 
+    loopActive = true;
     requestAnimationFrame(tick);
   }
 })();
