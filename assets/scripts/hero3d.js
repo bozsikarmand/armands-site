@@ -13,6 +13,10 @@
 
   if (!canvas || prefersReducedMotion) {
     showFallback();
+    var el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px monospace;color:#f66;background:#000;padding:2px 6px;';
+    el.textContent = !canvas ? '3D: NINCS CANVAS' : '3D: KIKAPCSOLVA (reduced-motion)';
+    document.body.appendChild(el);
     return;
   }
 
@@ -29,9 +33,20 @@
     }
 
     var isSmall = Math.min(window.innerWidth, window.innerHeight) < 720;
-    var COUNT = isSmall ? 900 : 1800;
+    var COUNT = isSmall ? 1400 : 2800;
     // A fotó felett: visszafogott, világos részecskék (teal/fehér + kevés meleg)
     var PALETTE = ['#78DCE8', '#FCFCFA', '#FCFCFA', '#FFD866'];
+
+    // Ideiglenes diagnosztika – a végleges verzióból eltávolítandó
+    function status(msg) {
+      var el = document.createElement('div');
+      el.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px monospace;color:#0f0;background:#000;padding:2px 6px;';
+      el.textContent = msg;
+      document.body.appendChild(el);
+    }
+    window.addEventListener('error', function (e) {
+      status('JS-HIBA: ' + e.message);
+    });
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
@@ -62,7 +77,7 @@
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
     var material = new THREE.PointsMaterial({
-      size: isSmall ? 1.4 : 1.7,
+      size: isSmall ? 2.0 : 2.4,
       vertexColors: true,
       transparent: true,
       opacity: 0,
@@ -110,7 +125,7 @@
 
       t += 0.011;
       fade = Math.min(1, fade + 0.01);
-      material.opacity = fade * 0.7;
+      material.opacity = fade * 0.95;
 
       mouse.lerp(target, 0.045);
       var mx = mouse.x * viewHalfH * camera.aspect;
@@ -148,5 +163,6 @@
     }
 
     requestAnimationFrame(tick);
+    status('3D: BE (renderer OK)');
   }
 })();
