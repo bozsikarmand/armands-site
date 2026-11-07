@@ -4,6 +4,20 @@
  * vagy a böngésző nem tud WebGL-t. Three.js: lokálisan, /assets/scripts/vendor. */
 
 (function () {
+  // Diagnosztika: a script LEGFELSŐ szintjén, azonnal
+  function status(msg, color) {
+    var el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px monospace;color:' +
+      (color || '#0f0') + ';background:#000;padding:2px 6px;';
+    el.textContent = msg;
+    document.body.appendChild(el);
+  }
+  window.addEventListener('error', function (e) {
+    status('JS-HIBA: ' + e.message, '#f66');
+  });
+
+  status('hero3d: script fut', '#ff0');
+
   var canvas = document.getElementById('hero-canvas');
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -13,17 +27,23 @@
 
   if (!canvas || prefersReducedMotion) {
     showFallback();
-    var el = document.createElement('div');
-    el.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px monospace;color:#f66;background:#000;padding:2px 6px;';
-    el.textContent = !canvas ? '3D: NINCS CANVAS' : '3D: KIKAPCSOLVA (reduced-motion)';
-    document.body.appendChild(el);
+    status(!canvas ? '3D: NINCS CANVAS elem' : '3D: KIKAPCSOLVA (reduced-motion)', '#f66');
     return;
   }
 
-  init().catch(showFallback);
+  init().catch(function (err) {
+    showFallback();
+    status('3D: INIT-HIBA: ' + (err && err.message ? err.message : err), '#f66');
+  });
 
   async function init() {
-    var THREE = await import('/assets/scripts/vendor/three.module.min.js');
+    var THREE;
+    try {
+      THREE = await import('/assets/scripts/vendor/three.module.min.js');
+    } catch (e) {
+      throw new Error('three.js import sikertelen: ' + (e && e.message ? e.message : e));
+    }
+    status('hero3d: three.js betöltve', '#0f0');
 
     var renderer;
     try {
@@ -36,17 +56,6 @@
     var COUNT = isSmall ? 1400 : 2800;
     // A fotó felett: visszafogott, világos részecskék (teal/fehér + kevés meleg)
     var PALETTE = ['#78DCE8', '#FCFCFA', '#FCFCFA', '#FFD866'];
-
-    // Ideiglenes diagnosztika – a végleges verzióból eltávolítandó
-    function status(msg) {
-      var el = document.createElement('div');
-      el.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:9999;font:12px monospace;color:#0f0;background:#000;padding:2px 6px;';
-      el.textContent = msg;
-      document.body.appendChild(el);
-    }
-    window.addEventListener('error', function (e) {
-      status('JS-HIBA: ' + e.message);
-    });
 
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
