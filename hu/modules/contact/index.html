@@ -39,6 +39,7 @@
         <script src="/assets/scripts/footer.js" async defer></script>
         <script src="/assets/scripts/year.js" defer></script>
         <script src="/assets/scripts/contact-actions.js" defer></script>
+        <script src="/assets/scripts/contact-form.js" defer></script>
     </head>
 
     <body id="single-page" class="page-landing">
@@ -89,6 +90,33 @@
                             </button>
                         </div>
                     </div>
+                    <div class="contact">
+                        <h3 style="color:#dddddd; margin: 0 0 12px 0;">Üzenet küldése</h3>
+                        <form id="site-contact-form" data-success="Üzenet elküldve – köszönöm! Hamarosan válaszolok."
+                              data-error="Küldés sikertelen. Próbálja újra, vagy használja az alábbi közösségi profilokat."
+                              data-invalid="Kérem, töltse ki minden mezőt érvényes email-címmel."
+                              data-notconfigured="Az űrlap még nincs beállítva – kérem, használja az alábbi közösségi profilokat.">
+                            <div class="cf-row"><label for="cf-name">Név</label>
+                                <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="120"></div>
+                            <div class="cf-row"><label for="cf-email">Az Ön email-címe</label>
+                                <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="200"></div>
+                            <div class="cf-row"><label for="cf-message">Üzenet</label>
+                                <textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea></div>
+                            <button type="submit" class="button-contact-submit"><i class="fa fa-paper-plane"></i> Üzenet küldése</button>
+                            <p id="site-cf-status" role="status" aria-live="polite" style="margin-top:12px; color:#bbbbbb; min-height:1.3em;"></p>
+                        </form>
+                        <p style="color:#999999; padding: 16px 0 0 0;">Az adatait kizárólag a válaszhoz használom – nincs tárolás, nincs hírlevél.</p>
+                    </div>
+                    <style>
+                        .cf-row { margin-bottom: 10px; }
+                        .cf-row label { display: block; color: #999999; font-size: 14px; margin-bottom: 4px; }
+                        .cf-row input, .cf-row textarea {
+                            width: 100%; max-width: 480px; box-sizing: border-box;
+                            background: #161616; border: 1px solid #333333; border-radius: 4px;
+                            color: #dddddd; font-size: 15px; padding: 8px 10px; font-family: inherit;
+                        }
+                        .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: #777777; }
+                    </style>
                     <div class="social-media-profiles">
                         <div class="social-media-profile">
                             <h3>Elérhetőségeim</h3>

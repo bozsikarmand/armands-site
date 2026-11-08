@@ -39,6 +39,7 @@
         <script src="/assets/scripts/footer.js" async defer></script>
         <script src="/assets/scripts/year.js" defer></script>
         <script src="/assets/scripts/contact-actions.js" defer></script>
+        <script src="/assets/scripts/contact-form.js" defer></script>
     </head>
 
     <body id="single-page" class="page-landing">
@@ -89,6 +90,33 @@
                             </button>
                         </div>
                     </div>
+                    <div class="contact">
+                        <h3 style="color:#dddddd; margin: 0 0 12px 0;">Send a message</h3>
+                        <form id="site-contact-form" data-success="Message sent – thank you! I'll reply soon."
+                              data-error="Sending failed. Please try again or use the social links below."
+                              data-invalid="Please fill in all fields with a valid email address."
+                              data-notconfigured="The form is not configured yet – please use the social links below.">
+                            <div class="cf-row"><label for="cf-name">Name</label>
+                                <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="120"></div>
+                            <div class="cf-row"><label for="cf-email">Your email address</label>
+                                <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="200"></div>
+                            <div class="cf-row"><label for="cf-message">Message</label>
+                                <textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea></div>
+                            <button type="submit" class="button-contact-submit"><i class="fa fa-paper-plane"></i> Send message</button>
+                            <p id="site-cf-status" role="status" aria-live="polite" style="margin-top:12px; color:#bbbbbb; min-height:1.3em;"></p>
+                        </form>
+                        <p style="color:#999999; padding: 16px 0 0 0;">Your data is only used to reply – no storage, no newsletter.</p>
+                    </div>
+                    <style>
+                        .cf-row { margin-bottom: 10px; }
+                        .cf-row label { display: block; color: #999999; font-size: 14px; margin-bottom: 4px; }
+                        .cf-row input, .cf-row textarea {
+                            width: 100%; max-width: 480px; box-sizing: border-box;
+                            background: #161616; border: 1px solid #333333; border-radius: 4px;
+                            color: #dddddd; font-size: 15px; padding: 8px 10px; font-family: inherit;
+                        }
+                        .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: #777777; }
+                    </style>
                     <div class="social-media-profiles">
                         <div class="social-media-profile">
                             <h3>Connect</h3>
