@@ -42,7 +42,7 @@ function corsHeaders(origin) {
 }
 
 function zohoUrls(env) {
-  const dc = env.ZOHO_DC || 'eu';
+  const dc = env.ZOHO_DC || 'com';
   return {
     accounts: `https://accounts.zoho.${dc}`,
     mail: `https://mail.zoho.${dc}/api`,
