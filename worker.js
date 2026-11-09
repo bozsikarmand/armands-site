@@ -1,4 +1,4 @@
-// armands.cv – Worker: statikus assetek + /api/contact form-végponat
+// armands.site – Worker: statikus assetek + /api/contact form-végponat
 // Küldés: a meglévő Zoho Mail fiók OAuth API-ja (a homelab-tól függetlenül).
 // Secretek (CF dashboard → Workers → armands-cv → Variables and Secrets):
 //   ZOHO_CLIENT_ID, ZOHO_CLIENT_SECRET, ZOHO_REFRESH_TOKEN,

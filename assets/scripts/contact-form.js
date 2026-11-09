@@ -1,4 +1,4 @@
-// Kapcsolati form – armands.site → armands.cv/api/contact (Resend → armand@bozsik.eu)
+// Kapcsolati form – POST /api/contact (azon a Workeren) → Zoho Mail (hello@armands.site) → armand@bozsik.eu
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('site-contact-form');
   if (!form) return;
