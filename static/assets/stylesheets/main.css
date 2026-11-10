@@ -412,9 +412,18 @@ body.page-landing p {
 }
 
 .social-media-profiles .social-media-profile {
-  width: 30%;
+  width: auto;
   display: block;
   margin-bottom: 40px;
+}
+
+/* Szimmetria a teljes szélességű gombbal: bal / közép / jobb */
+.social-media-profiles .social-media-profile:nth-child(2) {
+  text-align: center;
+}
+
+.social-media-profiles .social-media-profile:nth-child(3) {
+  text-align: right;
 }
 
 @media (max-width: 500px) {
