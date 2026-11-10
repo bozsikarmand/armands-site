@@ -478,6 +478,7 @@ body.page-landing p {
   text-transform: uppercase;
   padding: 16px 76px;
   width: 100%;
+  text-align: center;
   text-decoration: none;
   border-radius: 42px;
   -moz-border-radius: 42px;
@@ -720,6 +721,7 @@ picture img {
   text-transform: uppercase;
   padding: 16px 76px;
   width: 100%;
+  text-align: center;
   text-decoration: none;
   border-radius: 42px;
   -moz-border-radius: 42px;
@@ -819,6 +821,7 @@ picture img {
   text-transform: uppercase;
   padding: 16px 76px;
   width: 100%;
+  text-align: center;
   text-decoration: none;
   border-radius: 42px;
   -moz-border-radius: 42px;
@@ -880,6 +883,7 @@ picture img {
   text-transform: uppercase;
   padding: 16px 76px;
   width: 100%;
+  text-align: center;
   text-decoration: none;
   border-radius: 42px;
   -moz-border-radius: 42px;
