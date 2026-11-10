@@ -4,12 +4,11 @@ nav_blog = "Blog"
 nav_projects = "Projects"
 nav_contact = "Contact me!"
 greeting = "Hello, my name is Armand Viktor Bozsik"
-typewriter = "Geek.|Student.|Dev."
-typewriter_fallback = "I am a Geek. Student. Dev."
-bio = """I have earned my degree in Computer Science at the University of Szeged in June 2020.
-Feel free to check my <a href=\"https://www.linkedin.com/in/bozsikarmand/\">resume</a>.
-Please have a look at my current works on GitHub.
-You can always contact me via the links below."""
+typewriter = "Geek.|Developer.|Builder."
+typewriter_fallback = "I am a Geek. Developer. Builder."
+bio = """I'm a software developer with 5+ years of experience building enterprise systems (ERP, MES) with Oracle APEX, PL/SQL, Java and C#.
+I care about clean architecture and system security, and I use AI-assisted development tools daily.
+Check out my <a href=\"https://armands.cv\">CV</a>, have a look at my works on GitHub, or just say hello below."""
 github_button = "Feel free to check my GitHub profile!"
 connect_title = "Connect"
 social_title = "Social"

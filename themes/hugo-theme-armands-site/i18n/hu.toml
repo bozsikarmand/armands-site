@@ -4,12 +4,11 @@ nav_blog = "Blog"
 nav_projects = "Projektek"
 nav_contact = "Lépj kapcsolatba velem!"
 greeting = "Üdvözöllek, Bozsik Armand Viktor vagyok"
-typewriter = "Geek.|Hallgató.|Fejlesztő."
-typewriter_fallback = "Geek. Hallgató. Fejlesztő."
-bio = """Programtervező Informatikus végzettséggel rendelkezem, melyet a Szegedi Tudományegyetemen szereztem 2020 júniusában.
-A következő linken megtekintheted <a href=\"https://www.linkedin.com/in/bozsikarmand/\">önéletrajzomat</a>.
-Munkáimat a GitHub repozitóriumomban éred el, az alábbi gomb megnyomásával.
-Az alábbi linkeken keresztül bármikor felveheted velem a kapcsolatot."""
+typewriter = "Geek.|Fejlesztő.|Megvalósító."
+typewriter_fallback = "Geek. Fejlesztő. Megvalósító."
+bio = """Szoftverfejlesztő vagyok 5+ év tapasztalattal vállalati rendszerek (ERP, MES) építésében – Oracle APEX, PL/SQL, Java és C# technológiákkal.
+Fontosnak tartom a tiszta architektúrát és a rendszbiztonságot, nap mint nap AI-asszisztált fejlesztőeszközökkel dolgozom.
+Nézd meg az <a href=\"https://armands.cv\">önéletrajzomat</a>, a GitHub munkáimat, vagy írj bátran az alábbi űrlapon!"""
 github_button = "Tekintsd meg GitHub profilom!"
 connect_title = "Elérhetőségeim"
 social_title = "Közösségi"
