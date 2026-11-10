@@ -305,12 +305,13 @@ body.page-landing p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   overflow: auto;
 }
 
@@ -1253,44 +1254,18 @@ input[type="file"] {
 .lang-switch__item.is-active { color: var(--accent); font-weight: 700; }
 .lang-switch__item img { border-radius: 2px; }
 
-.menu-toggle {
-  display: none; background: transparent; border: 1px solid var(--muted); border-radius: 4px;
-  color: var(--muted); cursor: pointer; font-size: 1.1rem; padding: 4px 10px; line-height: 1.4;
-}
-.menu-toggle:hover { border-color: var(--accent); color: var(--accent); }
-
-@media only screen and (max-width: 640px) {
-  .menu-toggle { display: inline-flex; align-items: center; }
-  .navigation-link { position: relative; }
-  #nav-list {
-    display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 235px;
-    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;
-    box-shadow: 0 12px 26px var(--shadow); z-index: 60; padding: 0.5rem;
-  }
-  #nav-list.is-open { display: block; }
-  #nav-list li { display: flex; flex-direction: column; gap: 0.15rem; }
-  #nav-list a, .lang-switch, .theme-toggle {
-    display: flex; align-items: center; min-height: 44px; padding: 0.3rem 0.7rem; border-radius: 4px;
-  }
-  #nav-list a:hover { background: var(--bg); color: var(--accent); }
-  .lang-switch { margin-left: 0; }
-  .lang-switch__menu { right: auto; left: 0; }
-  .theme-toggle { margin-left: 0; justify-content: flex-start; }
-}
-
-/* Blog-stílusú topbar (sticky sáv) */
+/* Topbar: a tartalomsáv tetején (asztali), mobilon off-canvas panel */
 .topbar {
   position: sticky; top: 0; z-index: 70;
   background-color: var(--input-bg);
   border-bottom: 1px solid var(--border);
 }
 .topbar__inner {
-  display: flex; align-items: center; gap: 1.2rem;
-  max-width: 1400px; margin: 0 auto;
-  padding: 0.45rem clamp(0.8rem, 3vw, 1.6rem);
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
 }
 .topbar__brand {
-  font-weight: 700; font-size: 1.02rem; color: var(--text);
+  font-weight: 700; font-size: 0.95rem; color: var(--text);
   text-decoration: none; white-space: nowrap;
   display: inline-flex; align-items: center; min-height: 44px;
 }
@@ -1301,22 +1276,57 @@ input[type="file"] {
 }
 .topbar__menu a {
   display: inline-flex; align-items: center; gap: 6px;
-  min-height: 44px; padding: 0 0.6rem;
-  color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.92rem;
+  min-height: 44px; padding: 0 0.4rem; white-space: nowrap;
+  color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.88rem;
   border-radius: 4px;
 }
 .topbar__menu a:hover { color: var(--accent); }
 .topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
 .topbar .theme-toggle { margin-left: 0; }
+.menu-fab, .menu-close, .menu-backdrop { display: none; }
 
-@media only screen and (max-width: 640px) {
-  .topbar__menu {
-    display: none;
-    position: absolute; top: calc(100% + 8px); right: 0.8rem; min-width: 220px;
-    flex-direction: column; gap: 0.15rem;
-    background: var(--bg-alt); border: 1px solid var(--border); border-radius: 6px;
-    box-shadow: 0 12px 26px var(--shadow); padding: 0.5rem;
+/* 801–1400px között a brand elrejtve: a név úgyis kiemelten szerepel a tartalomban */
+@media only screen and (min-width: 801px) and (max-width: 1400px) {
+  .topbar__brand { display: none; }
+}
+
+@media only screen and (max-width: 1200px) {
+  .menu-fab {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: fixed; top: 12px; right: 12px; z-index: 90;
+    width: 46px; height: 46px; border-radius: 8px;
+    background: var(--input-bg); border: 1px solid var(--border);
+    color: var(--text); font-size: 1.2rem; cursor: pointer;
+    box-shadow: 0 6px 18px var(--shadow);
   }
-  .topbar__menu.is-open { display: flex; }
+  .menu-backdrop {
+    display: block; position: fixed; inset: 0; z-index: 80;
+    background: rgba(0, 0, 0, 0.45);
+  }
+  .menu-backdrop[hidden] { display: none; }
+  .topbar {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
+    width: min(320px, 86vw);
+    transform: translateX(105%);
+    transition: transform 240ms ease;
+    border-bottom: none; border-left: 1px solid var(--border);
+    overflow-y: auto;
+  }
+  .topbar.is-open { transform: translateX(0); }
+  .topbar__inner {
+    flex-direction: column; align-items: stretch; gap: 0.8rem;
+    padding: 1rem;
+  }
+  .topbar__brand { min-height: 44px; }
+  .topbar__menu { flex-direction: column; gap: 0.2rem; }
   .topbar__menu a { width: 100%; }
+  .topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+  .topbar__tools .lang-switch, .topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
+  .menu-close {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: absolute; top: 10px; right: 10px;
+    width: 40px; height: 40px; border-radius: 6px;
+    background: transparent; border: 1px solid var(--border);
+    color: var(--text); font-size: 1rem; cursor: pointer;
+  }
 }

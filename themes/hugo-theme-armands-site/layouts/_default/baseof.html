@@ -4,7 +4,6 @@
   {{ partial "head.html" . }}
 </head>
 <body id="single-page" class="page-landing">
-  {{ partial "nav.html" . }}
   <div class="sp-landing">
     {{ if .Params.heroCanvas }}<canvas id="hero-canvas" aria-hidden="true"></canvas>{{ end }}
     <div class="image">
@@ -20,6 +19,7 @@
       {{ end }}
     </div>
     <div class="content">
+      {{ partial "nav.html" . }}
       <div class="center">
         {{ block "main" . }}{{ end }}
         {{ partial "social.html" . }}

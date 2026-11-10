@@ -1,7 +1,10 @@
-<nav class="topbar" role="navigation" aria-label="main navigation">
+<button type="button" id="menu-toggle" class="menu-fab" aria-expanded="false" aria-controls="site-topbar"
+        aria-label="{{ i18n "ui.menuOpen" }}">☰</button>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<nav class="topbar" id="site-topbar" role="navigation" aria-label="main navigation">
   <div class="topbar__inner">
     <a class="topbar__brand" href="{{ relLangURL "/" }}">{{ .Site.Title }}</a>
-    <ul class="topbar__menu" id="nav-list">
+    <ul class="topbar__menu">
       <li><a href="{{ relLangURL "/" }}"><i class="fas fa-home"></i> {{ i18n "ui.nav_home" }}</a></li>
       <li><a href="https://armands.blog"><i class="fas fa-blog"></i> {{ i18n "ui.nav_blog" }}</a></li>
       <li><a href="https://armands.dev"><i class="fas fa-chalkboard-teacher"></i> {{ i18n "ui.nav_projects" }}</a></li>
@@ -29,8 +32,7 @@
         </span>
       </span>
       <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="{{ i18n "ui.themeToggle" }}">☀️</button>
-      <button type="button" id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="nav-list"
-              aria-label="{{ i18n "ui.menuOpen" }}">☰</button>
+      <button type="button" id="menu-close" class="menu-close" aria-label="{{ i18n "ui.menuClose" }}">✕</button>
     </div>
   </div>
 </nav>
