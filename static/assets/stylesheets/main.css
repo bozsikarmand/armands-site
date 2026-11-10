@@ -328,8 +328,7 @@ body.page-landing p {
   padding-right: 64px;
   padding-bottom: 80px;
   max-width: 720px;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
 }
 
 @media (max-width: 1200px) {
