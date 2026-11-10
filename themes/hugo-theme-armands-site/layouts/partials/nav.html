@@ -1,11 +1,33 @@
 <nav class="navigation-links">
   <div class="navigation-link">
-    <ul>
+    <button type="button" id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="nav-list"
+            aria-label="{{ i18n "ui.menuOpen" }}">☰</button>
+    <ul id="nav-list">
       <li>
         <a href="{{ relLangURL "/" }}"><i class="fas fa-home"></i> {{ i18n "ui.nav_home" }}</a>
         <a href="https://armands.blog"><i class="fas fa-blog"></i> {{ i18n "ui.nav_blog" }}</a>
         <a href="https://armands.dev"><i class="fas fa-chalkboard-teacher"></i> {{ i18n "ui.nav_projects" }}</a>
         <a href="{{ relLangURL "/modules/contact/" }}" class="button-contact-header"><i class="fas fa-envelope"></i> {{ i18n "ui.nav_contact" }}</a>
+        <span class="lang-switch" data-lang-switch>
+          <button type="button" class="lang-switch__btn" data-lang-switch-btn aria-expanded="false"
+                  aria-label="{{ i18n "ui.selectLanguage" }}" title="{{ i18n "ui.selectLanguage" }}">🌐</button>
+          <span class="lang-switch__menu">
+            {{ $pageLang := .Lang }}
+            {{ range .Site.Languages }}
+              {{ $lang := .Lang }}
+              {{ $flag := "gb" }}{{ if eq $lang "hu" }}{{ $flag = "hu" }}{{ end }}
+              {{ $url := printf "/%s/" $lang }}
+              {{ range $.Page.AllTranslations }}
+                {{ if eq .Lang $lang }}{{ $url = .RelPermalink }}{{ end }}
+              {{ end }}
+              <a href="{{ $url }}" hreflang="{{ $lang }}" lang="{{ $lang }}"
+                 class="lang-switch__item{{ if eq $lang $pageLang }} is-active{{ end }}">
+                <img src="/assets/flags/{{ $flag }}.svg" alt="" width="18" height="13" loading="lazy">
+                <span>{{ .LanguageName }}</span>
+              </a>
+            {{ end }}
+          </span>
+        </span>
         <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="{{ i18n "ui.themeToggle" }}">☀️</button>
       </li>
     </ul>

@@ -18,3 +18,22 @@
   });
   apply(current());
 })();
+
+/* Mobil hamburger panel */
+(function () {
+  var toggle = document.getElementById('menu-toggle');
+  var list = document.getElementById('nav-list');
+  if (!toggle || !list) return;
+  toggle.addEventListener('click', function () {
+    var open = list.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.textContent = open ? '✕' : '☰';
+  });
+  list.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      list.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '☰';
+    });
+  });
+})();

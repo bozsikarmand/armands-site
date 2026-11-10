@@ -36,3 +36,6 @@ description_home = "Megtekintheted önéletrajzomat, és kapcsolatba is léphets
 description_projects = "Büszke vagyok a projektjeimre."
 description_contact = "Itt kapcsolatba léphetsz velem, ha szeretnél."
 themeToggle = "Váltás sötét és világos téma között"
+selectLanguage = "Nyelv kiválasztása"
+menuOpen = "Menü megnyitása"
+menuClose = "Menü bezárása"
