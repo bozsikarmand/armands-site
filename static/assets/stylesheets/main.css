@@ -1,107 +1,44 @@
-/*
+:root {
+  /* Monokai dark (a trió közös palettája) */
+  --bg: #2d2a2e;
+  --bg-alt: #212121;
+  --text: #fcfcfa;
+  --muted: #c8c6cc;
+  --accent: #ffd866;
+  --accent-text: #212121;
+  --link: #ffd866;
+  --link-hover: #ff9bb4;
+  --h1: #ffd866;
+  --identification: #fcfcfa;
+  --border: #595b5c;
+  --input-bg: #403e41;
+  --input-text: #fcfcfa;
+  --overlay-bg: rgba(0, 0, 0, 0.9);
+  --overlay-bg-soft: rgba(0, 0, 0, 0.55);
+  --overlay-bg-strong: rgba(0, 0, 0, 0.8);
+}
 
-  --body-background-color: #FFFFFF;
-  --bpa-hover-color: #000000;
-  --html-background-color: #003333;
-  --body-page-landing-background-color: #003333;
-  --body-page-landing-color: #999999;
+[data-theme="monolight"] {
+  /* világos, meleg monolight (blog/cv-vel közös) */
+  --bg: #f8f5ef;
+  --bg-alt: #ffffff;
+  --text: #3d3a40;
+  --muted: #524636;
+  --accent: #1a4e5b;
+  --accent-text: #f8f5ef;
+  --link: #215966;
+  --link-hover: #8e2f57;
+  --h1: #1a4e5b;
+  --identification: #3d3a40;
+  --border: #b0a89b;
+  --input-bg: #ece7db;
+  --input-text: #3d3a40;
+  --overlay-bg: rgba(255, 255, 255, 0.9);
+  --overlay-bg-soft: rgba(255, 255, 255, 0.55);
+  --overlay-bg-strong: rgba(255, 255, 255, 0.85);
+}
 
-  --body-page-landing-p-color: #999999;
-  --sp-landing-content-background-color: #000000;
 
-  --introduction-h1-color: #FF7575;
-  --introduction-self-identification-color: #CCCCCC;
-
-  --biography-p-color: #999999;
-  --biography-a-color: #999999;
-  --biography-a-border-bottom-color: #999999;
-  --biography-a-hover-color: #CC3333;
-  --biography-a-hover-border-bottom: #CC3333;
-
-  --social-media-profiles-social-media-profile-h3-color: #999999;
-  --social-media-profiles-social-media-profile-ul-li-a-color: #999999;
-  --social-media-profiles-social-media-profile-ul-li-a-hover-color: #CC3333;
-
-  --copyright-p-a: #999999;
-
-  --button-github-background-color: #CC3300;
-  --button-github-border: #CC3300;
-  --button-github-color: #FFFFFF;
-  --button-github-hover-background-color: transparent;
-  --button-github-hover-border: #BB3553;
-
-  --footer-links-footer-link-ul-li-a-color: #999999;
-  --footer-links-footer-link-ul-li-a-hover-color: #CC3333;
-  
-  --navigation-links-navigation-link-ul-li-a-color: #999999;
-  --navigation-links-navigation-link-ul-li-a-hover-color: #CC3333;
-  --navigation-links-navigation-link-ul-li-a-active-color: #CC3333;
-
-  --privacy-policy-text-p-color: #999999;
-  --privacy-policy-text-a-color: #999999;
-  --privacy-policy-text-a-hover-color: #CC3333;
-  --privacy-policy-text-a-hover-border-bottom: #CC3333;
-
-  --introduction-privacy-policy-color: #CCCCCC;
-
-  --button-privacy-policy-print-background-color: #CC3300;
-  --button-privacy-policy-print-border: #CC3300;
-  --button-privacy-policy-print-color: #FFFFFF; 
-  --button-privacy-policy-print-hover-background-color: transparent;
-  --button-privacy-policy-print-hover-border: #BB3553;
-
-  --cookie-policy-text-p-color: #999999;
-  --cookie-policy-text-a-color: #999999;
-  --cookie-policy-text-a-border-bottom: #999999;
-  --cookie-policy-text-a-hover-color: #CC3333;
-  --cookie-policy-text-a-hover-border-bottom: #CC3333;
-
-  --introduction-cookie-policy-color: #CCCCCC;
-
-  --button-cookie-policy-print-background-color: #CC3300;
-  --button-cookie-policy-print-border: #CC3300;
-  --button-cookie-policy-print-color: #FFFFFF; 
-  --button-cookie-policy-print-hover-background-color: transparent;
-  --button-cookie-policy-print-hover-border: #BB3553;
-
-  --button-contact-submit-background-color: #CC3300;
-  --button-contact-submit-border: #CC3300;
-  --button-contact-submit-color: #FFFFFF;
-
-  --button-contact-submit-hover-background-color: transparent;
-  --button-contact-submit-hover-border-color: #BB3553;
-  
-  --form-contact-input-background: #444444;
-  --form-contact-input-color: #323232;
-
-  --contact-p-color: #999999;
-
-  --contact-a-color: #999999;
-  --contact-a-border-bottom: #999999;
-
-  --contact-a-hover-color: #CC3333;
-  --contact-a-hover-border-bottom: #CC3333;
-
-  --message-background: #444444;
-  --message-color: #999999;
-
-  --topics-background: #444444;
-  --topics-color: #999999;
-
-  --upload-file-border: #CCCCCC;
-
-  --file-label-background: #DD3333;
-  --file-label-border: #999999;
-  --file-label-color: #FFFFFF;
-
-  --file-label-button-upload-background-color: #DD3333;
-  --file-label-button-upload-before-color: #FFFFFF;
-  --file-label-button-upload-hover-background-color: #FF00FF;
-  
-*/
-
-/* ------------------------------------------------------------------------- */
-/* ------------------------------------------------------------------------- */
 
 
 :root {
@@ -270,7 +207,7 @@ img.aligncenter {
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: var(--accent-text);
   border-style: none;
 }
 
@@ -278,7 +215,7 @@ body,
 p,
 a,
 a:hover {
-  color: #000000;
+  color: var(--bg-alt);
 }
 
 a,
@@ -311,23 +248,23 @@ a:hover {
 }
 
 html {
-  background-color: #003333;
+  background-color: var(--bg);
 }
 
 body.page-landing {
-  background-color: #003333;
+  background-color: var(--bg);
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 21px;
   line-height: 33px;
   letter-spacing: -0.2px;
-  color: #999999;
+  color: var(--muted);
   -webkit-animation: fadein 2s;
   animation: fadein 2s;
 }
 
 body.page-landing p {
-  color: #999999;
+  color: var(--muted);
   padding-bottom: 40px;
 }
 
@@ -362,7 +299,7 @@ body.page-landing p {
 }
 
 .sp-landing .content {
-  background-color: #000000;
+  background-color: var(--bg-alt);
   width: 50%;
   min-height: 100vh;
   display: -webkit-box;
@@ -426,11 +363,11 @@ body.page-landing p {
   line-height: 16px;
   margin-bottom: 40px;
   letter-spacing: 0.4px;
-  color: #ff7575;
+  color: var(--h1);
 }
 
 .introduction .self-identification {
-  color: #cccccc;
+  color: var(--identification);
 }
 
 .biography {
@@ -451,21 +388,21 @@ body.page-landing p {
 }
 
 .biography p {
-  color: #999999;
+  color: var(--muted);
   text-align: justify;
   text-justify: inter-word;
 }
 
 .biography a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
-  border-bottom: 1px dotted #999999;
+  border-bottom: 1px dotted var(--muted);
 }
 
 .biography a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
-  border-bottom: 1px dotted #cc3333;
+  border-bottom: 1px dotted var(--link);
 }
 
 .social-media-profiles .social-media-profile {
@@ -486,7 +423,7 @@ body.page-landing p {
   font-size: 11px;
   line-height: 11px;
   margin-bottom: 31px;
-  color: #999999;
+  color: var(--muted);
   letter-spacing: 2px;
   opacity: 0.5;
 }
@@ -498,12 +435,12 @@ body.page-landing p {
 }
 
 .social-media-profiles .social-media-profile ul li a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
 }
 
 .social-media-profiles .social-media-profile ul li a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
 }
 
@@ -517,18 +454,18 @@ body.page-landing p {
 }
 
 .copyright p a {
-  color: #999999;
+  color: var(--muted);
 }
 
 
 /* GitHub Button */
 
 .button-github {
-  background-color: #cc3300;
-  border: 6px solid #cc3300;
+  background-color: var(--accent);
+  border: 6px solid var(--accent);
   display: inline-block;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
   text-transform: uppercase;
@@ -551,7 +488,7 @@ body.page-landing p {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 6px solid #bb3553;
+  border: 6px solid var(--border);
   padding: 16px 76px;
   text-transform: uppercase
 }
@@ -650,12 +587,12 @@ body.page-landing p {
 }
 
 .footer-links .footer-link ul li a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
 }
 
 .footer-links .footer-link ul li a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
 }
 
@@ -685,12 +622,12 @@ body.page-landing p {
 }
 
 .navigation-links .navigation-link ul li a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
 }
 
 .navigation-links .navigation-link ul li a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
 }
 
@@ -699,7 +636,7 @@ body.page-landing p {
 }
 
 .navigation-links .navigation-link ul li a:active {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
 }
 
@@ -736,21 +673,21 @@ picture img {
 }
 
 .privacy-policy-text p {
-  color: #999999;
+  color: var(--muted);
   text-align: justify;
   text-justify: inter-word;
 }
 
 .privacy-policy-text a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
-  border-bottom: 1px dotted #999999;
+  border-bottom: 1px dotted var(--muted);
 }
 
 .privacy-policy-text a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
-  border-bottom: 1px dotted #cc3333;
+  border-bottom: 1px dotted var(--link);
 }
 
 .privacy-policy-text p {
@@ -758,18 +695,18 @@ picture img {
 }
 
 .introduction .privacy-policy {
-  color: #cccccc;
+  color: var(--identification);
 }
 
 
 /* Privacy policy print button */
 
 .button-privacy-policy-print {
-  background-color: #cc3300;
-  border: 6px solid #cc3300;
+  background-color: var(--accent);
+  border: 6px solid var(--accent);
   display: inline-block;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
   text-transform: uppercase;
@@ -792,7 +729,7 @@ picture img {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 6px solid #bb3553;
+  border: 6px solid var(--border);
   padding: 16px 76px;
   text-transform: uppercase
 }
@@ -836,21 +773,21 @@ picture img {
 }
 
 .cookie-policy-text p {
-  color: #999999;
+  color: var(--muted);
   text-align: justify;
   text-justify: inter-word;
 }
 
 .cookie-policy-text a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
-  border-bottom: 1px dotted #999999;
+  border-bottom: 1px dotted var(--muted);
 }
 
 .cookie-policy-text a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
-  border-bottom: 1px dotted #cc3333;
+  border-bottom: 1px dotted var(--link);
 }
 
 .cookie-policy-text p {
@@ -858,17 +795,17 @@ picture img {
 }
 
 .introduction .cookie-policy {
-  color: #cccccc;
+  color: var(--identification);
 }
 
 /*Cookie policy print button */
 
 .button-cookie-policy-print {
-  background-color: #cc3300;
-  border: 6px solid #cc3300;
+  background-color: var(--accent);
+  border: 6px solid var(--accent);
   display: inline-block;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
   text-transform: uppercase;
@@ -891,7 +828,7 @@ picture img {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 6px solid #bb3553;
+  border: 6px solid var(--border);
   padding: 16px 76px;
   text-transform: uppercase
 }
@@ -925,11 +862,11 @@ picture img {
 /* Contact form button */
 
 .button-contact-submit {
-  background-color: #cc3300;
-  border: 6px solid #cc3300;
+  background-color: var(--accent);
+  border: 6px solid var(--accent);
   display: inline-block;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
   text-transform: uppercase;
@@ -952,7 +889,7 @@ picture img {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border: 6px solid #bb3553;
+  border: 6px solid var(--border);
   padding: 16px 76px;
   text-transform: uppercase
 }
@@ -983,8 +920,8 @@ picture img {
 .form-contact input {
   font-family: "Lora", sans-serif;
   outline: 0;
-  background: #444;
-  color: #323232;
+  background: var(--input-bg);
+  color: var(--input-text);
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -1014,21 +951,21 @@ picture img {
 }
 
 .contact p {
-  color: #999999;
+  color: var(--muted);
   text-align: justify;
   text-justify: inter-word;
 }
 
 .contact a {
-  color: #999999;
+  color: var(--muted);
   transition-duration: 0.5s;
-  border-bottom: 1px dotted #999999;
+  border-bottom: 1px dotted var(--muted);
 }
 
 .contact a:hover {
-  color: #cc3333;
+  color: var(--link);
   transition-duration: 0.1s;
-  border-bottom: 1px dotted #cc3333;
+  border-bottom: 1px dotted var(--link);
 }
 
 .text-form-contact {
@@ -1053,8 +990,8 @@ picture img {
 #message {
   font-family: "Lora", sans-serif;
   outline: 0;
-  background: #444;
-  color: #999999;
+  background: var(--input-bg);
+  color: var(--muted);
   width: 100%;
   height: 200px;
   border: 0;
@@ -1068,8 +1005,8 @@ picture img {
 #topics {
   font-family: "Lora", sans-serif;
   outline: 0;
-  background: #444;
-  color: #999999;
+  background: var(--input-bg);
+  color: var(--muted);
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -1105,10 +1042,10 @@ input[type="file"] {
 }
 
 [type="file"] + label {
-  background: #dd3333;
-  border: 5px dashed #999999;
+  background: var(--accent);
+  border: 5px dashed var(--muted);
   border-radius: 5px;
-  color: #fff;
+  color: var(--accent-text);
   cursor: pointer;
   display: inline-block;
   font-family: 'Poppins', sans-serif;
@@ -1123,7 +1060,7 @@ input[type="file"] {
   vertical-align: middle;
 }
 [type="file"] + label.btn-upload {
-  background-color: #dd3333;
+  background-color: var(--accent);
   border-radius: 0;
   overflow: hidden;
   width: 100%;
@@ -1138,7 +1075,7 @@ input[type="file"] {
   width: 100%;
 }
 [type="file"] + label.btn-upload::before {
-  color: #fff;
+  color: var(--accent-text);
   content: "\f382";
   font-family: "Font Awesome 5 Free";
   font-size: 600%;
@@ -1152,7 +1089,7 @@ input[type="file"] {
   width: 100%;
 }
 [type="file"] + label.btn-upload:hover {
-  background-color: #ff00ff;
+  background-color: var(--link-hover);
 }
 [type="file"] + label.btn-upload:hover span {
   -webkit-transform: translateY(300%);
@@ -1235,7 +1172,7 @@ input[type="file"] {
 
 /* Ambient por átsütése a tartalmi panelen */
 .sp-landing .content {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--overlay-bg);
 }
 
 /* 3D / rajz váltógomb a fotó felett */
@@ -1252,15 +1189,15 @@ input[type="file"] {
   font-size: 12px;
   letter-spacing: 0.4px;
   color: #dddddd;
-  background: rgba(0, 0, 0, 0.55);
+  background: var(--overlay-bg-soft);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .sp-landing .image #view-toggle:hover {
-  background: rgba(0, 0, 0, 0.8);
-  color: #ffffff;
+  background: var(--overlay-bg-strong);
+  color: var(--accent-text);
 }
 
 /* Gépelő kurzor */
@@ -1280,3 +1217,16 @@ input[type="file"] {
   0%, 55% { opacity: 1; }
   56%, 100% { opacity: 0; }
 }
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-left: 10px;
+  padding: 4px 9px;
+  transition: border-color .2s ease, color .2s ease;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }

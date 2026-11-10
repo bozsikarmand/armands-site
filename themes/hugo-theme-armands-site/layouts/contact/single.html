@@ -21,13 +21,13 @@
 </div>
 <style>
   .cf-row { margin-bottom: 10px; }
-  .cf-row label { display: block; color: #999999; font-size: 14px; margin-bottom: 4px; }
+  .cf-row label { display: block; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
   .cf-row input, .cf-row textarea {
     width: 100%; max-width: 480px; box-sizing: border-box;
-    background: #161616; border: 1px solid #333333; border-radius: 4px;
-    color: #dddddd; font-size: 15px; padding: 8px 10px; font-family: inherit;
+    background: var(--input-bg); border: 1px solid var(--border); border-radius: 4px;
+    color: var(--input-text); font-size: 15px; padding: 8px 10px; font-family: inherit;
   }
-  .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: #777777; }
+  .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: var(--accent); }
 </style>
 <script src="/assets/scripts/contact-form.js" defer></script>
 {{ end }}
