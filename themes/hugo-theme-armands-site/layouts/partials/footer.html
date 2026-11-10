@@ -1,0 +1,22 @@
+<footer class="footer-links">
+  <div class="footer-link">
+    <ul>
+      <li>
+        <a href="{{ relLangURL "/privacy-policy/" }}"><i class="fas fa-user-secret"></i> {{ i18n "ui.privacy" }}</a>
+        <a href="{{ relLangURL "/cookie-policy/" }}"><i class="fas fa-cookie-bite"></i> {{ i18n "ui.cookies" }}</a>
+        {{ $hu := "/hu/" }}{{ $en := "/en/" }}
+        {{ if eq .Site.Language.LanguageCode "hu" }}
+        <span class="flag-icon flag-icon-squared flag-icon-gb link-language-selector-footer"><a href="{{ $en }}"></a></span>
+        {{ else }}
+        <span class="flag-icon flag-icon-squared flag-icon-hu link-language-selector-footer"><a href="{{ $hu }}"></a></span>
+        {{ end }}
+      </li>
+    </ul>
+  </div>
+  <div class="copyright">
+    <p class="copyright-year">
+      &copy; <span data-year>{{ now.Format "2006" }}</span> Armand Viktor Bozsik | {{ i18n "ui.copyright" }} <a href="https://www.facebook.com/doracsavajdart">Dóra Csavajda</a>
+    </p>
+  </div>
+</footer>
+<script src="/assets/scripts/year.js" defer></script>

@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="introduction">
+  <h1>{{ i18n "ui.greeting" }}</h1>
+  <span class="self-identification" data-typewriter="{{ i18n "ui.typewriter" }}">{{ i18n "ui.typewriter_fallback" }}</span>
+</div>
+<div class="biography">
+  <form action="https://github.com/bozsikarmand/">
+    <p>{{ i18n "ui.bio" | safeHTML }}</p>
+    <button class="button-github"><i class="fab fa-github"></i> {{ i18n "ui.github_button" }}</button>
+  </form>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<script src="/assets/scripts/typewriter.js" defer></script>
+<script type="module" src="/assets/scripts/hero3d.js"></script>
+{{ end }}

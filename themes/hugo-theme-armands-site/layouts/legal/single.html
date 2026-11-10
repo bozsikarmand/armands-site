@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="introduction">
+  <h1>{{ i18n "ui.greeting" }}</h1>
+  <span class="self-identification">{{ .Title }}</span>
+</div>
+<div class="biography">
+  {{ .Content }}
+</div>
+{{ end }}

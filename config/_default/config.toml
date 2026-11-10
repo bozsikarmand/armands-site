@@ -1,0 +1,13 @@
+baseURL = "https://armands.site/"
+title = "Armand Viktor Bozsik"
+theme = ["hugo-theme-armands-site"]
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+
+[outputs]
+  home = ["HTML"]
+  page = ["HTML"]

@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="introduction">
+  <h1>{{ i18n "ui.greeting" }}</h1>
+  <span class="self-identification">{{ i18n "ui.contact_title" }}</span>
+</div>
+<div class="contact">
+  <p style="color:#999999; padding-bottom: 16px;">{{ i18n "ui.contact_intro" | safeHTML }}</p>
+  <form id="site-contact-form"
+        data-success="{{ i18n "ui.form_success" }}" data-error="{{ i18n "ui.form_error" }}"
+        data-invalid="{{ i18n "ui.form_invalid" }}" data-notconfigured="{{ i18n "ui.form_not_configured" }}">
+    <div class="cf-row"><label for="cf-name">{{ i18n "ui.form_name" }}</label>
+      <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="120"></div>
+    <div class="cf-row"><label for="cf-email">{{ i18n "ui.form_email" }}</label>
+      <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="200"></div>
+    <div class="cf-row"><label for="cf-message">{{ i18n "ui.form_message" }}</label>
+      <textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea></div>
+    <button type="submit" class="button-contact-submit"><i class="fa fa-paper-plane"></i> {{ i18n "ui.form_send" }}</button>
+    <p id="site-cf-status" role="status" aria-live="polite" style="margin-top:12px; color:#bbbbbb; min-height:1.3em;"></p>
+  </form>
+  <p style="color:#999999; padding: 16px 0 0 0;">{{ i18n "ui.form_privacy" }}</p>
+</div>
+<style>
+  .cf-row { margin-bottom: 10px; }
+  .cf-row label { display: block; color: #999999; font-size: 14px; margin-bottom: 4px; }
+  .cf-row input, .cf-row textarea {
+    width: 100%; max-width: 480px; box-sizing: border-box;
+    background: #161616; border: 1px solid #333333; border-radius: 4px;
+    color: #dddddd; font-size: 15px; padding: 8px 10px; font-family: inherit;
+  }
+  .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: #777777; }
+</style>
+<script src="/assets/scripts/contact-form.js" defer></script>
+{{ end }}
