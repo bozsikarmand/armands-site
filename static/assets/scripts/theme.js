@@ -24,7 +24,6 @@
 (function () {
   var fab = document.getElementById('menu-toggle');
   var panel = document.getElementById('site-topbar');
-  var closeBtn = document.getElementById('menu-close');
   var backdrop = document.getElementById('menu-backdrop');
   if (!fab || !panel) return;
   function setOpen(open) {
@@ -34,7 +33,6 @@
     document.body.style.overflow = open ? 'hidden' : '';
   }
   fab.addEventListener('click', function () { setOpen(!panel.classList.contains('is-open')); });
-  if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
   if (backdrop) backdrop.addEventListener('click', function () { setOpen(false); });
   panel.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () { setOpen(false); });

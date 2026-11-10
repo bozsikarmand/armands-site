@@ -1283,7 +1283,7 @@ input[type="file"] {
 .topbar__menu a:hover { color: var(--accent); }
 .topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
 .topbar .theme-toggle { margin-left: 0; }
-.menu-fab, .menu-close, .menu-backdrop { display: none; }
+.menu-fab, .menu-backdrop { display: none; }
 
 /* 801–1400px között a brand elrejtve: a név úgyis kiemelten szerepel a tartalomban */
 @media only screen and (min-width: 801px) and (max-width: 1400px) {
@@ -1322,11 +1322,4 @@ input[type="file"] {
   .topbar__menu a { width: 100%; }
   .topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
   .topbar__tools .lang-switch, .topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
-  .menu-close {
-    display: inline-flex; align-items: center; justify-content: center;
-    position: absolute; top: 10px; right: 10px;
-    width: 40px; height: 40px; border-radius: 6px;
-    background: transparent; border: 1px solid var(--border);
-    color: var(--text); font-size: 1rem; cursor: pointer;
-  }
 }
