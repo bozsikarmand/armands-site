@@ -49,6 +49,22 @@ function zohoUrls(env) {
   };
 }
 
+// Turnstile siteverify (invisible captcha)
+async function verifyTurnstile(token, secret, ip) {
+  if (!token) return false;
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, response: token, remoteip: ip }),
+    });
+    const data = await res.json();
+    return data.success === true;
+  } catch {
+    return false;
+  }
+}
+
 // 1) refresh token → access token
 async function getAccessToken(env, urls) {
   const params = new URLSearchParams({
@@ -116,6 +132,15 @@ async function handleContact(request, env, origin) {
   const name = String(data.name || '').trim().slice(0, 120);
   const email = String(data.email || '').trim().slice(0, 200);
   const message = String(data.message || '').trim().slice(0, 5000);
+
+  // Turnstile (invisible captcha) – ha TURNSTILE_SECRET be van állítva, kötelező az ellenőrzés
+  if (env.TURNSTILE_SECRET) {
+    const token = String(data['cf-turnstile-response'] || data.turnstileToken || '').trim();
+    const ip = request.headers.get('CF-Connecting-IP') || '';
+    if (!(await verifyTurnstile(token, env.TURNSTILE_SECRET, ip))) {
+      return json({ ok: false, error: 'captcha_failed' }, 403, headers);
+    }
+  }
 
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ ok: false, error: 'invalid_fields' }, 400, headers);

@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const button = form.querySelector('button[type="submit"]');
     button.disabled = true;
+    const tsDiv = form.querySelector('.cf-turnstile');
+    if (tsDiv && window.turnstile) {
+      data['cf-turnstile-response'] = await new Promise((resolve) => {
+        const t = setTimeout(() => resolve(''), 10000);
+        try {
+          window.turnstile.execute(tsDiv, { callback: (tok) => { clearTimeout(t); resolve(tok); } });
+        } catch (e) { clearTimeout(t); resolve(''); }
+      });
+    }
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
