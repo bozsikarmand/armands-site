@@ -12,6 +12,8 @@ const ALLOWED_ORIGINS = new Set([
   'https://www.armands.site',
   'https://armands.blog',
   'https://www.armands.blog',
+  'https://armands.dev',
+  'https://www.armands.dev',
 ]);
 
 export default {
