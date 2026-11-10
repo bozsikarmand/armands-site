@@ -324,10 +324,10 @@ body.page-landing p {
 
 .sp-landing .content .center {
   padding-top: 56px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 64px;
+  padding-right: 64px;
   padding-bottom: 80px;
-  max-width: 640px;
+  max-width: 720px;
   margin-top: auto;
   margin-bottom: auto;
 }
