@@ -4,10 +4,8 @@
   <span class="self-identification" data-typewriter="{{ i18n "ui.typewriter" }}">{{ i18n "ui.typewriter_fallback" }}</span>
 </div>
 <div class="biography">
-  <form action="https://github.com/bozsikarmand/">
-    <p>{{ i18n "ui.bio" | safeHTML }}</p>
-    <button class="button-github"><i class="fab fa-github"></i> {{ i18n "ui.github_button" }}</button>
-  </form>
+  <p>{{ i18n "ui.bio" | safeHTML }}</p>
+  <a class="button-cta" href="{{ relLangURL "/modules/contact/" }}"><i class="fas fa-envelope"></i> {{ i18n "ui.contact_button" }}</a>
 </div>
 {{ end }}
 

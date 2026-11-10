@@ -8,8 +8,8 @@ typewriter = "Geek.|Developer.|Builder."
 typewriter_fallback = "I am a Geek. Developer. Builder."
 bio = """I'm a software developer with 5+ years of experience building enterprise systems (ERP, MES) with Oracle APEX, PL/SQL, Java and C#.
 I care about clean architecture and system security, and I use AI-assisted development tools daily.
-Check out my <a href=\"https://armands.cv\">CV</a>, have a look at my works on GitHub, or just say hello below."""
-github_button = "Feel free to check my GitHub profile!"
+Check out my <a href=\"https://armands.cv\">CV</a>, have a look at my works on GitLab, or just say hello below."""
+contact_button = "Write to me on the form!"
 connect_title = "Connect"
 social_title = "Social"
 network_title = "Network"

@@ -405,9 +405,15 @@ body.page-landing p {
   border-bottom: 1px dotted var(--link);
 }
 
+.social-media-profiles {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .social-media-profiles .social-media-profile {
   width: 30%;
-  display: inline-block;
+  display: block;
   margin-bottom: 40px;
 }
 
@@ -458,9 +464,10 @@ body.page-landing p {
 }
 
 
-/* GitHub Button */
+/* CTA gomb (kapcsolat) */
 
-.button-github {
+.biography a.button-cta,
+.button-cta {
   background-color: var(--accent);
   border: 6px solid var(--accent);
   display: inline-block;
@@ -480,7 +487,8 @@ body.page-landing p {
   box-sizing: border-box;
 }
 
-.button-github:hover {
+.biography a.button-cta:hover,
+.button-cta:hover {
   border-radius: 42px;
   -moz-border-radius: 42px;
   -webkit-border-radius: 42px;
