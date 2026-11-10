@@ -8,8 +8,8 @@ typewriter = "Geek.|Fejlesztő.|Megvalósító."
 typewriter_fallback = "Geek. Fejlesztő. Megvalósító."
 bio = """Szoftverfejlesztő vagyok 5+ év tapasztalattal vállalati rendszerek (ERP, MES) építésében – Oracle APEX, PL/SQL, Java és C# technológiákkal.
 Fontosnak tartom a tiszta architektúrát és a rendszbiztonságot, nap mint nap AI-asszisztált fejlesztőeszközökkel dolgozom.
-Nézd meg az <a href=\"https://armands.cv\">önéletrajzomat</a>, a GitLab munkáimat, vagy írj bátran az alábbi űrlapon!"""
-contact_button = "Írj bátran az űrlapon!"
+Nézd meg az <a href=\"https://armands.cv\">önéletrajzomat</a>, a GitLab munkáimat, vagy írj bátran a fenti űrlapon!"""
+gitlab_button = "Tekintsd meg GitLab profilom!"
 connect_title = "Elérhetőségeim"
 social_title = "Közösségi"
 network_title = "Hálózatokon"
