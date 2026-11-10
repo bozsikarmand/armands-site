@@ -17,7 +17,7 @@
     <button type="submit" class="button-contact-submit"><i class="fa fa-paper-plane"></i> {{ i18n "ui.form_send" }}</button>
     <p id="site-cf-status" role="status" aria-live="polite" style="margin-top:12px; color:#bbbbbb; min-height:1.3em;"></p>
   </form>
-  <p style="color:#999999; padding: 16px 0 0 0;">{{ i18n "ui.form_privacy" }}</p>
+  <p style="color:#999999; padding: 16px 0 0 0;">{{ i18n "ui.form_privacy" | safeHTML }}</p>
 </div>
 <style>
   .cf-row { margin-bottom: 10px; }
