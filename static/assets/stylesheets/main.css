@@ -1230,3 +1230,30 @@ input[type="file"] {
   transition: border-color .2s ease, color .2s ease;
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Mobilbarát menü: takaros tördelés kis képernyőn */
+@media only screen and (max-width: 640px) {
+  .navigation-links .navigation-link ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.75rem;
+  }
+  .navigation-links .navigation-link ul li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.75rem;
+  }
+  .navigation-links .navigation-link ul li a {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.4rem;
+  }
+  .button-contact-header {
+    font-size: 0.85rem;
+  }
+  .theme-toggle {
+    margin-left: 0;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
