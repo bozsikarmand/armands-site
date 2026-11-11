@@ -1311,7 +1311,7 @@ input[type="file"] {
 .menu-fab, .menu-backdrop { display: none; }
 
 /* 801–1400px között a brand elrejtve: a név úgyis kiemelten szerepel a tartalomban */
-@media only screen and (min-width: 801px) and (max-width: 1400px) {
+@media only screen and (min-width: 801px) and (max-width: 1650px) {
   .topbar__brand { display: none; }
 }
 
