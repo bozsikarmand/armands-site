@@ -1,0 +1,20 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:armands.site:api:contact-form",
+      "displayName": "armands.site contact form API",
+      "description": "POST /api/contact on armands.site – sends a message from a website visitor to the site owner via the Cloudflare Worker + Zoho Mail. JSON body: name, email, message. Turnstile-verified. Useful for agents that need to reach the owner of the armands.* sites.",
+      "type": "application/http-api+json",
+      "url": "https://armands.site/api/contact",
+      "tags": ["contact", "email", "form", "armands"],
+      "capabilities": ["send_message"],
+      "representativeQueries": [
+        "How can I contact the owner of this website?",
+        "Send a message to the site administrator",
+        "What is the contact endpoint of armands.site?"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-11-12T00:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+# armands.site
+
+> Personal website of [Armand Viktor Bozsik](https://armands.site) – software developer (ERP, Oracle APEX, PL/SQL, Java, C#).
+> Bilingual (English / Hungarian). Links to the blog, the project journal and the CV.
+> Static site; the contact form posts to /api/contact (Cloudflare Worker + Zoho Mail).
+
+## Content
+
+- [Blog](https://armands.blog) – long-form posts about IT security, Linux and projects
+- [Projects & homelab journal](https://armands.dev) – build logs and experiments
+- [Interactive CV](https://armands.cv) – experience, competencies, technologies
+- [Contact](https://armands.site/en/contact/)
+
+## Identity
+
+- The same person runs all four armands.* sites; cross-links are in the navigation of each.
+- Source: [gitlab.com/bozsikarmand/armands-site](https://gitlab.com/bozsikarmand/armands-site)
+- Contact: hello@armands.site

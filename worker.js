@@ -28,8 +28,16 @@ export default {
       return handleContact(request, env, origin);
     }
 
-    // Minden más: statikus assetek (az [assets] kötés kezeli)
-    return env.ASSETS.fetch(request);
+    // Minden más: statikus assetek (az [assets] kötés kezeli).
+    // Hiányzó assetnél a kötés kivételt dob (500) – azt 404-gyé fordítjuk,
+    // különben a botok és a Lighthouse 500-ast látna minden hiányzó útvonalon.
+    try {
+      const res = await env.ASSETS.fetch(request);
+      if (res && res.status !== 404) return res;
+      return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    } catch {
+      return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
   },
 };
 
