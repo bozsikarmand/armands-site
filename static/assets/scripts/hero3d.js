@@ -60,11 +60,9 @@
     await img.decode();
 
     var isSmall = Math.min(window.innerWidth, window.innerHeight) < 720;
-    // A main-thread fizika (tick loop) sűrűséggel arányos: nagyobb GAP =
-    // kevesebb részecske = kisebb TBT. 3-as GAP alatt vizuális minőségromlás
-    // szinte észrevehetetlen, a blocking-idő viszont kb. harmadára esik.
-    var SAMPLE_W = isSmall ? 96 : 150;
-    var GAP = isSmall ? 3 : 3;
+    // Eredeti sűrűség: a nagy felbontás adja az arcot kirajzoló pontosságot
+    var SAMPLE_W = isSmall ? 100 : 180;
+    var GAP = isSmall ? 3 : 2;
     var scale = SAMPLE_W / img.naturalWidth;
     var SAMPLE_H = Math.round(img.naturalHeight * scale);
 
@@ -317,10 +315,9 @@
       if (running && !loopActive) { loopActive = true; requestAnimationFrame(tick); }
     });
 
-    // Interakció nélkül leáll a loop (a nyugalmi kép így is stabil): a
-    // részecskefizika + WebGL-render csak mozgás/scroll közben fut, így a
-    // TBT és az akku is jóval barátibb. Egér- és scroll-aktivitáskor azonnal
-    // újraindul, és az intro végéig minden frame számít.
+    // Interakció nélkül lassabban megy a loop (a részecskék így is élnek:
+    // hullámzás + ambient mozgás), de a CPU-igény és a TBT a töredékére esik.
+    // Egér- és scroll-aktivitáskor azonnal visszaáll a teljes 60 fps.
     function wake() {
       lastInteract = performance.now();
       if (!loopActive && running) { loopActive = true; requestAnimationFrame(tick); }
@@ -396,20 +393,18 @@
     function tick(now) {
       if (!running) { loopActive = false; return; }
 
-      // Idle (intro után, interakció nélkül): leáll a loop; újraindul wake()-kel.
-      if (now - lastInteract > IDLE_MS && now - introStart > INTRO_MS + 500) {
-        loopActive = false;
+      // Intro alatt minden frame számít; utána interakció nélkül minden
+      // második frame-et renderelünk (kb. 30 fps) – a mozgás megmarad.
+      var introP = (now - introStart) / INTRO_MS;
+      var idle = introP >= 1 && now - lastInteract > IDLE_MS;
+      if (idle && (frameNo % 2) !== 0) {
+        frameNo++;
+        requestAnimationFrame(tick);
         return;
       }
       requestAnimationFrame(tick);
 
-      // Intro alatt elég 30 fps: a pozíciók az eltelt időből számítnak
-      // (nem frame-integráltak), a mozgás képe így ugyanaz, a főszál-feladat
-      // viszont a felére csökken.
       frameNo++;
-      var introP = (now - introStart) / INTRO_MS;
-      if (introP < 1 && (frameNo % 2) !== 0) return;
-
       t += 0.016;
       mouse.lerp(target, 0.06);
       scrollP += (scrollTarget - scrollP) * 0.08;
