@@ -18,13 +18,13 @@
       </button>
       {{ end }}
     </div>
-    <div class="content">
+    <main class="content">
       {{ partial "nav.html" . }}
       <div class="center">
         {{ block "main" . }}{{ end }}
         {{ partial "social.html" . }}
         {{ partial "footer.html" . }}
-      </div>
+      </main>
     </div>
   </div>
   {{ block "scripts" . }}{{ end }}

@@ -24,6 +24,9 @@
 <link rel='stylesheet' href='/assets/fonts/fontawesome/stylesheets/all.min.css' type='text/css' media='screen'/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <script src="/assets/scripts/theme-init.js"></script>
+{{ with site.Params.cfBeaconToken }}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ . }}"}'></script>
+{{ end }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

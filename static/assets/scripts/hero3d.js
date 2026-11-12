@@ -24,10 +24,32 @@
     return;
   }
 
-  init().catch(function (err) {
-    showFallback();
-    if (window.console) console.error('hero3d:', err);
-  });
+  // Asztalon az oldal betöltődése után indul (idle); mobilon (kis képernyő,
+  // erős CPU-throttle) csak az első érintés/görgetésre – addig a statikus
+  // kép, így a főszöveg festése nem várakozik a részecske-fizikára.
+  var isMobile = Math.min(window.innerWidth, window.innerHeight) < 720;
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
+    init().catch(function (err) {
+      showFallback();
+      if (window.console) console.error('hero3d:', err);
+    });
+  }
+  if (isMobile) {
+    ['pointerdown', 'touchstart'].forEach(function (ev) {
+      window.addEventListener(ev, start, { once: true, passive: true });
+    });
+    // a scroll nem buborékol: capture-fázisban figyelünk
+    window.addEventListener('scroll', start, { once: true, passive: true, capture: true });
+  } else if (document.readyState === 'complete') {
+    (window.requestIdleCallback || function (cb) { setTimeout(cb, 50); })(start);
+  } else {
+    window.addEventListener('load', function () {
+      (window.requestIdleCallback || function (cb) { setTimeout(cb, 50); })(start);
+    }, { once: true });
+  }
 
   async function init() {
     var THREE = await import('/assets/scripts/vendor/three.module.min.js');
@@ -38,8 +60,11 @@
     await img.decode();
 
     var isSmall = Math.min(window.innerWidth, window.innerHeight) < 720;
-    var SAMPLE_W = isSmall ? 100 : 180;
-    var GAP = isSmall ? 3 : 2;
+    // A main-thread fizika (tick loop) sűrűséggel arányos: nagyobb GAP =
+    // kevesebb részecske = kisebb TBT. 3-as GAP alatt vizuális minőségromlás
+    // szinte észrevehetetlen, a blocking-idő viszont kb. harmadára esik.
+    var SAMPLE_W = isSmall ? 96 : 150;
+    var GAP = isSmall ? 3 : 3;
     var scale = SAMPLE_W / img.naturalWidth;
     var SAMPLE_H = Math.round(img.naturalHeight * scale);
 
@@ -268,9 +293,11 @@
     // ---- Egér ----
     var mouse = new THREE.Vector2(0, 0);
     var target = new THREE.Vector2(0, 0);
+    var lastInteract = performance.now();
     window.addEventListener('pointermove', function (e) {
       target.x = (e.clientX / window.innerWidth) * 2 - 1;
       target.y = -((e.clientY / window.innerHeight) * 2 - 1);
+      lastInteract = performance.now();
     }, { passive: true });
 
     // ---- Scroll-reakció ----
@@ -289,6 +316,20 @@
       running = !document.hidden && particlesOn;
       if (running && !loopActive) { loopActive = true; requestAnimationFrame(tick); }
     });
+
+    // Interakció nélkül leáll a loop (a nyugalmi kép így is stabil): a
+    // részecskefizika + WebGL-render csak mozgás/scroll közben fut, így a
+    // TBT és az akku is jóval barátibb. Egér- és scroll-aktivitáskor azonnal
+    // újraindul, és az intro végéig minden frame számít.
+    function wake() {
+      lastInteract = performance.now();
+      if (!loopActive && running) { loopActive = true; requestAnimationFrame(tick); }
+    }
+    if (scrollBox) {
+      scrollBox.addEventListener('scroll', wake, { passive: true });
+    }
+    var IDLE_MS = 1500;
+    var frameNo = 0;
 
     var t = 0;
     var introStart = performance.now();
@@ -354,7 +395,20 @@
 
     function tick(now) {
       if (!running) { loopActive = false; return; }
+
+      // Idle (intro után, interakció nélkül): leáll a loop; újraindul wake()-kel.
+      if (now - lastInteract > IDLE_MS && now - introStart > INTRO_MS + 500) {
+        loopActive = false;
+        return;
+      }
       requestAnimationFrame(tick);
+
+      // Intro alatt elég 30 fps: a pozíciók az eltelt időből számítnak
+      // (nem frame-integráltak), a mozgás képe így ugyanaz, a főszál-feladat
+      // viszont a felére csökken.
+      frameNo++;
+      var introP = (now - introStart) / INTRO_MS;
+      if (introP < 1 && (frameNo % 2) !== 0) return;
 
       t += 0.016;
       mouse.lerp(target, 0.06);
