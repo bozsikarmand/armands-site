@@ -333,6 +333,15 @@ body.page-landing p {
   margin: auto;
 }
 
+/* Contact oldal: a blokk és az űrlap a panel széléig (sosem azon túl) */
+body.page-contact .sp-landing .content .center {
+  width: 100%;
+  max-width: none;
+  padding-left: 48px;
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+
 @media (max-width: 1200px) {
   .sp-landing .content .center {
     padding-top: 36px;

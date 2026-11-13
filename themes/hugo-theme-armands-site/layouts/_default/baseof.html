@@ -3,7 +3,7 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body id="single-page" class="page-landing">
+<body id="single-page" class="page-landing{{ if eq .Type "contact" }} page-contact{{ end }}">
   <div class="sp-landing">
     <div class="image">
       {{ if .Params.heroCanvas }}<canvas id="hero-canvas" aria-hidden="true"></canvas>{{ end }}
