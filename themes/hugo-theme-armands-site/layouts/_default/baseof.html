@@ -5,8 +5,8 @@
 </head>
 <body id="single-page" class="page-landing">
   <div class="sp-landing">
-    {{ if .Params.heroCanvas }}<canvas id="hero-canvas" aria-hidden="true"></canvas>{{ end }}
     <div class="image">
+      {{ if .Params.heroCanvas }}<canvas id="hero-canvas" aria-hidden="true"></canvas>{{ end }}
       <picture>
         <source srcset="/assets/images/main.webp" type="image/webp">
         <source srcset="/assets/images/main.png" type="image/png">
@@ -23,10 +23,13 @@
       <div class="center">
         {{ block "main" . }}{{ end }}
         {{/* A contact oldalon a lényeg az űrlap – a social lista és a lábléc
-             ismétlődés, a kompakt oldalhoz kihagyjuk (különben görgetni kell). */}}
+             ismétlődés, a kompakt oldalhoz kihagyjuk (különben görgetni kell).
+             A scriptek (téma-, nyelvváltó) minden oldalon kellenek! */}}
         {{ if ne .Type "contact" }}
         {{ partial "social.html" . }}
         {{ partial "footer.html" . }}
+        {{ else }}
+        {{ partial "scripts.html" . }}
         {{ end }}
       </main>
     </div>

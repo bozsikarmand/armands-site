@@ -509,19 +509,19 @@ body.page-landing p {
   box-sizing: border-box;
 }
 
+/* Hover: kiemelkedő keret + finom nagyítás (transform – nem tolja el a
+   környező tartalmat, intuitív, hogy kattintható) */
+.biography a.button-cta,
+.button-cta {
+  -webkit-transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
 .biography a.button-cta:hover,
 .button-cta:hover {
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
   background-color: transparent;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   border: 6px solid var(--accent);
   color: var(--accent);
-  padding: 16px 76px;
-  text-transform: uppercase
+  transform: scale(1.04);
 }
 
 .button-github:active {
@@ -895,6 +895,8 @@ picture img {
 /* Contact form button */
 
 .button-contact-submit {
+  -webkit-transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
   background-color: var(--accent);
   border: 6px solid var(--accent);
   display: inline-block;
@@ -916,26 +918,15 @@ picture img {
 }
 
 .button-contact-submit:hover {
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
   background-color: transparent;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   border: 6px solid var(--accent);
-  padding: 16px 76px;
-  text-transform: uppercase
+  color: var(--accent);
+  transform: scale(1.04);
 }
 
 .button-contact-submit:active {
   outline: none;
-  position: relative;
-  top: 4px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
+  transform: scale(0.98);
 }
 
 .button-contact-submit:focus {
