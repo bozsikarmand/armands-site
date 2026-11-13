@@ -22,8 +22,12 @@
       {{ partial "nav.html" . }}
       <div class="center">
         {{ block "main" . }}{{ end }}
+        {{/* A contact oldalon a lényeg az űrlap – a social lista és a lábléc
+             ismétlődés, a kompakt oldalhoz kihagyjuk (különben görgetni kell). */}}
+        {{ if ne .Type "contact" }}
         {{ partial "social.html" . }}
         {{ partial "footer.html" . }}
+        {{ end }}
       </main>
     </div>
   </div>

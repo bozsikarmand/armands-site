@@ -325,10 +325,10 @@ body.page-landing p {
 }
 
 .sp-landing .content .center {
-  padding-top: 56px;
+  padding-top: 32px;
   padding-left: 64px;
   padding-right: 64px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   max-width: 720px;
   margin: auto;
 }
@@ -363,7 +363,7 @@ body.page-landing p {
   text-transform: uppercase;
   font-size: 16px;
   line-height: 16px;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   letter-spacing: 0.4px;
   color: var(--h1);
 }
@@ -372,8 +372,17 @@ body.page-landing p {
   color: var(--identification);
 }
 
+/* Contact oldal: kompakt fejléc, hogy görgetés nélkül beférjen az űrlap */
+.introduction--compact {
+  font-size: 40px;
+  line-height: 48px;
+}
+.introduction--compact h1 {
+  margin-bottom: 16px;
+}
+
 .biography {
-  padding: 40px 0 40px 0;
+  padding: 20px 0 20px 0;
   font-family: 'Lora', serif;
 }
 
@@ -416,7 +425,7 @@ body.page-landing p {
 .social-media-profiles .social-media-profile {
   width: auto;
   display: block;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /* Oszlopok balra igazítva (eredeti), a blokkok szétosztva a gomb széléig */
@@ -486,9 +495,9 @@ body.page-landing p {
   cursor: pointer;
   color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
-  padding: 16px 76px;
+  padding: 12px 76px;
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -593,7 +602,7 @@ body.page-landing p {
 .footer-links .footer-link {
   width: 100%;
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 500px) {
@@ -730,9 +739,9 @@ picture img {
   cursor: pointer;
   color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
-  padding: 16px 76px;
+  padding: 12px 76px;
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -830,9 +839,9 @@ picture img {
   cursor: pointer;
   color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
-  padding: 16px 76px;
+  padding: 12px 76px;
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -892,9 +901,9 @@ picture img {
   cursor: pointer;
   color: var(--accent-text);
   font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
-  padding: 16px 76px;
+  padding: 12px 76px;
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -959,7 +968,7 @@ picture img {
 /*Contact form*/
 
 .contact {
-  padding: 40px 0 40px 0;
+  padding: 16px 0 16px 0;
   font-family: 'Lora', serif;
 }
 
@@ -1365,4 +1374,4 @@ input[type="file"] {
 }
 
 /* Social-rács térköze a gombtól (.dev-mintára) */
-.social-media-profiles { margin-top: 2.5rem; }
+.social-media-profiles { margin-top: 1.25rem; }

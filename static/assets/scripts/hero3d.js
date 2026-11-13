@@ -225,14 +225,17 @@
       viewH = 2 * Math.tan((camera.fov * Math.PI) / 360) * CAM_Z;
       viewW = viewH * camera.aspect;
 
-      var targetW = viewW * 0.5;
+      // Cover-méretezés: a kép töltse ki a teljes képpanelt széltől szélig
+      // (a canvas már eleve a bal 50%-on van) – a korábbi viewW * 0.5 a
+      // panel felét üresen hagyta, ez volt a kihasználatlan kék terület
+      var targetW = viewW;
       var targetH = viewH;
       var scalePx = Math.max(targetW / SAMPLE_W, targetH / SAMPLE_H);
       imgW = SAMPLE_W * scalePx;
       imgH = SAMPLE_H * scalePx;
       originX = -viewW / 2 - (imgW - targetW) / 2;
       originY = -targetH / 2 - (imgH - targetH) / 2;
-      cloudCenter = new THREE.Vector3(-viewW / 2 + targetW / 2, 0, 0);
+      cloudCenter = new THREE.Vector3(0, 0, 0);
 
       basePointSize = scalePx * GAP * 1.1;
 
