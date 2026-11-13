@@ -34,9 +34,9 @@ export default {
     try {
       const res = await env.ASSETS.fetch(request);
       if (res && res.status !== 404) return res;
-      return notFoundResponse();
+      return notFoundResponse(request);
     } catch {
-      return notFoundResponse();
+      return notFoundResponse(request);
     }
   },
 };
@@ -190,10 +190,12 @@ function json(payload, status, headers) {
   return new Response(JSON.stringify(payload), { status, headers });
 }
 
-// Márkás 404 – a főoldal stílusával, visszalinkkel
-function notFoundResponse() {
+// Márkás 404 – a főoldal stílusával, visszalinkkel.
+// Nyelv az Accept-Language fejléc alapján (a site többi oldala is így vált).
+function notFoundResponse(request) {
+  const hu = (request.headers.get('Accept-Language') || '').toLowerCase().startsWith('hu');
   const html = `<!doctype html>
-<html lang="en">
+<html lang="${hu ? 'hu' : 'en'}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -210,8 +212,8 @@ function notFoundResponse() {
 <body>
   <main>
     <h1>404</h1>
-    <p>The page you are looking for does not exist.</p>
-    <a href="/">Back to home</a>
+    <p>${hu ? 'A keresett oldal nem létezik.' : 'The page you are looking for does not exist.'}</p>
+    <a href="/">${hu ? 'Vissza a főoldalra' : 'Back to home'}</a>
   </main>
 </body>
 </html>`;

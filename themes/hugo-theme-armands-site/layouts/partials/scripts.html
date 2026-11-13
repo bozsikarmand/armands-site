@@ -4,20 +4,32 @@
 <script src="/assets/scripts/theme.js" defer></script>
 <script src="/assets/scripts/lang-switch.js" defer></script>
 
-// Vissza az oldal tetejére – a .content panel görgetése (overflow: auto miatt)
+<script>
+// Vissza az oldal tetejére. Asztalon a .content panel görög (overflow: auto),
+// mobilon a body – mindkettőt figyeljük, és ami épp görög, azt toljuk fel.
 (function () {
   var scrollBox = document.querySelector('.sp-landing .content');
-  if (!scrollBox) return;
   var btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'to-top';
   btn.setAttribute('aria-label', 'Back to top');
   btn.textContent = '↑';
   document.body.appendChild(btn);
+  function activeScroller() {
+    // mobilon a panel height: auto → nem ő görög, hanem az ablak
+    if (scrollBox && scrollBox.scrollHeight > scrollBox.clientHeight + 10) return scrollBox;
+    return window;
+  }
+  function onScroll() {
+    var top = activeScroller() === window ? (window.scrollY || 0) : scrollBox.scrollTop;
+    btn.classList.toggle('is-visible', top > 150);
+  }
   btn.addEventListener('click', function () {
-    scrollBox.scrollTo({ top: 0, behavior: 'smooth' });
+    var sc = activeScroller();
+    if (sc === window) window.scrollTo({ top: 0, behavior: 'smooth' });
+    else sc.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  scrollBox.addEventListener('scroll', function () {
-    btn.classList.toggle('is-visible', scrollBox.scrollTop > 300);
-  }, { passive: true });
+  if (scrollBox) scrollBox.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
+</script>
