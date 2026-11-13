@@ -298,15 +298,8 @@
       lastInteract = performance.now();
     }, { passive: true });
 
-    // ---- Scroll-reakció ----
-    var scrollTarget = 0, scrollP = 0;
-    var scrollBox = document.querySelector('.sp-landing .content');
-    if (scrollBox) {
-      scrollBox.addEventListener('scroll', function () {
-        var max = scrollBox.scrollHeight - scrollBox.clientHeight;
-        scrollTarget = max > 0 ? Math.min(1, scrollBox.scrollTop / max) : 0;
-      }, { passive: true });
-    }
+    // (A scroll-reakció kikerült: a portré a helyén marad, a szöveg
+    // görgetése nem befolyásolja.)
 
     var running = true;
     var loopActive = false;
@@ -321,9 +314,6 @@
     function wake() {
       lastInteract = performance.now();
       if (!loopActive && running) { loopActive = true; requestAnimationFrame(tick); }
-    }
-    if (scrollBox) {
-      scrollBox.addEventListener('scroll', wake, { passive: true });
     }
     var IDLE_MS = 1500;
     var frameNo = 0;
@@ -343,9 +333,9 @@
 
       for (var i = 0; i < ud.count; i++) {
         var i3 = i * 3;
-        var hx = ud.homes[i3] + ud.disp[i3] * scrollP;
-        var hy = ud.homes[i3 + 1] + ud.disp[i3 + 1] * scrollP;
-        var hz = ud.homes[i3 + 2] + ud.disp[i3 + 2] * scrollP;
+        var hx = ud.homes[i3];
+        var hy = ud.homes[i3 + 1];
+        var hz = ud.homes[i3 + 2];
 
         if (!introDone) {
           var lp = Math.max(0, Math.min(1, p * 1.6 - ud.delays[i]));
@@ -407,7 +397,6 @@
       frameNo++;
       t += 0.016;
       mouse.lerp(target, 0.06);
-      scrollP += (scrollTarget - scrollP) * 0.08;
 
       var p = Math.min(1, (now - introStart) / INTRO_MS);
       var introDone = p >= 1;
@@ -418,7 +407,7 @@
 
       camera.position.x = mouse.x * 2.4;
       camera.position.y = mouse.y * 1.6;
-      camera.position.z = CAM_Z + scrollP * 14;
+      camera.position.z = CAM_Z;
 
       renderer.render(scene, camera);
     }
