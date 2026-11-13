@@ -1,4 +1,5 @@
 [ui]
+skipToContent = "Ugrás a főtartalomra"
 nav_home = "Főoldal"
 nav_blog = "Blog"
 nav_projects = "Projektek"

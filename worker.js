@@ -34,9 +34,9 @@ export default {
     try {
       const res = await env.ASSETS.fetch(request);
       if (res && res.status !== 404) return res;
-      return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+      return notFoundResponse();
     } catch {
-      return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+      return notFoundResponse();
     }
   },
 };
@@ -188,4 +188,32 @@ async function handleContact(request, env, origin) {
 
 function json(payload, status, headers) {
   return new Response(JSON.stringify(payload), { status, headers });
+}
+
+// Márkás 404 – a főoldal stílusával, visszalinkkel
+function notFoundResponse() {
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Armand Viktor Bozsik</title>
+<style>
+  body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+         background:#2d2a2e; color:#f8f5ef; font-family:'Montserrat',sans-serif; text-align:center; }
+  h1 { font-size:4rem; margin:0 0 0.5rem; color:#ffd866; }
+  p { color:#bdbdbd; margin:0 0 2rem; }
+  a { display:inline-block; padding:0.7rem 2rem; background:#ffd866; color:#212121;
+      border-radius:999px; font-weight:700; text-decoration:none; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>404</h1>
+    <p>The page you are looking for does not exist.</p>
+    <a href="/">Back to home</a>
+  </main>
+</body>
+</html>`;
+  return new Response(html, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
 }

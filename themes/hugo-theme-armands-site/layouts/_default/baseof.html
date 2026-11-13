@@ -4,6 +4,7 @@
   {{ partial "head.html" . }}
 </head>
 <body id="single-page" class="page-landing{{ if eq .Type "contact" }} page-contact{{ end }}">
+  <a class="skip-link" href="#site-content">{{ i18n "ui.skipToContent" | default "Skip to main content" }}</a>
   <div class="sp-landing">
     <div class="image">
       {{ if .Params.heroCanvas }}<canvas id="hero-canvas" aria-hidden="true"></canvas>{{ end }}
@@ -18,7 +19,7 @@
       </button>
       {{ end }}
     </div>
-    <main class="content">
+    <main class="content" id="site-content">
       {{ partial "nav.html" . }}
       <div class="center">
         {{ block "main" . }}{{ end }}

@@ -1375,3 +1375,47 @@ input[type="file"] {
 
 /* Social-rács térköze a gombtól (.dev-mintára) */
 .social-media-profiles { margin-top: 1.25rem; }
+
+/* Skip-link: tab-fókuszra jelenik meg, ugrás a tartalomra (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 0.6rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus { left: 0; }
+
+/* Vissza az oldal tetejére gomb */
+.to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--accent);
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.to-top.is-visible {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateY(0);
+}
+.to-top:hover { opacity: 1; border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) {
+  .to-top { transition: none; }
+}

@@ -3,3 +3,21 @@
 <script src="/assets/scripts/year.js" defer></script>
 <script src="/assets/scripts/theme.js" defer></script>
 <script src="/assets/scripts/lang-switch.js" defer></script>
+
+// Vissza az oldal tetejére – a .content panel görgetése (overflow: auto miatt)
+(function () {
+  var scrollBox = document.querySelector('.sp-landing .content');
+  if (!scrollBox) return;
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'to-top';
+  btn.setAttribute('aria-label', 'Back to top');
+  btn.textContent = '↑';
+  document.body.appendChild(btn);
+  btn.addEventListener('click', function () {
+    scrollBox.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  scrollBox.addEventListener('scroll', function () {
+    btn.classList.toggle('is-visible', scrollBox.scrollTop > 300);
+  }, { passive: true });
+})();
