@@ -501,9 +501,9 @@ body.page-landing p {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
+  border-radius: 999px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -745,18 +745,18 @@ picture img {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
+  border-radius: 999px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .button-privacy-policy-print:hover {
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
+  border-radius: 999px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
   background-color: transparent;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -845,18 +845,18 @@ picture img {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
+  border-radius: 999px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .button-cookie-policy-print:hover {
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
+  border-radius: 999px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
   background-color: transparent;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -898,7 +898,7 @@ picture img {
   -webkit-transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
   transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
   background-color: var(--accent);
-  border: 6px solid var(--accent);
+  border: 3px solid var(--accent);
   display: inline-block;
   cursor: pointer;
   color: var(--accent-text);
@@ -909,9 +909,9 @@ picture img {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  border-radius: 42px;
-  -moz-border-radius: 42px;
-  -webkit-border-radius: 42px;
+  border-radius: 999px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -919,7 +919,7 @@ picture img {
 
 .button-contact-submit:hover {
   background-color: transparent;
-  border: 6px solid var(--accent);
+  border: 3px solid var(--accent);
   color: var(--accent);
   transform: scale(1.04);
 }
