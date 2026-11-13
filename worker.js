@@ -14,6 +14,8 @@ const ALLOWED_ORIGINS = new Set([
   'https://www.armands.blog',
   'https://armands.dev',
   'https://www.armands.dev',
+  'https://neumann.armands.dev',
+  'https://neumann-armands-dev.cf-584.workers.dev',
 ]);
 
 export default {
