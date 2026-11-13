@@ -292,12 +292,27 @@
     }
 
     // ---- Egér ----
+    // Két dolog külön kezelve:
+    // - KAMERA-parallax: az egész ablakra vetítve (finom mozgás bárhol is jár az egér)
+    // - TASZÍTÓ-kör: csak akkor aktív, amíg az egér a KÉPPANELEN van; a pozíció
+    //   a canvas-hoz képest 1:1 (kilépéskor a kör azonnal „kialszik", nem marad
+    //   a portré fölött lebegve)
     var mouse = new THREE.Vector2(0, 0);
     var target = new THREE.Vector2(0, 0);
+    var repel = new THREE.Vector2(0, 0);
+    var repelOn = false;
     var lastInteract = performance.now();
     window.addEventListener('pointermove', function (e) {
       target.x = (e.clientX / window.innerWidth) * 2 - 1;
       target.y = -((e.clientY / window.innerHeight) * 2 - 1);
+      var rect = canvas.getBoundingClientRect();
+      var inside = e.clientX >= rect.left && e.clientX <= rect.right &&
+                   e.clientY >= rect.top && e.clientY <= rect.bottom;
+      repelOn = inside;
+      if (inside) {
+        repel.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        repel.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+      }
       lastInteract = performance.now();
     }, { passive: true });
 
@@ -329,8 +344,10 @@
       var ud = pts.userData;
       var arr = pts.geometry.attributes.position.array;
       var K = 0.045, DAMP = 0.86, FORCE = 2.6;
-      var mx = mouse.x * (viewW / 2);
-      var my = mouse.y * (viewH / 2);
+      // Taszító-kör középpontja: csak képpanel feletti egérnél él;
+      // kívül láthatatlan pozícióba kerül, így a kikapcsolás azonnali
+      var mx = (repelOn ? repel.x : 1e6) * (viewW / 2);
+      var my = (repelOn ? repel.y : 1e6) * (viewH / 2);
       var R = imgW * 0.08;
       var R2 = R * R;
 
