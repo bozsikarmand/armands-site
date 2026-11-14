@@ -431,7 +431,8 @@ body.page-contact .sp-landing .content .center {
 }
 
 .copyright {
-  opacity: 0.4;
+  /* kontraszt (WCAG): a 0.4-es opacity a sötét témában alig látszott */
+  color: var(--muted);
 }
 
 .copyright a:hover {
@@ -440,6 +441,8 @@ body.page-contact .sp-landing .content .center {
 }
 
 .copyright p {
+  /* direkt szín: a régi `p { color: var(--bg-alt) }` (lentebb) felülírná az öröklöttet */
+  color: var(--muted);
   font-size: 12px;
   line-height: 14px;
 }
