@@ -1215,6 +1215,8 @@ input[type="file"] {
   .au-topbar__menu a { width: 100%; }
   .au-topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
   .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
+  /* v1.2.2: a nyelvváltó GOMB is töltse ki a sort (mint a téma-váltó) */
+  .au-topbar__tools .au-lang__btn { width: 100%; justify-content: center; }
 }
 
 /* Social-rács térköze a gombtól (.dev-mintára) */

@@ -29,6 +29,7 @@
      v1.0 (2026-11-15) – .au-grain textúra, .au-search hint-sáv + is-active találat
      v1.1 (2026-11-15) – .au-icon ikon-konvenció (Iconoir, currentColor)
      v1.2 (2026-11-15) – .au-menu-fab mobil menü-gomb (off-canvas minta)
+     v1.2.2 (2026-11-15) – .au-menu-tools: nyelv/téma váltó-sor a mobil panelben
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -560,3 +561,14 @@
   }
   .au-menu-backdrop[hidden] { display: none; }
 }
+
+/* ---- v1.2.2 (2026-11-15) ---- */
+
+/* Mobil off-canvas panel aljának váltó-sora (nyelv/téma): egymás alatt,
+   teljes szélességben – a gombok szélessége egyezzen. */
+.au-menu-tools {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 0.8rem 1rem; border-top: 1px solid var(--border);
+}
+.au-menu-tools > * { width: 100%; }
+.au-menu-tools .au-lang__btn { width: 100%; justify-content: center; }
