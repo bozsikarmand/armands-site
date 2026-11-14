@@ -32,6 +32,7 @@
      v1.2.2 (2026-11-15) – .au-menu-tools: nyelv/téma váltó-sor a mobil panelben
      v1.3 (2026-11-15) – konténer-érzékeny menü (.navbar-expand minta)
      v1.4 (2026-11-15) – beolvasztás: .skip-link, .sr-only, .copyright, topbar-tools
+     v1.5 (2026-11-15) – beolvasztás: dev/site azonos (biography, contact, hero, rácsok, theme-toggle)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -669,3 +670,45 @@
 /* Topbar-eszköz-sor alapjai (dev/site shim-jeiből). */
 .au-topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
 .au-topbar .theme-toggle { margin-left: 0; }
+
+/* ---- v1.5 (2026-11-15) ---- */
+
+/* A dev és site azonos szabályainak beolvasztása (a main.css-ekből). */
+
+/* Szöveg-blokk (biography/contact közös minta). */
+.biography { padding: 20px 0; }
+.biography p, .contact p { color: var(--muted); text-align: justify; text-justify: inter-word; }
+.biography a, .contact a { color: var(--muted); transition-duration: 0.5s; border-bottom: 1px dotted var(--muted); }
+.biography a:hover, .contact a:hover { color: var(--link); transition-duration: 0.1s; border-bottom: 1px solid var(--link); }
+.contact { padding: 20px 0; }
+
+/* Hero-display (a dev/site közös hősszövege). */
+.introduction {
+  /* armands-ui v0.8 folyékony display-skála */
+  font-weight: 600;
+  font-size: var(--au-fs-display);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+.introduction .self-identification { color: var(--identification); }
+.introduction .privacy-policy { color: var(--identification); }
+.introduction .cookie-policy { color: var(--identification); }
+
+/* Lábléc-link-rács és social-rács (dev/site közös szerkezet). */
+.footer-links .footer-link { width: 90%; }
+.footer-links .footer-link ul li { font-size: 16px; line-height: 16px; margin-bottom: 12px; }
+.footer-links .footer-link ul li a { color: var(--muted); transition-duration: 0.5s; }
+.footer-links .footer-link ul li a:after { content: "\00a0\00a0"; }
+.footer-links .footer-link ul li a:hover { color: var(--link); transition-duration: 0.1s; }
+
+.social-media-profiles .social-media-profile { width: 90%; }
+.social-media-profiles .social-media-profile ul li { font-size: 16px; line-height: 16px; margin-bottom: 12px; }
+.social-media-profiles .social-media-profile ul li a { color: var(--muted); transition-duration: 0.5s; }
+.social-media-profiles .social-media-profile ul li a:hover { color: var(--link); transition-duration: 0.1s; }
+
+/* Téma-váltó gomb alapja (dev/site/CV közös). */
+.theme-toggle { background: transparent; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1.4; padding: 0 0.7rem; min-height: 44px; }
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Nyelvváltó wrapper-shim. */
+.lang-switch { margin-left: 10px; }

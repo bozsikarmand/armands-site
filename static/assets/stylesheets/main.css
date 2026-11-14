@@ -314,13 +314,6 @@ body.page-contact .sp-landing .content .center {
   }
 }
 
-.introduction {
-  /* armands-ui v0.8 folyékony display-skála (64px-ról fluidra) */
-  font-weight: 600;
-  font-size: var(--au-fs-display);
-  line-height: 1.25;
-  letter-spacing: -0.03em;
-}
 
 .introduction h1 {
   font-weight: 400;
@@ -332,9 +325,6 @@ body.page-contact .sp-landing .content .center {
   color: var(--h1);
 }
 
-.introduction .self-identification {
-  color: var(--identification);
-}
 
 /* Contact oldal: kompakt fejléc, hogy görgetés nélkül beférjen az űrlap */
 .introduction--compact {
@@ -345,10 +335,6 @@ body.page-contact .sp-landing .content .center {
   margin-bottom: 16px;
 }
 
-.biography {
-  padding: 20px 0 20px 0;
-  font-family: 'Lora', serif;
-}
 
 @media (max-width: 1200px) {
   .biography {
@@ -362,23 +348,8 @@ body.page-contact .sp-landing .content .center {
   }
 }
 
-.biography p {
-  color: var(--muted);
-  text-align: justify;
-  text-justify: inter-word;
-}
 
-.biography a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-  border-bottom: 1px dotted var(--muted);
-}
 
-.biography a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-  border-bottom: 1px dotted var(--link);
-}
 
 .social-media-profiles {
   display: flex;
@@ -386,11 +357,6 @@ body.page-contact .sp-landing .content .center {
   flex-wrap: wrap;
 }
 
-.social-media-profiles .social-media-profile {
-  width: auto;
-  display: block;
-  margin-bottom: 20px;
-}
 
 /* Oszlopok balra igazítva (eredeti), a blokkok szétosztva a gomb széléig */
 .social-media-profiles .social-media-profile {
@@ -414,21 +380,8 @@ body.page-contact .sp-landing .content .center {
   opacity: 0.5;
 }
 
-.social-media-profiles .social-media-profile ul li {
-  font-size: 16px;
-  line-height: 16px;
-  margin-bottom: 12px;
-}
 
-.social-media-profiles .social-media-profile ul li a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-}
 
-.social-media-profiles .social-media-profile ul li a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-}
 
 
 /* CTA gomb (kapcsolat) */
@@ -470,23 +423,7 @@ body.page-contact .sp-landing .content .center {
   transform: scale(1.04);
 }
 
-.button-github:active {
-  outline: none;
-  position: relative;
-  top: 4px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
-}
 
-.button-github:focus {
-  outline: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
-}
 
 
 /* montserrat-regular - latin-ext_latin */
@@ -545,11 +482,6 @@ body.page-contact .sp-landing .content .center {
 
 /* Footer links */
 
-.footer-links .footer-link {
-  width: 100%;
-  display: inline-block;
-  margin-bottom: 16px;
-}
 
 @media (max-width: 500px) {
   .footer-links .footer-link {
@@ -557,34 +489,13 @@ body.page-contact .sp-landing .content .center {
   }
 }
 
-.footer-links .footer-link ul li {
-  font-size: 16px;
-  line-height: 16px;
-  margin-bottom: 12px;
-}
 
-.footer-links .footer-link ul li a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-}
 
-.footer-links .footer-link ul li a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-}
 
-.footer-links .footer-link ul li a:after {
-  content: "\00a0\00a0";
-}
 
 
 /* Navigation links */
 
-.navigation-links .navigation-link {
-  width: 100%;
-  display: inline-block;
-  margin-bottom: 40px;
-}
 
 @media (max-width: 500px) {
   .navigation-links-links .navigation-link-link {
@@ -592,30 +503,10 @@ body.page-contact .sp-landing .content .center {
   }
 }
 
-.navigation-links .navigation-link ul li {
-  font-size: 16px;
-  line-height: 16px;
-  margin-bottom: 12px;
-}
 
-.navigation-links .navigation-link ul li a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-}
 
-.navigation-links .navigation-link ul li a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-}
 
-.navigation-links .navigation-link ul li a:after {
-  content: "\00a0\00a0";
-}
 
-.navigation-links .navigation-link ul li a:active {
-  color: var(--link);
-  transition-duration: 0.1s;
-}
 
 picture {
   width: 100%;
@@ -632,10 +523,6 @@ picture img {
 
 /* Privacy policy text */
 
-.privacy-policy-text {
-  padding: 40px 0 40px 0;
-  font-family: 'Lora', serif;
-}
 
 @media (max-width: 1200px) {
   .privacy-policy-text {
@@ -649,31 +536,13 @@ picture img {
   }
 }
 
-.privacy-policy-text p {
-  color: var(--muted);
-  text-align: justify;
-  text-justify: inter-word;
-}
 
-.privacy-policy-text a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-  border-bottom: 1px dotted var(--muted);
-}
 
-.privacy-policy-text a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-  border-bottom: 1px dotted var(--link);
-}
 
 .privacy-policy-text p {
   line-height: 32px
 }
 
-.introduction .privacy-policy {
-  color: var(--identification);
-}
 
 
 /* Privacy policy print button */
@@ -712,31 +581,11 @@ picture img {
   text-transform: uppercase
 }
 
-.button-privacy-policy-print:active {
-  outline: none;
-  position: relative;
-  top: 4px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
-}
 
-.button-privacy-policy-print:focus {
-  outline: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
-}
 
 
 /*Cookie Policy */
 
-.cookie-policy-text {
-  padding: 40px 0 40px 0;
-  font-family: 'Lora', serif;
-}
 
 @media (max-width: 1200px) {
   .cookie-policy-text {
@@ -750,31 +599,13 @@ picture img {
   }
 }
 
-.cookie-policy-text p {
-  color: var(--muted);
-  text-align: justify;
-  text-justify: inter-word;
-}
 
-.cookie-policy-text a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-  border-bottom: 1px dotted var(--muted);
-}
 
-.cookie-policy-text a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-  border-bottom: 1px dotted var(--link);
-}
 
 .cookie-policy-text p {
   line-height: 32px
 }
 
-.introduction .cookie-policy {
-  color: var(--identification);
-}
 
 /*Cookie policy print button */
 
@@ -812,30 +643,11 @@ picture img {
   text-transform: uppercase
 }
 
-.button-cookie-policy-print:active {
-  outline: none;
-  position: relative;
-  top: 4px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
-}
 
-.button-cookie-policy-print:focus {
-  outline: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  text-transform: uppercase
-}
 
 
 /* Button contact (header in index) */
 
-.button-contact-header {
-  float: right;
-}
 
 
 /* Contact form button */
@@ -869,17 +681,9 @@ picture img {
   text-transform: uppercase
 }
 
-.form-contact label:before {
-  content: '\A';
-  white-space: pre;
-}
 
 /*Contact form*/
 
-.contact {
-  padding: 16px 0 16px 0;
-  font-family: 'Lora', serif;
-}
 
 @media (max-width: 1200px) {
   .contact {
@@ -893,36 +697,9 @@ picture img {
   }
 }
 
-.contact p {
-  color: var(--muted);
-  text-align: justify;
-  text-justify: inter-word;
-}
 
-.contact a {
-  color: var(--muted);
-  transition-duration: 0.5s;
-  border-bottom: 1px dotted var(--muted);
-}
 
-.contact a:hover {
-  color: var(--link);
-  transition-duration: 0.1s;
-  border-bottom: 1px dotted var(--link);
-}
 
-.text-form-contact {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 
 #topics {
   font-family: "Lora", sans-serif;
@@ -940,23 +717,12 @@ picture img {
 
 /* Hide ReCaptcha badge */
 
-.grecaptcha-badge {
-  visibility: hidden;
-}
 
-.recaptcha-info-text {
-  font-size: 0.625em;
-}
 
 input[type="file"] {
   display: none;
 }
 
-.upload-file {
-  border: 1px solid #ccc;
-  display: grid;
-  cursor: pointer;
-}
 
 [type="file"] {
   height: 0;
@@ -1021,48 +787,12 @@ input[type="file"] {
   top: 0;
 }
 
-.button-upload {
-  font-family: 'Lora', serif;
-  font-size: 16px;
-  line-height: 1.3;
-  margin: 1rem 0;
-  text-align: center;
-}
 
 /*Country flags */
 
-.flag-icon-background {
-  background-size: contain;
-  background-position: 50%;
-  background-repeat: no-repeat;
-}
-.flag-icon {
-  background-size: contain;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  position: relative;
-  display: inline-block;
-  width: 1.33333333em;
-  line-height: 1em;
-}
-.flag-icon:before {
-  content: "\00a0";
-}
-.flag-icon.flag-icon-squared {
-  width: 1em;
-}
-.flag-icon-gb-eng.flag-icon-squared {
-  background-image: url(../flags/gb.svg);
-}
-.flag-icon-hu.flag-icon-squared {
-  background-image: url(../flags/hu.svg);
-}
 
 /* Language Selector */
 
-.link-language-selector-footer {
-  float: right !important;
-}
 /* ---------- 3D hero réteg (2026-os bővítés) ---------- */
 
 .sp-landing {
@@ -1123,45 +853,15 @@ input[type="file"] {
 }
 
 /* Gépelő kurzor */
-.tw-caret {
-  display: inline-block;
-  width: 0.55em;
-  margin-left: 2px;
-  border-bottom: 3px solid currentColor;
-  animation: tw-blink 0.9s steps(1) infinite;
-}
 
-.tw-caret--off {
-  animation: none;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
 @keyframes tw-blink {
   0%, 55% { opacity: 1; }
   56%, 100% { opacity: 0; }
 }
 
-.theme-toggle {
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1.4;
-  margin-left: 10px;
-  padding: 0 0.7rem;
-  min-height: 44px;
-  transition: border-color .2s ease, color .2s ease;
-}
-.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
 
 /* Nyelvválasztó dropdown (blog-minta) + hamburger panel */
-.lang-switch {
-  /* armands-ui v0.5 .au-lang-ra épül; helyi extra: */
-  margin-left: 10px;
-}
 
 /* Topbar: a tartalomsáv tetején (asztali), mobilon off-canvas panel */
 
