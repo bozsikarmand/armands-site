@@ -1238,26 +1238,10 @@ input[type="file"] {
 
 
 /* Nyelvválasztó dropdown (blog-minta) + hamburger panel */
-.lang-switch { position: relative; display: inline-block; margin-left: 10px; }
-.lang-switch__btn {
-  background: transparent; border: 1px solid var(--border); border-radius: 6px;
-  color: var(--muted); cursor: pointer; font-size: 1rem; padding: 0 0.7rem;
-  min-height: 44px; line-height: 1.4;
+.lang-switch {
+  /* armands-ui v0.5 .au-lang-ra épül; helyi extra: */
+  margin-left: 10px;
 }
-.lang-switch__btn:hover, .lang-switch.is-open .lang-switch__btn { border-color: var(--accent); color: var(--accent); }
-.lang-switch__menu {
-  display: none; position: absolute; right: 0; top: calc(100% + 6px); min-width: 155px;
-  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 4px;
-  box-shadow: 0 10px 22px var(--shadow); z-index: 60; padding: 0.3rem;
-}
-.lang-switch.is-open .lang-switch__menu { display: block; }
-.lang-switch__item {
-  display: flex; align-items: center; gap: 8px; padding: 0.5rem 0.7rem;
-  border-radius: 3px; color: var(--text); text-decoration: none; font-size: 0.92rem;
-}
-.lang-switch__item:hover { background: var(--bg); color: var(--accent); }
-.lang-switch__item.is-active { color: var(--accent); font-weight: 700; }
-.lang-switch__item img { border-radius: 2px; }
 
 /* Topbar: a tartalomsáv tetején (asztali), mobilon off-canvas panel */
 .topbar {
