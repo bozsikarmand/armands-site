@@ -19,6 +19,7 @@
 
    VERZIÓTÖRTÉNET
    v0.1 (2026-11-14) – első kiadás: token-séma + layout-primitívek
+     v0.2 (2026-11-14) – .au-pill--bordered/--outline, .au-tag, .au-card/--hover
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -152,3 +153,47 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+/* ---- v0.2 (2026-11-14) ---- */
+
+/* Keretes pill-gomb: kitöltött, vastag accent-szegély;
+   hoverre átlátszó háttérrel (a dev/CV CTA-stílus mintájára). */
+.au-pill--bordered { border: 0.35em solid var(--accent); }
+.au-pill--bordered:hover { background: transparent; filter: none; }
+
+/* Vázas pill-gomb: átlátszó, vékony szegély – kapcsolati linkek/chipek. */
+.au-pill--outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 600;
+}
+.au-pill--outline:hover {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--accent);
+  filter: none;
+}
+
+/* Címke (tag) – kártyák címkéi, kategóriák. */
+.au-tag {
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--au-radius) / 2);
+  padding: 2px 8px;
+}
+
+/* Panel-kártya; --hover: hoverrel accent-szegély. */
+.au-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--au-radius);
+  padding: var(--au-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--au-space-3);
+}
+.au-card--hover { transition: border-color 0.15s ease; }
+.au-card--hover:hover { border-color: var(--accent); }
