@@ -21,6 +21,7 @@
    v0.1 (2026-11-14) – első kiadás: token-séma + layout-primitívek
      v0.2 (2026-11-14) – .au-pill--bordered/--outline, .au-tag, .au-card/--hover
      v0.3 (2026-11-14) – .au-field az egységesített űrlap-metrikákra; --au-pill-border-w token
+     v0.4 (2026-11-14) – .au-section-title, .au-to-top
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -208,3 +209,45 @@
 }
 .au-card--hover { transition: border-color 0.15s ease; }
 .au-card--hover:hover { border-color: var(--accent); }
+
+/* ---- v0.4 (2026-11-14) ---- */
+
+/* Szekció-cím: vékony elválasztó-vonalas fejléc.
+   A CV az accent-színt és vastagabb vonalat a tokeneken keresztül állítja. */
+.au-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--au-title-color, var(--text));
+  border-bottom: var(--au-title-border, 1px) solid var(--border);
+  padding-bottom: 0.4rem;
+  margin: 0 0 1.2rem;
+}
+
+/* Vissza az oldal tetejére – fix kör-gomb, .is-visible jeleníti meg. */
+.au-to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--accent);
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: var(--z-sticky);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.au-to-top.is-visible {
+  opacity: 0.9;
+  visibility: visible;
+  transform: translateY(0);
+}
+.au-to-top:hover { opacity: 1; border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) {
+  .au-to-top { transition: none; }
+}
