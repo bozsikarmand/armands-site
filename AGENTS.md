@@ -68,3 +68,16 @@ színt vagy viselkedést változtatsz, az mind a 4 oldalon egyszerre érvényes�
 - Blog zzo-témájának szerkezete és menüje; a CV hero-középre igazítása és
   print-CSS-je; a neumann/bar archívumok.
 - Homelab-infrastruktúra: nincs beépítve az oldalakba.
+
+## 7. Vizuális regressziós teszt (visual/)
+
+Minden tartalmi repóban (`visual/`): kanonikus screenshot-ok oldalanként,
+méretenként (390/768/1280/1920) és témánként (dark/monolight). A baseline a
+`visual/baseline/`-ban él; eltérés >2% vagy hiányzó baseline = nem-nulla kód.
+
+- Telepítés egyszer: `npm install playwright-core` (a repó gyökerében).
+- Baseline rögzítése szándékos megjelenés-változás után:
+  `node visual/runner.mjs --update` (mindig nézd meg a diffet commit előtt!).
+- Ellenőrzés: `node visual/runner.mjs`.
+- A futtató a helyi Hugót (`/tmp/opencode/hugo`) és a helyi Chromiumot használja
+  (a config `chromiumPath`-ja); CI-ban a `CHROMIUM_PATH` env-felülírható.

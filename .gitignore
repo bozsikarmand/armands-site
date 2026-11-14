@@ -1,3 +1,5 @@
 *:Zone.Identifier.wrangler/
 .assetsignore
 public/
+public-visual/
+node_modules/

@@ -1,0 +1,36 @@
+{
+  "hugo": "/tmp/opencode/hugo",
+  "hugoArgs": [
+    "--destination",
+    "public-visual",
+    "--baseURL",
+    "http://127.0.0.1:8791"
+  ],
+  "serveDir": "public-visual",
+  "chromiumPath": "/home/abozsik/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome",
+  "sizes": [
+    390,
+    768,
+    1280,
+    1920
+  ],
+  "themes": [
+    "dark",
+    "monolight"
+  ],
+  "themeStorageKey": "theme",
+  "pages": [
+    {
+      "name": "home-en",
+      "path": "/en/"
+    },
+    {
+      "name": "home-hu",
+      "path": "/hu/"
+    },
+    {
+      "name": "contact-en",
+      "path": "/en/modules/contact/"
+    }
+  ]
+}
