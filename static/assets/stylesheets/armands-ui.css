@@ -24,6 +24,7 @@
      v0.4 (2026-11-14) – .au-section-title, .au-to-top
      v0.5 (2026-11-14) – .au-lang nyelvválasztó legördülő
      v0.6 (2026-11-14) – .au-topbar fejléc-sáv (asztali alapok)
+     v0.7 (2026-11-14) – .au-search keresőmező, .au-timeline idővonal
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -366,3 +367,68 @@
   border-radius: 4px;
 }
 .au-topbar__menu a:hover { color: var(--accent); }
+
+/* ---- v0.7 (2026-11-14) ---- */
+
+/* Keresőmező: ikon + input + kbd-jelzés (Ctrl K) + találati lenyíló.
+   A JS (fuse.js index felett) oldalspecifikus marad. */
+.au-search { position: relative; display: flex; align-items: center; }
+.au-search__icon {
+  position: absolute; left: 0.65rem; color: var(--muted); font-size: 0.85rem;
+  pointer-events: none;
+}
+.au-search__input {
+  width: 100%; box-sizing: border-box; min-height: 44px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: calc(var(--au-radius) - 2px);
+  color: var(--text); font: inherit; font-size: 0.9rem;
+  padding: 0.45rem 4rem 0.45rem 2rem;
+}
+.au-search__input:focus { outline: none; border-color: var(--accent); }
+.au-search__input::placeholder { color: var(--muted); }
+.au-search__kbd {
+  position: absolute; right: 0.45rem; top: 50%; transform: translateY(-50%);
+  font-size: 0.65rem; padding: 0.08rem 0.35rem;
+  border-radius: calc(var(--au-radius) - 6px); white-space: nowrap; pointer-events: none;
+  color: var(--muted); border: 1px solid var(--border);
+}
+.au-search__results {
+  position: absolute; top: calc(100% + 6px); right: 0;
+  min-width: 300px; max-width: Min(360px, 90vw); /* nagy M: Sass-biztos */ max-height: 320px; overflow-y: auto;
+  z-index: var(--z-sticky);
+  background: var(--bg-alt); border: 1px solid var(--border);
+  border-radius: calc(var(--au-radius) - 2px);
+  box-shadow: 0 10px 22px var(--au-shadow, rgba(0, 0, 0, 0.25));
+  padding: 0.3rem;
+}
+.au-search__result {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 0.5rem 0.7rem; border-radius: 3px; text-decoration: none;
+}
+.au-search__result:hover { background: var(--au-menu-hover-bg, var(--bg)); }
+.au-search__result-title { color: var(--text); font-size: 0.9rem; font-weight: 600; }
+
+/* Idővonal: bal szegély + accent pöttyök. */
+.au-timeline { list-style: none; margin: 0; padding: 0; }
+.au-timeline__item {
+  position: relative;
+  padding: 0 0 1.8rem 1.6rem;
+  border-left: 2px solid var(--border);
+  margin-left: 0.4rem;
+}
+.au-timeline__item:last-child { padding-bottom: 0.2rem; }
+.au-timeline__item::before {
+  content: '';
+  position: absolute; left: -7px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+.au-timeline__head {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: baseline; gap: 0.2rem 1rem;
+}
+.au-timeline__period {
+  margin: 0; font-weight: 700;
+  color: var(--au-timeline-period-color, var(--muted));
+}
