@@ -1,0 +1,153 @@
+/* ==========================================================================
+   armands-ui v0.1 (2026-11-14)
+   --------------------------------------------------------------------------
+   Közös mini-réteg az armands-oldalakhoz (blog, dev, cv, site).
+   Vendorolva, azonos verzió minden repóban; a fejlécben a verziótörténet.
+
+   SZERZŐDÉSEK
+   1) SZÍN-TOKENEK – ezt a fájlt NEM tartalmaz színeket. A téma-fájl
+      (oldalanként) KÖTELES definiálni ezeket, sötét+világos módban:
+        --bg --bg-alt --text --muted --accent --accent-text
+        --link --link-hover --border --input-bg --input-text
+      (+ opcionális: --overlay-bg*, --h1, --identification)
+   2) STRUKTURÁLIS TOKENEK – itt, egyszer. Az oldalak ne írják felül
+      máshol, csak ha tényleg indokolt (ügyelj a paritásra!).
+   3) BREAKPOINTOK – kanonikusan: 500 / 800 / 1200 px.
+      Media query-ben CSS-változó nem használható, ezért a primitívek
+      intrinszek (flex-wrap, auto-fit): media queryre alig kell hagyatkozni.
+      Egyedi reszponzív finomhangolásnál a fenti három érték közül válassz.
+
+   VERZIÓTÖRTÉNET
+   v0.1 (2026-11-14) – első kiadás: token-séma + layout-primitívek
+     (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
+     + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
+   ========================================================================== */
+
+:root {
+  /* Strukturális tokenek (kanonikus, felülírásuk indokolt esetben) */
+  --au-container: 60rem;      /* fő tartalmi szélesség */
+  --au-gap: 1rem;             /* alap térköz a primitívekben */
+  --au-radius: 8px;           /* kártya/űrlap lekerekítés */
+  --au-radius-pill: 999px;    /* gomb lekerekítés */
+  --au-space-1: 0.25rem;
+  --au-space-2: 0.5rem;
+  --au-space-3: 1rem;
+  --au-space-4: 1.5rem;
+  --au-space-5: 2rem;
+  --au-space-6: 3rem;
+  --z-base: 0;
+  --z-content: 10;
+  --z-sticky: 100;
+  --z-overlay: 900;
+  --z-modal: 999;
+}
+
+/* ---- Layout-primitívek (intrinszek, media query nélkül) -------------- */
+
+/* Középre zárt, szélén behúzott tartalomkonténer. */
+.au-container {
+  width: min(100% - 2 * var(--au-space-3), var(--au-container));
+  margin-inline: auto;
+}
+
+/* Vízszintes csoport, ami szükség esetén magát tördeli. */
+.au-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--au-gap);
+  align-items: center;
+}
+
+/* Függőleges ritmus: az elemek között egyenletes rés. */
+.au-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--au-gap);
+}
+
+/* Oszlopok, amik keskeny helyen egymás alá fordulnak. */
+.au-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--au-gap);
+}
+.au-switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--au-switch-threshold, 30rem) - 100%) * 999);
+}
+
+/* Egyenlő oszlopok, automatikus oszlopszám: annyi fér el, amennyi. */
+.au-grid-auto {
+  display: grid;
+  gap: var(--au-gap);
+  grid-template-columns:
+    repeat(auto-fill, minmax(min(100%, var(--au-col, 18rem)), 1fr));
+}
+
+/* ---- Komponens-primitívek (a szín-tokeneken keresztül témázódnak) ---- */
+
+/* Lekerekített (pill) gomb – CTA-k, beküldés. */
+.au-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--au-space-2);
+  padding: 0.75rem 2rem;
+  border: 0;
+  border-radius: var(--au-radius-pill);
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.au-pill:hover { filter: brightness(1.08); }
+.au-pill:disabled { opacity: 0.6; cursor: default; }
+
+/* Űrlap-mező csoport: címke + mező egységes ritmusban. */
+.au-field { display: grid; gap: var(--au-space-2); }
+.au-field input,
+.au-field textarea,
+.au-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--au-radius);
+  background: var(--input-bg);
+  color: var(--input-text);
+  font: inherit;
+}
+.au-field input:focus,
+.au-field textarea:focus,
+.au-field select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Billentyű-kombináció jelölése (pl. Ctrl K). */
+.au-kbd {
+  padding: 0.1em 0.5em;
+  border: 1px solid var(--border);
+  border-radius: var(--au-radius-pill);
+  background: var(--input-bg);
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+  font-size: 0.8em;
+}
+
+/* Kategória/címke-badge. */
+.au-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15em 0.7em;
+  border: 1px solid var(--border);
+  border-radius: var(--au-radius-pill);
+  color: var(--muted);
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}

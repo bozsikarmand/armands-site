@@ -1,3 +1,7 @@
+@import url('armands-ui.css');
+
+/* Oldalspecifikus stílus; a token-séma és a primitívek szerződése:
+   armands-ui.css fejléce. Színek csak tokenekben. */
 :root {
   /* armands.blog _dark.scss tokenjei – pontosan */
   --bg: #2D2A2E;                        /* body-background-color */
