@@ -871,7 +871,6 @@ picture img {
 .button-contact-submit:hover {
   background-color: transparent;
   color: var(--accent);
-  transform: scale(1.04);
 }
 
 .button-contact-submit:active {
@@ -1197,7 +1196,7 @@ input[type="file"] {
 /* .topbar alapok: armands-ui v0.6 .au-topbar */
 .au-topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
 .au-topbar .theme-toggle { margin-left: 0; }
-.menu-fab, .menu-backdrop { display: none; }
+@media only screen and (max-width: 1200px) {
   .au-topbar {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
     width: min(320px, 86vw);

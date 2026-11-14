@@ -178,7 +178,9 @@
 .au-pill--block { width: 100%; }
 
 .au-pill--bordered { border: var(--au-pill-border-w, 0.35em) solid var(--accent); }
-.au-pill--bordered:hover { background: transparent; filter: none; }
+/* v1.2.1: hoverre a szöveg is accent-színű – különben az accent-text
+   (sötét) eltűnik az átlátszó háttéren (pl. ALL PROJECTS sötét témában) */
+.au-pill--bordered:hover { background: transparent; color: var(--accent); filter: none; }
 
 /* Vázas pill-gomb: átlátszó, vékony szegély – kapcsolati linkek/chipek. */
 .au-pill--outline {
@@ -377,9 +379,11 @@
 /* Keresőmező: ikon + input + kbd-jelzés (Ctrl K) + találati lenyíló.
    A JS (fuse.js index felett) oldalspecifikus marad. */
 .au-search { position: relative; display: flex; align-items: center; }
+/* v1.2.1: fix méret + vertikális középre (Iconoir-csere után span-wrapper) */
 .au-search__icon {
-  position: absolute; left: 0.65rem; color: var(--muted); font-size: 0.85rem;
-  pointer-events: none;
+  position: absolute; left: 0.65rem; top: 50%; transform: translateY(-50%);
+  width: 1.05rem; height: 1.05rem;
+  color: var(--muted); pointer-events: none;
 }
 .au-search__input {
   width: 100%; box-sizing: border-box; min-height: 44px;
