@@ -430,27 +430,6 @@ body.page-contact .sp-landing .content .center {
   transition-duration: 0.1s;
 }
 
-.copyright {
-  /* kontraszt (WCAG): a 0.4-es opacity a sötét témában alig látszott */
-  color: var(--muted);
-}
-
-.copyright a:hover {
-  color: var(--accent);
-  opacity: 1;
-}
-
-.copyright p {
-  /* direkt szín: a régi `p { color: var(--bg-alt) }` (lentebb) felülírná az öröklöttet */
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 14px;
-}
-
-.copyright p a {
-  color: var(--muted);
-}
-
 
 /* CTA gomb (kapcsolat) */
 
@@ -1152,18 +1131,6 @@ input[type="file"] {
   animation: tw-blink 0.9s steps(1) infinite;
 }
 
-/* Képernyőolvasóknak szánt csak olvasható szöveg (sr-only) */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
 .tw-caret--off {
   animation: none;
   opacity: 0;
@@ -1197,27 +1164,10 @@ input[type="file"] {
 }
 
 /* Topbar: a tartalomsáv tetején (asztali), mobilon off-canvas panel */
-/* .topbar alapok: armands-ui v0.6 .au-topbar */
-.au-topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
-.au-topbar .theme-toggle { margin-left: 0; }
 
 /* Social-rács térköze a gombtól (.dev-mintára) */
 .social-media-profiles { margin-top: 1.25rem; }
 
-/* Skip-link: tab-fókuszra jelenik meg, ugrás a tartalomra (WCAG 2.4.1) */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  z-index: 100;
-  background: var(--accent);
-  color: var(--accent-text);
-  padding: 0.6rem 1rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  border-radius: 0 0 6px 0;
-}
-.skip-link:focus { left: 0; }
 
 /* .to-top: armands-ui v0.4 .au-to-top-ra épül (a gombot a JS hozza létre) */
 
