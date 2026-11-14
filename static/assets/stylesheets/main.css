@@ -908,31 +908,18 @@ picture img {
 /* Contact form button */
 
 .button-contact-submit {
-  -webkit-transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
-  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
-  background-color: var(--accent);
-  border: 3px solid var(--accent);
-  display: inline-block;
-  cursor: pointer;
-  color: var(--accent-text);
+  /* armands-ui v0.3 .au-pill--bordered-ra épül; site-extrák: */
+  --au-pill-border-w: 3px;
+  width: 100%;
+  padding: 12px 76px;
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   text-transform: uppercase;
-  padding: 12px 76px;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 999px;
-  -moz-border-radius: 999px;
-  -webkit-border-radius: 999px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .button-contact-submit:hover {
   background-color: transparent;
-  border: 3px solid var(--accent);
   color: var(--accent);
   transform: scale(1.04);
 }
@@ -954,20 +941,6 @@ picture img {
   content: '\A';
   white-space: pre;
 }
-
-.form-contact input {
-  font-family: "Lora", sans-serif;
-  outline: 0;
-  background: var(--input-bg);
-  color: var(--input-text);
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
 
 /*Contact form*/
 
@@ -1017,27 +990,6 @@ picture img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.text-form-contact input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-#message {
-  font-family: "Lora", sans-serif;
-  outline: 0;
-  background: var(--input-bg);
-  color: var(--muted);
-  width: 100%;
-  height: 200px;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-  resize: none;
 }
 
 #topics {

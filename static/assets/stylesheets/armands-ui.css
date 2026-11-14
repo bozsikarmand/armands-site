@@ -20,6 +20,7 @@
    VERZIÓTÖRTÉNET
    v0.1 (2026-11-14) – első kiadás: token-séma + layout-primitívek
      v0.2 (2026-11-14) – .au-pill--bordered/--outline, .au-tag, .au-card/--hover
+     v0.3 (2026-11-14) – .au-field az egységesített űrlap-metrikákra; --au-pill-border-w token
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -107,25 +108,33 @@
 .au-pill:hover { filter: brightness(1.08); }
 .au-pill:disabled { opacity: 0.6; cursor: default; }
 
-/* Űrlap-mező csoport: címke + mező egységes ritmusban. */
+/* Űrlap-mező csoport: címke + mező egységes ritmusban.
+   A metrikák a négy oldalon egységesített űrlap-lookot kódolják. */
 .au-field { display: grid; gap: var(--au-space-2); }
+.au-field > label {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
 .au-field input,
 .au-field textarea,
 .au-field select {
   width: 100%;
   box-sizing: border-box;
-  padding: 0.7rem 0.9rem;
+  padding: 9px 11px;
   border: 1px solid var(--border);
-  border-radius: var(--au-radius);
+  border-radius: calc(var(--au-radius) - 2px);
   background: var(--input-bg);
   color: var(--input-text);
   font: inherit;
+  font-size: 15px;
 }
 .au-field input:focus,
 .au-field textarea:focus,
 .au-field select:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--accent);
 }
 
 /* Billentyű-kombináció jelölése (pl. Ctrl K). */
@@ -158,7 +167,7 @@
 
 /* Keretes pill-gomb: kitöltött, vastag accent-szegély;
    hoverre átlátszó háttérrel (a dev/CV CTA-stílus mintájára). */
-.au-pill--bordered { border: 0.35em solid var(--accent); }
+.au-pill--bordered { border: var(--au-pill-border-w, 0.35em) solid var(--accent); }
 .au-pill--bordered:hover { background: transparent; filter: none; }
 
 /* Vázas pill-gomb: átlátszó, vékony szegély – kapcsolati linkek/chipek. */

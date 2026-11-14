@@ -8,29 +8,19 @@
   <form id="site-contact-form"
         data-success="{{ i18n "ui.form_success" }}" data-error="{{ i18n "ui.form_error" }}"
         data-invalid="{{ i18n "ui.form_invalid" }}" data-notconfigured="{{ i18n "ui.form_not_configured" }}">
-    <div class="cf-row"><label for="cf-name">{{ i18n "ui.form_name" }}</label>
+    <div class="cf-row au-field"><label for="cf-name">{{ i18n "ui.form_name" }}</label>
       <input type="text" id="cf-name" name="name" autocomplete="name" required maxlength="120"></div>
-    <div class="cf-row"><label for="cf-email">{{ i18n "ui.form_email" }}</label>
+    <div class="cf-row au-field"><label for="cf-email">{{ i18n "ui.form_email" }}</label>
       <input type="email" id="cf-email" name="email" autocomplete="email" required maxlength="200"></div>
-    <div class="cf-row"><label for="cf-message">{{ i18n "ui.form_message" }}</label>
+    <div class="cf-row au-field"><label for="cf-message">{{ i18n "ui.form_message" }}</label>
       <textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea></div>
     <div class="cf-turnstile" data-sitekey="0x4AAAAAAF8AVTrRoWFrsN-f" data-size="invisible"></div>
-    <button type="submit" class="button-contact-submit"><i class="fa fa-paper-plane"></i> {{ i18n "ui.form_send" }}</button>
+    <button type="submit" class="button-contact-submit au-pill au-pill--bordered"><i class="fa fa-paper-plane"></i> {{ i18n "ui.form_send" }}</button>
     <p id="site-cf-status" role="status" aria-live="polite" style="margin-top:12px; color:#bbbbbb; min-height:1.3em;"></p>
   </form>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <p style="color:#999999; padding: 16px 0 0 0;">{{ i18n "ui.form_privacy" | safeHTML }}</p>
 </div>
-<style>
-  .cf-row { margin-bottom: 10px; }
-  .cf-row label { display: block; color: var(--muted); font-size: 14px; margin-bottom: 4px; }
-  .cf-row input, .cf-row textarea {
-    width: 100%; box-sizing: border-box;
-    background: var(--input-bg); border: 1px solid var(--border); border-radius: 6px;
-    color: var(--input-text); font-size: 15px; padding: 9px 11px; font-family: inherit;
-  }
-  .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: var(--accent); }
-</style>
 <script src="/assets/scripts/contact-form.js" defer></script>
 {{ end }}
 
