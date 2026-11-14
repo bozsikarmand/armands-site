@@ -15,7 +15,7 @@
       </picture>
       {{ if .Params.viewToggle }}
       <button type="button" id="view-toggle" aria-pressed="true">
-        <i class="fas fa-image" aria-hidden="true"></i> <span>{{ i18n "ui.drawing" }}</span>
+        {{ partial "icon.html" "media-image" }} <span>{{ i18n "ui.drawing" }}</span>
       </button>
       {{ end }}
     </div>

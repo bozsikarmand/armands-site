@@ -15,7 +15,7 @@
     <div class="cf-row au-field"><label for="cf-message">{{ i18n "ui.form_message" }}</label>
       <textarea id="cf-message" name="message" rows="5" required maxlength="5000"></textarea></div>
     <div class="cf-turnstile" data-sitekey="0x4AAAAAAF8AVTrRoWFrsN-f" data-size="invisible"></div>
-    <button type="submit" class="button-contact-submit au-pill au-pill--bordered"><i class="fa fa-paper-plane"></i> {{ i18n "ui.form_send" }}</button>
+    <button type="submit" class="button-contact-submit au-pill au-pill--bordered">{{ partial "icon.html" "send" }} {{ i18n "ui.form_send" }}</button>
     <p id="site-cf-status" role="status" aria-live="polite" style="margin-top:12px; color:#bbbbbb; min-height:1.3em;"></p>
   </form>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

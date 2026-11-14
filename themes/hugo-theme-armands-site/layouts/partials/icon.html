@@ -1,0 +1,7 @@
+{{/* Iconoir SVG ikon inline beágyazva: {{ partial "icon.html" "home" }} */}}
+{{- $icon := resources.Get (printf "icons/%s.svg" .) -}}
+{{- if $icon -}}
+<span class="au-icon" aria-hidden="true">{{ $icon.Content | safeHTML }}</span>
+{{- else -}}
+<!-- iconoir hiany: {{ . }} -->
+{{- end -}}
