@@ -30,6 +30,7 @@
      v1.1 (2026-11-15) – .au-icon ikon-konvenció (Iconoir, currentColor)
      v1.2 (2026-11-15) – .au-menu-fab mobil menü-gomb (off-canvas minta)
      v1.2.2 (2026-11-15) – .au-menu-tools: nyelv/téma váltó-sor a mobil panelben
+     v1.3 (2026-11-15) – konténer-érzékeny menü (.navbar-expand minta)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -545,7 +546,58 @@
 .au-menu-fab {
   display: none;
 }
-@media only screen and (max-width: 1200px) {
+.au-menu-backdrop[hidden] { display: none; }
+
+/* ---- v1.2.2 (2026-11-15) ---- */
+
+/* Mobil off-canvas panel aljának váltó-sora (nyelv/téma): egymás alatt,
+   teljes szélességben – a gombok szélessége egyezzen. */
+.au-menu-tools {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  padding: 0.8rem 1rem; border-top: 1px solid var(--border);
+}
+.au-menu-tools > * { width: 100%; }
+.au-menu-tools .au-lang__btn { width: 100%; justify-content: center; }
+
+/* ---- v1.3 (2026-11-15) ---- */
+
+/* Konténer-érzékeny menü (Bootstrap .navbar-expand mintájára, container
+   query-val): a váltás a KOMPONENS sávjához mérve történik, nem a képernyőhöz.
+   Így a site 50%-os hero-pane-jében is helyesen törik a menü.
+   A .au-menu-fab gombnek a .au-topbar BELSEJÉBEN kell lennie. */
+.au-topbar { container-type: inline-size; }
+
+@container (max-width: 940px) {
+  /* keskeny sáv: a brand csak a kinyitott panelben jelenik meg */
+  .au-topbar__brand { display: none; }
+}
+
+@container (max-width: 760px) {
+  .au-topbar {
+    background: transparent;
+    border-bottom: none;
+  }
+  /* az inner válik off-canvas panel-lé (az is-open a .au-topbar-on marad) */
+  .au-topbar__inner {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
+    width: Min(320px, 86vw);
+    box-sizing: border-box;
+    flex-direction: column; align-items: stretch; gap: 0.8rem;
+    padding: 1rem;
+    background: var(--au-topbar-bg, var(--input-bg));
+    border-left: 1px solid var(--border);
+    transform: translateX(105%);
+    transition: transform 240ms ease;
+    overflow-y: auto;
+  }
+  .au-topbar.is-open .au-topbar__inner { transform: translateX(0); }
+  .au-topbar__brand { display: inline-flex; min-height: 44px; }
+  .au-topbar__menu { flex-direction: column; gap: 0.2rem; }
+  .au-topbar__menu a { width: 100%; }
+  .au-topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+  .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
+  .au-topbar__tools .au-lang__btn { width: 100%; justify-content: center; }
+
   .au-menu-fab {
     display: inline-flex; align-items: center; justify-content: center;
     position: fixed; top: 12px; right: 12px; z-index: 90;
@@ -559,16 +611,19 @@
     display: block; position: fixed; inset: 0; z-index: 80;
     background: var(--overlay-bg-soft, rgba(0, 0, 0, 0.45));
   }
-  .au-menu-backdrop[hidden] { display: none; }
 }
 
-/* ---- v1.2.2 (2026-11-15) ---- */
-
-/* Mobil off-canvas panel aljának váltó-sora (nyelv/téma): egymás alatt,
-   teljes szélességben – a gombok szélessége egyezzen. */
-.au-menu-tools {
-  display: flex; flex-direction: column; gap: 0.6rem;
-  padding: 0.8rem 1rem; border-top: 1px solid var(--border);
+/* Régi böngészők (container query nélkül): viewport-küszöb a kanonikus
+   1200px-en – a korábbi viselkedés változatlan marad. */
+@supports not (container-type: inline-size) {
+  @media only screen and (max-width: 1200px) {
+    .au-menu-fab {
+      display: inline-flex; align-items: center; justify-content: center;
+      position: fixed; top: 12px; right: 12px; z-index: 90;
+      width: 46px; height: 46px; border-radius: 8px;
+      background: var(--input-bg); border: 1px solid var(--border);
+      color: var(--text); font-size: 1.2rem; cursor: pointer;
+      box-shadow: 0 6px 18px var(--au-shadow, rgba(0, 0, 0, 0.25));
+    }
+  }
 }
-.au-menu-tools > * { width: 100%; }
-.au-menu-tools .au-lang__btn { width: 100%; justify-content: center; }

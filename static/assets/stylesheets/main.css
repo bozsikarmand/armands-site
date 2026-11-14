@@ -1200,28 +1200,6 @@ input[type="file"] {
 /* .topbar alapok: armands-ui v0.6 .au-topbar */
 .au-topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
 .au-topbar .theme-toggle { margin-left: 0; }
-@media only screen and (max-width: 1200px) {
-  .au-topbar {
-    position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
-    width: min(320px, 86vw);
-    transform: translateX(105%);
-    transition: transform 240ms ease;
-    border-bottom: none; border-left: 1px solid var(--border);
-    overflow-y: auto;
-  }
-  .au-topbar.is-open { transform: translateX(0); }
-  .au-topbar__inner {
-    flex-direction: column; align-items: stretch; gap: 0.8rem;
-    padding: 1rem;
-  }
-  .au-topbar__brand { min-height: 44px; }
-  .au-topbar__menu { flex-direction: column; gap: 0.2rem; }
-  .au-topbar__menu a { width: 100%; }
-  .au-topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
-  .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
-  /* v1.2.2: a nyelvváltó GOMB is töltse ki a sort (mint a téma-váltó) */
-  .au-topbar__tools .au-lang__btn { width: 100%; justify-content: center; }
-}
 
 /* Social-rács térköze a gombtól (.dev-mintára) */
 .social-media-profiles { margin-top: 1.25rem; }

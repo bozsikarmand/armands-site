@@ -1,6 +1,3 @@
-<button type="button" id="menu-toggle" class="menu-fab au-menu-fab" aria-expanded="false" aria-controls="site-topbar"
-        aria-label="{{ i18n "ui.menuOpen" }}">☰</button>
-<div class="menu-backdrop au-menu-backdrop" id="menu-backdrop" hidden></div>
 <nav class="au-topbar" id="site-topbar" role="navigation" aria-label="main navigation">
   <div class="au-topbar__inner">
     <a class="au-topbar__brand" href="{{ relLangURL "/" }}">{{ .Site.Title }}</a>
@@ -35,4 +32,9 @@
       <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="{{ i18n "ui.themeToggle" }}">☀️</button>
     </div>
   </div>
+  <button type="button" id="menu-toggle" class="menu-fab au-menu-fab" aria-expanded="false" aria-controls="site-topbar"
+        aria-label="{{ i18n "ui.menuOpen" }}">☰</button>
+
 </nav>
+<div class="menu-backdrop au-menu-backdrop" id="menu-backdrop" hidden></div>
+
