@@ -224,7 +224,8 @@ body.page-landing p {
 }
 
 .sp-landing {
-  width: 100vw;
+  /* 100% (nem 100vw): a helyfoglaló görgetősáv ne tolja ki az oldalt vízszintesen */
+  width: 100%;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
