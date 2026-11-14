@@ -167,6 +167,8 @@
 
 /* Keretes pill-gomb: kitöltött, vastag accent-szegély;
    hoverre átlátszó háttérrel (a dev/CV CTA-stílus mintájára). */
+.au-pill--block { width: 100%; }
+
 .au-pill--bordered { border: var(--au-pill-border-w, 0.35em) solid var(--accent); }
 .au-pill--bordered:hover { background: transparent; filter: none; }
 
