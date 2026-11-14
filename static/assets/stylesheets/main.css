@@ -1244,39 +1244,14 @@ input[type="file"] {
 }
 
 /* Topbar: a tartalomsáv tetején (asztali), mobilon off-canvas panel */
-.topbar {
-  position: sticky; top: 0; z-index: 70;
-  background-color: var(--input-bg);
-  border-bottom: 1px solid var(--border);
-}
-.topbar__inner {
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.45rem 0.7rem;
-}
-.topbar__brand {
-  font-weight: 700; font-size: 0.95rem; color: var(--text);
-  text-decoration: none; white-space: nowrap;
-  display: inline-flex; align-items: center; min-height: 44px;
-}
-.topbar__brand:hover { color: var(--accent); }
-.topbar__menu {
-  display: flex; gap: 0.4rem; list-style: none; margin: 0; padding: 0;
-  flex: 1; justify-content: flex-end;
-}
-.topbar__menu a {
-  display: inline-flex; align-items: center; gap: 6px;
-  min-height: 44px; padding: 0 0.4rem; white-space: nowrap;
-  color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.88rem;
-  border-radius: 4px;
-}
-.topbar__menu a:hover { color: var(--accent); }
-.topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
-.topbar .theme-toggle { margin-left: 0; }
+/* .topbar alapok: armands-ui v0.6 .au-topbar */
+.au-topbar__tools { display: flex; align-items: center; gap: 0.6rem; }
+.au-topbar .theme-toggle { margin-left: 0; }
 .menu-fab, .menu-backdrop { display: none; }
 
 /* 801–1400px között a brand elrejtve: a név úgyis kiemelten szerepel a tartalomban */
 @media only screen and (min-width: 801px) and (max-width: 1650px) {
-  .topbar__brand { display: none; }
+  .au-topbar__brand { display: none; }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1293,7 +1268,7 @@ input[type="file"] {
     background: rgba(0, 0, 0, 0.45);
   }
   .menu-backdrop[hidden] { display: none; }
-  .topbar {
+  .au-topbar {
     position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
     width: min(320px, 86vw);
     transform: translateX(105%);
@@ -1301,16 +1276,16 @@ input[type="file"] {
     border-bottom: none; border-left: 1px solid var(--border);
     overflow-y: auto;
   }
-  .topbar.is-open { transform: translateX(0); }
-  .topbar__inner {
+  .au-topbar.is-open { transform: translateX(0); }
+  .au-topbar__inner {
     flex-direction: column; align-items: stretch; gap: 0.8rem;
     padding: 1rem;
   }
-  .topbar__brand { min-height: 44px; }
-  .topbar__menu { flex-direction: column; gap: 0.2rem; }
-  .topbar__menu a { width: 100%; }
-  .topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
-  .topbar__tools .lang-switch, .topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
+  .au-topbar__brand { min-height: 44px; }
+  .au-topbar__menu { flex-direction: column; gap: 0.2rem; }
+  .au-topbar__menu a { width: 100%; }
+  .au-topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+  .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
 }
 
 /* Social-rács térköze a gombtól (.dev-mintára) */

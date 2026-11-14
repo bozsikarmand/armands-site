@@ -23,6 +23,7 @@
      v0.3 (2026-11-14) – .au-field az egységesített űrlap-metrikákra; --au-pill-border-w token
      v0.4 (2026-11-14) – .au-section-title, .au-to-top
      v0.5 (2026-11-14) – .au-lang nyelvválasztó legördülő
+     v0.6 (2026-11-14) – .au-topbar fejléc-sáv (asztali alapok)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -312,3 +313,56 @@
   right: auto;
   left: 0;
 }
+
+/* ---- v0.6 (2026-11-14) ---- */
+
+/* Ragadós fejléc-sáv: márka + menü + eszközök.
+   Az off-canvas mobilmenü (fab/backdrop/is-open) szándékosan oldalspecifikus
+   marad – az alábbiak a sáv asztali alapjai. */
+.au-topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--au-topbar-bg, var(--input-bg));
+  border-bottom: 1px solid var(--border);
+}
+.au-topbar__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+}
+.au-topbar__brand {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.au-topbar__brand:hover { color: var(--accent); }
+.au-topbar__menu {
+  display: flex;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: flex-end;
+}
+.au-topbar__menu a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 0.4rem;
+  white-space: nowrap;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border-radius: 4px;
+}
+.au-topbar__menu a:hover { color: var(--accent); }

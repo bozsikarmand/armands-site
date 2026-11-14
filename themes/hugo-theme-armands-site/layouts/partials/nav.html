@@ -1,17 +1,17 @@
 <button type="button" id="menu-toggle" class="menu-fab" aria-expanded="false" aria-controls="site-topbar"
         aria-label="{{ i18n "ui.menuOpen" }}">☰</button>
 <div class="menu-backdrop" id="menu-backdrop" hidden></div>
-<nav class="topbar" id="site-topbar" role="navigation" aria-label="main navigation">
-  <div class="topbar__inner">
-    <a class="topbar__brand" href="{{ relLangURL "/" }}">{{ .Site.Title }}</a>
-    <ul class="topbar__menu">
+<nav class="au-topbar" id="site-topbar" role="navigation" aria-label="main navigation">
+  <div class="au-topbar__inner">
+    <a class="au-topbar__brand" href="{{ relLangURL "/" }}">{{ .Site.Title }}</a>
+    <ul class="au-topbar__menu">
       <li><a href="{{ relLangURL "/" }}"><i class="fas fa-home"></i> {{ i18n "ui.nav_home" }}</a></li>
       <li><a href="https://armands.blog"><i class="fas fa-blog"></i> {{ i18n "ui.nav_blog" }}</a></li>
       <li><a href="https://armands.dev"><i class="fas fa-project-diagram"></i> {{ i18n "ui.nav_projects" }}</a></li>
       <li><a href="https://armands.cv"><i class="fas fa-file-alt"></i> {{ i18n "ui.nav_cv" }}</a></li>
       <li><a href="{{ relLangURL "/modules/contact/" }}"><i class="fas fa-envelope"></i> {{ i18n "ui.nav_contact" }}</a></li>
     </ul>
-    <div class="topbar__tools">
+    <div class="au-topbar__tools">
       <span class="lang-switch au-lang" data-lang-switch>
         <button type="button" class="au-lang__btn" data-lang-switch-btn aria-expanded="false"
                 aria-label="{{ i18n "ui.selectLanguage" }}" title="{{ i18n "ui.selectLanguage" }}">🌐</button>
