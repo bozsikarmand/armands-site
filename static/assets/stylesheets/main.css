@@ -1,4 +1,4 @@
-@import url('armands-ui.css');
+@import url('armands-ui.css?v=1.6');
 
 /* Oldalspecifikus stílus; a token-séma és a primitívek szerződése:
    armands-ui.css fejléce. Színek csak tokenekben. */
