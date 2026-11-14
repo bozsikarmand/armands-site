@@ -100,7 +100,8 @@ for (const page of cfg.pages) {
           img.classList.remove('lazyload');
         });
       }).catch(() => {});
-      await p.waitForTimeout(500);
+      await p.waitForLoadState('networkidle', { timeout: 12000 }).catch(() => {});
+      await p.waitForTimeout(250);
       const shot = await p.screenshot({ type: 'jpeg', quality: 72, fullPage: false });
       const name = `${page.name}-${size}-${theme}.jpg`;
       const baseFile = join(baselineDir, name);

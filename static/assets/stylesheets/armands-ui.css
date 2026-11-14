@@ -33,6 +33,7 @@
      v1.3 (2026-11-15) – konténer-érzékeny menü (.navbar-expand minta)
      v1.4 (2026-11-15) – beolvasztás: .skip-link, .sr-only, .copyright, topbar-tools
      v1.5 (2026-11-15) – beolvasztás: dev/site azonos (biography, contact, hero, rácsok, theme-toggle)
+     v1.6 (2026-11-15) – univerzális border-box alap
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -712,3 +713,10 @@
 
 /* Nyelvváltó wrapper-shim. */
 .lang-switch { margin-left: 10px; }
+
+/* ---- v1.6 (2026-11-15) ---- */
+
+/* Univerzális border-box: a v1.5-ös halott-kód-tisztítás a dev/site
+   csillag-szabályát is eltávolította – a block-gombok paddinggel a
+   wrap-ükből csúsztak ki. Innentől a réteg adja az alapot. */
+*, *::before, *::after { box-sizing: border-box; }
