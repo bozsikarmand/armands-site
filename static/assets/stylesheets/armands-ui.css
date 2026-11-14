@@ -5,11 +5,10 @@
    Vendorolva, azonos verzió minden repóban; a fejlécben a verziótörténet.
 
    SZERZŐDÉSEK
-   1) SZÍN-TOKENEK – ezt a fájlt NEM tartalmaz színeket. A téma-fájl
-      (oldalanként) KÖTELES definiálni ezeket, sötét+világos módban:
-        --bg --bg-alt --text --muted --accent --accent-text
-        --link --link-hover --border --input-bg --input-text
-      (+ opcionális: --overlay-bg*, --h1, --identification)
+   1) SZÍN-TOKENEK – a v0.9-es KÖZÖS PALETTA a fájl végén él (sötét
+      alapértelmezés + monolight). Az oldalak ne írják felül; csak az
+      oldalextra tokenjeik (chip-bg, shadow, accent-green stb.) maradnak
+      a saját témájukban.
    2) STRUKTURÁLIS TOKENEK – itt, egyszer. Az oldalak ne írják felül
       máshol, csak ha tényleg indokolt (ügyelj a paritásra!).
    3) BREAKPOINTOK – kanonikusan: 500 / 800 / 1200 px.
@@ -26,6 +25,7 @@
      v0.6 (2026-11-14) – .au-topbar fejléc-sáv (asztali alapok)
      v0.7 (2026-11-14) – .au-search keresőmező, .au-timeline idővonal
      v0.8 (2026-11-14) – folyékony skála (--au-fs-display/h1/h2/h3, --au-flow)
+     v0.9 (2026-11-14) – közös paletta: a szín-tokenek értékei a rétegben
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -445,4 +445,49 @@
   --au-fs-h2:      clamp(1.3rem, 1.15rem + 0.75vw, 1.7rem);
   --au-fs-h3:      clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
   --au-flow:       clamp(1.2rem, 0.9rem + 1.5vw, 2.5rem);  /* szekció-ritmus */
+}
+
+/* ---- v0.9 (2026-11-14) ---- */
+
+/* KÖZÖS PALETTA – a szerződéses szín-tokenek ÉRTÉKEI innentől itt élnek.
+   Alapértelmezés: sötét (Monokai). Világos: explicit jelölés –
+   data-theme="monolight" (dev/site/CV) vagy .theme__monolight (blog/zzo).
+   Az oldalak ezeket ne írják felül; oldalextrák (chip-bg, shadow stb.)
+   a saját témájukban maradnak. */
+:root {
+  --bg: #2D2A2E;
+  --bg-alt: #212121;
+  --text: #FCFCFA;
+  --muted: #bdbdbd;
+  --accent: #FFD866;
+  --accent-text: #212121;
+  --link: #FFD866;
+  --link-hover: #ff9bb4;
+  --border: #7e8082;
+  --input-bg: #403E41;
+  --input-text: #FCFCFA;
+  --h1: #ffd866;
+  --identification: #aed581;
+  --overlay-bg: rgba(33, 33, 33, 0.92);
+  --overlay-bg-soft: rgba(45, 42, 46, 0.55);
+  --overlay-bg-strong: rgba(33, 33, 33, 0.85);
+}
+[data-theme="monolight"],
+.theme__monolight {
+  --bg: #f8f5ef;
+  --bg-alt: #ddd6c8;
+  --text: #3d3a40;
+  --muted: #5a5140;
+  --accent: #2c7788;
+  --accent-text: #f8f5ef;
+  --link: #215966;
+  --link-hover: #8e2f57;
+  --border: #9a8864;
+  --input-bg: #ece7db;
+  --input-text: #3d3a40;
+  --h1: #2c7788;
+  --identification: #2f5862;
+  --overlay-bg: rgba(248, 245, 239, 0.95);
+  --overlay-bg-soft: rgba(255, 255, 255, 0.55);
+  --overlay-bg-strong: rgba(255, 255, 255, 0.85);
 }

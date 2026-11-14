@@ -2,58 +2,7 @@
 
 /* Oldalspecifikus stílus; a token-séma és a primitívek szerződése:
    armands-ui.css fejléce. Színek csak tokenekben. */
-:root {
-  /* armands.blog _dark.scss tokenjei – pontosan */
-  --bg: #2D2A2E;                        /* body-background-color */
-  --bg-alt: #212121;                    /* backdrop-background-color */
-  --text: #FCFCFA;                      /* body-color */
-  --muted: #bdbdbd;                     /* taxo-title-color */
-  --accent: #FFD866;                    /* link / title-color */
-  --accent-text: #212121;               /* backdrop a gombszövegen */
-  --link: #FFD866;                      /* link */
-  --link-hover: #ff9bb4;                /* link-hover */
-  --h1: #ffd866;                        /* title-color */
-  --identification: #aed581;            /* sidebar/single-contents-title (a blog zöldje) */
-  --border: #7e8082;                    /* hr-color */
-  --input-bg: #403E41;                  /* navbar/footer-background */
-  --input-text: #FCFCFA;
-  --overlay-bg: rgba(33, 33, 33, 0.92);
-  --overlay-bg-soft: rgba(45, 42, 46, 0.55);
-  --overlay-bg-strong: rgba(33, 33, 33, 0.85);
-}
-
-[data-theme="monolight"] {
-  /* armands.blog _monolight.scss tokenjei – pontosan */
-  --bg: #f8f5ef;                        /* body-background-color */
-  --bg-alt: #ddd6c8;                    /* backdrop-background-color */
-  --text: #3d3a40;                      /* body-color */
-  --muted: #5a5140;
-  --accent: #2c7788;                    /* title-color */
-  --accent-text: #f8f5ef;
-  --link: #215966;                      /* link */
-  --link-hover: #8e2f57;                /* link-hover */
-  --h1: #2c7788;                        /* title-color */
-  --identification: #2f5862;            /* sidebar-title-color */
-  --border: #9a8864;                    /* hr-color */
-  --input-bg: #ece7db;                  /* navbar/footer-background */
-  --input-text: #3d3a40;
-  --overlay-bg: rgba(248, 245, 239, 0.95);
-  --overlay-bg-soft: rgba(255, 255, 255, 0.55);
-  --overlay-bg-strong: rgba(255, 255, 255, 0.85);
-}
-
-
-
-
-:root {
-  /* light colours */
-}
-
-[data-theme="dark"] {
-  
-  
-}
-
+/* Szín-tokenek: az armands-ui v0.9 közös palettájából (armands-ui.css végén) */
 /* -- CSS Reset -- */
 
 html,
