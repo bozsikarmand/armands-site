@@ -26,6 +26,7 @@
 :root {
   /* Strukturális tokenek (kanonikus, felülírásuk indokolt esetben) */
   --au-container: 60rem;      /* fő tartalmi szélesség */
+  --au-container-pad: 2rem;   /* konténer oldalbehúzása */
   --au-gap: 1rem;             /* alap térköz a primitívekben */
   --au-radius: 8px;           /* kártya/űrlap lekerekítés */
   --au-radius-pill: 999px;    /* gomb lekerekítés */
@@ -46,7 +47,7 @@
 
 /* Középre zárt, szélén behúzott tartalomkonténer. */
 .au-container {
-  width: min(100% - 2 * var(--au-space-3), var(--au-container));
+  width: Min(calc(100% - var(--au-container-pad)), var(--au-container)); /* nagy M: Sass-biztos, CSS-ben érvényes */
   margin-inline: auto;
 }
 
@@ -81,7 +82,7 @@
   display: grid;
   gap: var(--au-gap);
   grid-template-columns:
-    repeat(auto-fill, minmax(min(100%, var(--au-col, 18rem)), 1fr));
+    repeat(auto-fill, minmax(Min(100%, var(--au-col, 18rem)), 1fr));
 }
 
 /* ---- Komponens-primitívek (a szín-tokeneken keresztül témázódnak) ---- */
