@@ -365,10 +365,11 @@ body.page-contact .sp-landing .content .center {
 }
 
 .introduction {
+  /* armands-ui v0.8 folyékony display-skála (64px-ról fluidra) */
   font-weight: 600;
-  font-size: 64px;
-  line-height: 80px;
-  letter-spacing: -2px;
+  font-size: var(--au-fs-display);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
 }
 
 .introduction h1 {

@@ -25,6 +25,7 @@
      v0.5 (2026-11-14) – .au-lang nyelvválasztó legördülő
      v0.6 (2026-11-14) – .au-topbar fejléc-sáv (asztali alapok)
      v0.7 (2026-11-14) – .au-search keresőmező, .au-timeline idővonal
+     v0.8 (2026-11-14) – folyékony skála (--au-fs-display/h1/h2/h3, --au-flow)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -218,7 +219,7 @@
 /* Szekció-cím: vékony elválasztó-vonalas fejléc.
    A CV az accent-színt és vastagabb vonalat a tokeneken keresztül állítja. */
 .au-section-title {
-  font-size: 1.3rem;
+  font-size: var(--au-fs-h2);
   font-weight: 600;
   color: var(--au-title-color, var(--text));
   border-bottom: var(--au-title-border, 1px) solid var(--border);
@@ -431,4 +432,17 @@
 .au-timeline__period {
   margin: 0; font-weight: 700;
   color: var(--au-timeline-period-color, var(--muted));
+}
+
+/* ---- v0.8 (2026-11-14) ---- */
+
+/* Folyékony (fluid) skála: vw-alapú clamp, töréspont nélkül.
+   360 px-től ~1440 px-ig simán skálázódnak; a viselkedésváltások
+   (pl. a nav hamburger) továbbra is media query-k maradnak. */
+:root {
+  --au-fs-display: clamp(2.25rem, 1.4rem + 4.2vw, 4rem);   /* hero/display */
+  --au-fs-h1:      clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  --au-fs-h2:      clamp(1.3rem, 1.15rem + 0.75vw, 1.7rem);
+  --au-fs-h3:      clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  --au-flow:       clamp(1.2rem, 0.9rem + 1.5vw, 2.5rem);  /* szekció-ritmus */
 }
