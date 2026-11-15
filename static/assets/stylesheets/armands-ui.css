@@ -34,6 +34,7 @@
      v1.4 (2026-11-15) – beolvasztás: .skip-link, .sr-only, .copyright, topbar-tools
      v1.5 (2026-11-15) – beolvasztás: dev/site azonos (biography, contact, hero, rácsok, theme-toggle)
      v1.6 (2026-11-15) – univerzális border-box alap
+     v1.6.1 (2026-11-15) – kereső-ikon középre; bordered-hover világosodás
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -186,6 +187,7 @@
 /* v1.2.1: hoverre a szöveg is accent-színű – különben az accent-text
    (sötét) eltűnik az átlátszó háttéren (pl. ALL PROJECTS sötét témában) */
 .au-pill--bordered:hover { background: transparent; color: var(--accent); filter: none; }
+/* v1.6.1: felülírja a fentit – a háttér marad, csak világosodik */
 
 /* Vázas pill-gomb: átlátszó, vékony szegély – kapcsolati linkek/chipek. */
 .au-pill--outline {
@@ -570,7 +572,7 @@
    A .au-menu-fab gombnek a .au-topbar BELSEJÉBEN kell lennie. */
 .au-topbar { container-type: inline-size; }
 
-@container (max-width: 940px) {
+@container (max-width: 800px) {
   /* keskeny sáv: a brand csak a kinyitott panelben jelenik meg */
   .au-topbar__brand { display: none; }
 }
@@ -720,3 +722,13 @@
    csillag-szabályát is eltávolította – a block-gombok paddinggel a
    wrap-ükből csúsztak ki. Innentől a réteg adja az alapot. */
 *, *::before, *::after { box-sizing: border-box; }
+
+/* ---- v1.6.1 (2026-11-15) ---- */
+
+/* A kereső-ikon wrapper-ében az ikon tényleg középre (a vertical-align
+   miatt a wrapper-hez képest is lejjebb csúszott). */
+.au-search__icon { display: inline-flex; align-items: center; justify-content: center; }
+
+/* Keretes pill hover: a háttér NE tűnjön el (a régi transparent-hover
+   olvathatatlan volt), csak világosodjon – mint az .au-pill alap-hover. */
+.au-pill--bordered:hover { filter: brightness(1.08); }

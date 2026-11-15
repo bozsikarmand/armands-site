@@ -249,7 +249,8 @@ body.page-landing p {
 
 @media (max-width: 800px) {
   .sp-landing .image {
-    height: 80vh;
+    /* magas ablakban (pl. álló tabletnézet) a rajz ne nyomja el a szöveget */
+    height: Min(80vh, 640px);
     width: 100%;
   }
 }
