@@ -35,6 +35,7 @@
      v1.5 (2026-11-15) – beolvasztás: dev/site azonos (biography, contact, hero, rácsok, theme-toggle)
      v1.6 (2026-11-15) – univerzális border-box alap
      v1.6.1 (2026-11-15) – kereső-ikon középre; bordered-hover világosodás
+     v1.6.2 (2026-11-15) – social-tömbök vissza egymás mellé (width auto)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -704,7 +705,7 @@
 .footer-links .footer-link ul li a:after { content: "\00a0\00a0"; }
 .footer-links .footer-link ul li a:hover { color: var(--link); transition-duration: 0.1s; }
 
-.social-media-profiles .social-media-profile { width: 90%; }
+.social-media-profiles .social-media-profile { width: auto; } /* v1.6.2 */
 .social-media-profiles .social-media-profile ul li { font-size: 16px; line-height: 16px; margin-bottom: 12px; }
 .social-media-profiles .social-media-profile ul li a { color: var(--muted); transition-duration: 0.5s; }
 .social-media-profiles .social-media-profile ul li a:hover { color: var(--link); transition-duration: 0.1s; }
@@ -732,3 +733,9 @@
 /* Keretes pill hover: a háttér NE tűnjön el (a régi transparent-hover
    olvathatatlan volt), csak világosodjon – mint az .au-pill alap-hover. */
 .au-pill--bordered:hover { filter: brightness(1.08); }
+
+/* ---- v1.6.2 (2026-11-15) ---- */
+
+/* A social-tömbök vissza egymás mellé: a v1.5-ös beolvasztás a dev
+   (width: 90%-os) változatát tette közösbe, ami a site-on egymás alá törte. */
+.social-media-profiles .social-media-profile { width: auto; display: block; margin-bottom: 20px; }
