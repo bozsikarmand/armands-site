@@ -178,6 +178,22 @@ async function auditPage(page, base, pageCfg, width) {
     if (gap !== null) check(pageCfg.name, width, 'küldőgomb térköve az utolsó mezőtől', gap >= (c.form.minGap || 8), `${gap}px`);
   }
 
+  // -- Általános átfedés-ellenőrzés (config: a, b szelektorok) ------------------
+  if (c.overlap) {
+    for (const pair of c.overlap) {
+      const hit = await page.evaluate(([sa, sb]) => {
+        const a = document.querySelector(sa);
+        const b = document.querySelector(sb);
+        if (!a || !b) return null;
+        if (getComputedStyle(a).display === 'none' || getComputedStyle(b).display === 'none') return false;
+        const ra = a.getBoundingClientRect();
+        const rb = b.getBoundingClientRect();
+        return !(ra.left > rb.right || ra.right < rb.left || ra.top > rb.bottom || ra.bottom < rb.top);
+      }, [pair.a, pair.b]);
+      if (hit !== null) check(pageCfg.name, width, `nincs átfedés: ${pair.a} × ${pair.b}`, !hit);
+    }
+  }
+
   return facts.join(' ');
 }
 
