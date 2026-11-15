@@ -37,6 +37,7 @@
      v1.6.1 (2026-11-15) – kereső-ikon középre; bordered-hover világosodás
      v1.6.2 (2026-11-15) – social-tömbök vissza egymás mellé (width auto)
      v1.6.3 (2026-11-15) – BUG-02 label-levegő; BUG-03 kompakt drawer-váltók
+     v1.7 (2026-11-15) – a panel-mód a rétegben, viewport-alapú (≤1024)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -568,74 +569,6 @@
 
 /* ---- v1.3 (2026-11-15) ---- */
 
-/* Konténer-érzékeny menü (Bootstrap .navbar-expand mintájára, container
-   query-val): a váltás a KOMPONENS sávjához mérve történik, nem a képernyőhöz.
-   Így a site 50%-os hero-pane-jében is helyesen törik a menü.
-   A .au-menu-fab gombnek a .au-topbar BELSEJÉBEN kell lennie. */
-.au-topbar { container-type: inline-size; }
-
-@container (max-width: 800px) {
-  /* keskeny sáv: a brand csak a kinyitott panelben jelenik meg */
-  .au-topbar__brand { display: none; }
-}
-
-@container (max-width: 760px) {
-  .au-topbar {
-    background: transparent;
-    border-bottom: none;
-  }
-  /* az inner válik off-canvas panel-lé (az is-open a .au-topbar-on marad) */
-  .au-topbar__inner {
-    position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
-    width: Min(320px, 86vw);
-    box-sizing: border-box;
-    flex-direction: column; align-items: stretch; gap: 0.8rem;
-    padding: 1rem;
-    background: var(--au-topbar-bg, var(--input-bg));
-    border-left: 1px solid var(--border);
-    transform: translateX(105%);
-    transition: transform 240ms ease;
-    overflow-y: auto;
-  }
-  .au-topbar.is-open .au-topbar__inner { transform: translateX(0); }
-  .au-topbar__brand { display: inline-flex; min-height: 44px; }
-  /* a panel ne nyomódjon szét: az asztali flex:1 vége itt visszaáll */
-  .au-topbar__menu { flex: 0 0 auto; flex-direction: column; gap: 0.2rem; justify-content: flex-start; }
-  .au-topbar__menu a { width: 100%; }
-  /* BUG-03: a váltók 2 oszlopban, ne egymás alatt teljes szélességben */
-  .au-topbar__tools { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; align-items: stretch; }
-  .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
-  .au-topbar__tools .au-lang__btn { width: 100%; justify-content: center; }
-
-  .au-menu-fab {
-    display: inline-flex; align-items: center; justify-content: center;
-    position: fixed; top: 12px; right: 12px; z-index: 90;
-    width: 46px; height: 46px; border-radius: 8px;
-    background: var(--input-bg); border: 1px solid var(--border);
-    color: var(--text); font-size: 1.2rem; cursor: pointer;
-    box-shadow: 0 6px 18px var(--au-shadow, rgba(0, 0, 0, 0.25));
-  }
-  .au-menu-fab:hover, .au-menu-fab:focus-visible { border-color: var(--accent); }
-  .au-menu-backdrop {
-    display: block; position: fixed; inset: 0; z-index: 80;
-    background: var(--overlay-bg-soft, rgba(0, 0, 0, 0.45));
-  }
-}
-
-/* Régi böngészők (container query nélkül): viewport-küszöb a kanonikus
-   1200px-en – a korábbi viselkedés változatlan marad. */
-@supports not (container-type: inline-size) {
-  @media only screen and (max-width: 1200px) {
-    .au-menu-fab {
-      display: inline-flex; align-items: center; justify-content: center;
-      position: fixed; top: 12px; right: 12px; z-index: 90;
-      width: 46px; height: 46px; border-radius: 8px;
-      background: var(--input-bg); border: 1px solid var(--border);
-      color: var(--text); font-size: 1.2rem; cursor: pointer;
-      box-shadow: 0 6px 18px var(--au-shadow, rgba(0, 0, 0, 0.25));
-    }
-  }
-}
 
 /* ---- v1.4 (2026-11-15) ---- */
 
@@ -753,3 +686,51 @@
 .au-menu-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 .au-menu-tools > * { width: 100%; }
 .au-menu-tools .au-lang__btn { width: 100%; justify-content: center; }
+/* ---- v1.7 (2026-11-15) ---- */
+
+/* A mobil panel-mód viewport-alapúra vált (a container query a site kétpaneles
+   felépítésénél a fél-széles pane-hez mérte a váltást). ≤1024px mindenhol
+   off-canvas; a réteg adja a teljes panel-stílust. */
+@media only screen and (max-width: 1024px) {
+  .au-topbar { background: transparent; border-bottom: none; }
+  .au-topbar__inner {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 85;
+    width: Min(320px, 86vw);
+    box-sizing: border-box;
+    flex-direction: column; align-items: stretch; gap: 0.8rem;
+    padding: 1rem;
+    background: var(--au-topbar-bg, var(--input-bg));
+    border-left: 1px solid var(--border);
+    transform: translateX(105%);
+    transition: transform 240ms ease;
+    overflow-y: auto;
+  }
+  .au-topbar.is-open .au-topbar__inner { transform: translateX(0); }
+  .au-topbar__brand { display: none; }
+  .au-topbar.is-open .au-topbar__brand {
+    display: inline-flex;
+    min-width: 0; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+    flex: 0 0 auto;
+    padding-right: 0.5rem;
+  }
+  .au-topbar__menu { flex: 0 0 auto; flex-direction: column; gap: 0.2rem; justify-content: flex-start; }
+  .au-topbar__menu a { width: 100%; }
+  .au-topbar__tools { display: flex; flex-direction: column; align-items: stretch; gap: 0.6rem; }
+  .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
+  .au-topbar__tools .au-lang__btn { width: 100%; justify-content: center; }
+
+  .au-menu-fab {
+    display: inline-flex; align-items: center; justify-content: center;
+    position: fixed; top: 12px; right: 12px; z-index: 90;
+    width: 46px; height: 46px; border-radius: 8px;
+    background: var(--input-bg); border: 1px solid var(--border);
+    color: var(--text); font-size: 1.2rem; cursor: pointer;
+    box-shadow: 0 6px 18px var(--au-shadow, rgba(0, 0, 0, 0.25));
+  }
+  .au-menu-fab:hover, .au-menu-fab:focus-visible { border-color: var(--accent); }
+  .au-menu-backdrop {
+    display: block; position: fixed; inset: 0; z-index: 80;
+    background: var(--overlay-bg-soft, rgba(0, 0, 0, 0.45));
+  }
+}
