@@ -41,6 +41,7 @@
      v1.7.1 (2026-11-15) – au-field sorok térköze
      v1.7.2 (2026-11-15) – a küldőgomb térköze az utolsó mezőtől
      v1.7.3 (2026-11-15) – a BUG-03-as 2 oszlopos au-menu-tools törölve
+     v1.7.4 (2026-11-15) – a gépelő tagline inline-block (a JS min-width-ért)
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -633,6 +634,13 @@
   letter-spacing: -0.03em;
 }
 .introduction .self-identification { color: var(--identification); }
+
+/* ---- v1.7.4 (2026-11-15) ---- */
+
+/* A gépelő tagline inline-block: inline elemen a typewriter.js min-width-je
+   érvénytelen – szóváltáskor a span üresen összeesett, és az alatta levő
+   tartalom ugrált (a .site oldalon jelentett remegés). */
+.introduction .self-identification[data-typewriter] { display: inline-block; }
 .introduction .privacy-policy { color: var(--identification); }
 .introduction .cookie-policy { color: var(--identification); }
 
