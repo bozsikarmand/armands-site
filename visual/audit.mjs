@@ -115,6 +115,20 @@ async function auditPage(page, base, pageCfg, width) {
     }, c.fab.selector);
     facts.push('fab=' + vis);
     if (width <= c.fab.mustBeVisibleBelow) check(pageCfg.name, width, 'menünyitó (FAB) látszik a drawer-sávban', vis);
+    else check(pageCfg.name, width, 'menünyitó (FAB) rejtve a desktop sávban', !vis);
+    // átfedés: a FAB ne takarja a fejléc tartalmát (pl. kereső)
+    if (vis && c.fab.noOverlapWith) {
+      const overlap = await page.evaluate(([f, w]) => {
+        const a = document.querySelector(f);
+        const b = document.querySelector(w);
+        if (!a || !b) return null;
+        if (getComputedStyle(b).display === 'none') return false;
+        const ra = a.getBoundingClientRect();
+        const rb = b.getBoundingClientRect();
+        return !(ra.left > rb.right || ra.right < rb.left || ra.top > rb.bottom || ra.bottom < rb.top);
+      }, [c.fab.selector, c.fab.noOverlapWith]);
+      if (overlap !== null) check(pageCfg.name, width, 'a FAB nem takarja: ' + c.fab.noOverlapWith, !overlap);
+    }
   }
 
   // -- Hover nem mozgatja a layoutot -------------------------------------------
