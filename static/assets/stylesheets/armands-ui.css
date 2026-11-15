@@ -36,6 +36,7 @@
      v1.6 (2026-11-15) – univerzális border-box alap
      v1.6.1 (2026-11-15) – kereső-ikon középre; bordered-hover világosodás
      v1.6.2 (2026-11-15) – social-tömbök vissza egymás mellé (width auto)
+     v1.6.3 (2026-11-15) – BUG-02 label-levegő; BUG-03 kompakt drawer-váltók
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -601,7 +602,8 @@
   /* a panel ne nyomódjon szét: az asztali flex:1 vége itt visszaáll */
   .au-topbar__menu { flex: 0 0 auto; flex-direction: column; gap: 0.2rem; justify-content: flex-start; }
   .au-topbar__menu a { width: 100%; }
-  .au-topbar__tools { flex-direction: column; align-items: stretch; gap: 0.6rem; }
+  /* BUG-03: a váltók 2 oszlopban, ne egymás alatt teljes szélességben */
+  .au-topbar__tools { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; align-items: stretch; }
   .au-topbar__tools .lang-switch, .au-topbar__tools .theme-toggle { margin-left: 0; width: 100%; }
   .au-topbar__tools .au-lang__btn { width: 100%; justify-content: center; }
 
@@ -739,3 +741,15 @@
 /* A social-tömbök vissza egymás mellé: a v1.5-ös beolvasztás a dev
    (width: 90%-os) változatát tette közösbe, ami a site-on egymás alá törte. */
 .social-media-profiles .social-media-profile { width: auto; display: block; margin-bottom: 20px; }
+
+/* ---- v1.6.3 (2026-11-15) ---- */
+
+/* BUG-02: a mező-címkék és a beviteli mezők között egységes levegő. */
+.au-field > label { margin-bottom: 0.4rem; }
+.form-contact label { display: block; margin-bottom: 0.4rem; }
+
+/* BUG-03: a mobil drawer aljának váltói egymás mellé (2 oszlop),
+   ne teljes szélességű, üres téglalapok legyenek. */
+.au-menu-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.au-menu-tools > * { width: 100%; }
+.au-menu-tools .au-lang__btn { width: 100%; justify-content: center; }

@@ -33,6 +33,11 @@
     document.body.style.overflow = open ? 'hidden' : '';
   }
   fab.addEventListener('click', function () { setOpen(!panel.classList.contains('is-open')); });
+  // BUG-01: asztali szelesseg felett a nyitott drawer automatikusan bezarodik
+  var mq = window.matchMedia('(min-width: 1024px)');
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(function () {
+    if (mq.matches) setOpen(false);
+  });
   if (backdrop) backdrop.addEventListener('click', function () { setOpen(false); });
   panel.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () { setOpen(false); });

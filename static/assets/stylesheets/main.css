@@ -232,9 +232,10 @@ body.page-landing p {
   display: flex;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .sp-landing {
     height: auto;
+    min-height: 100vh;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
   }
@@ -247,7 +248,7 @@ body.page-landing p {
   background-size: cover;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .sp-landing .image {
     /* magas ablakban (pl. álló tabletnézet) a rajz ne nyomja el a szöveget */
     height: Min(80vh, 640px);
@@ -272,7 +273,7 @@ body.page-landing p {
   overflow: auto;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .sp-landing .content {
     width: 100%;
     height: auto;
@@ -872,3 +873,12 @@ input[type="file"] {
 
 /* .to-top: armands-ui v0.4 .au-to-top-ra épül (a gombot a JS hozza létre) */
 
+/* SITE-01: keskeny nézeten a social-tömbök egymás alá (ne érjenek össze) */
+@media only screen and (max-width: 640px) {
+  .social-media-profiles { flex-direction: column; gap: 0.4rem; }
+}
+/* SITE-02: mobil nézetben a rajz ne nyomja el az űrlapot; levegő a szövegnek */
+@media only screen and (max-width: 1024px) {
+  .sp-landing .image { max-height: 320px; }
+  .sp-landing .content .center { padding-top: 2rem; }
+}
