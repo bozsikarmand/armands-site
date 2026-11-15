@@ -1,4 +1,4 @@
-@import url('armands-ui.css?v=1.6');
+@import url('armands-ui.css?v=1.7');
 
 /* Oldalspecifikus stílus; a token-séma és a primitívek szerződése:
    armands-ui.css fejléce. Színek csak tokenekben. */
@@ -171,8 +171,7 @@ a:hover {
   color: var(--bg-alt);
 }
 
-a,
-a:hover {
+a {
   text-decoration: none;
   border: none;
   border-style: none;

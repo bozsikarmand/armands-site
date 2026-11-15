@@ -39,6 +39,7 @@
      v1.6.3 (2026-11-15) – BUG-02 label-levegő; BUG-03 kompakt drawer-váltók
      v1.7 (2026-11-15) – a panel-mód a rétegben, viewport-alapú (≤1024)
      v1.7.1 (2026-11-15) – au-field sorok térköze
+     v1.7.2 (2026-11-15) – a küldőgomb térköze az utolsó mezőtől
      (.au-container .au-cluster .au-stack .au-switcher .au-grid-auto)
      + komponens-primitívek (.au-pill .au-field .au-kbd .au-badge)
    ========================================================================== */
@@ -740,3 +741,9 @@
 
 /* A mező-sorok (au-field) egymás utáni térköze – az űrlapok ne érjenek össze. */
 .au-field + .au-field { margin-top: var(--au-space-3); }
+
+/* ---- v1.7.2 (2026-11-15) ---- */
+
+/* A küldőgomb ne tapadjon az utolsó mezőhöz: a mező és a gomb közé
+   (invisible) Turnstile-widget is kerülhet – general sibling a ~. */
+.au-field ~ button.au-pill { margin-top: var(--au-space-3); }
