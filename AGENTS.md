@@ -52,7 +52,7 @@ színt vagy viselkedést változtatsz, az mind a 4 oldalon egyszerre érvényes�
 
 ## 5. Tesztelés
 
-- Build: `/tmp/opencode/hugo` (v0.146.0 extended). Lokális:
+- Build: `/tmp/opencode/hugo` (v0.147.7 extended — az élő CF-builddel azonos, a blog CSS-fingerprintje így egyezik). Lokális:
   `hugo --destination /tmp/opencode/<név>` + `python3 -m http.server <port>`.
   CV-nél kötelező `--baseURL http://localhost:<port>` (fingerprinted CSS).
 - Paritás: localStorage `theme` = `dark`/`monolight` per origin beállítandó;
