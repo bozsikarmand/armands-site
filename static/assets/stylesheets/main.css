@@ -257,6 +257,10 @@ body.page-landing p {
 .sp-landing .content {
   background-color: var(--bg-alt);
   width: 50%;
+  /* a keskeny 2 oszlopos sávban (1025px körül) a fejléc (menü + váltók)
+     nem férne el a 50%-os pane-ben – a tartalom-pane minimum ~524px,
+     a rajz aránya ehhez igazodik (flex-shrink) */
+  min-width: Min(524px, 100%);
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -891,4 +895,12 @@ input[type="file"] {
    fér el a pane-ben (a réteg CQ-ja kikapcsolva, viewport-alapú a váltás) */
 @media only screen and (min-width: 1025px) and (max-width: 1600px) {
   .au-topbar__brand { display: none; }
+}
+
+/* A sáv keskeny végén (pane ≈ 512–640px) a menü + váltók nem férnek el
+   a pane-ben (audit: a .au-topbar__tools 12px-el kinyúlt a viewportból) –
+   kompakt menü-méretek a 1025–1280 sávra. */
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  .au-topbar__menu { gap: 0.2rem; }
+  .au-topbar__menu a { padding: 0 0.25rem; font-size: 0.85rem; }
 }

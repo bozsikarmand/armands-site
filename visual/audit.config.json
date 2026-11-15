@@ -1,0 +1,25 @@
+{
+  "hugo": "/tmp/opencode/hugo",
+  "hugoArgs": ["--destination", "public-visual", "--baseURL", "http://127.0.0.1:8792"],
+  "serveDir": "public-visual",
+  "chromiumPath": "/home/abozsik/.cache/ms-playwright/chromium-1254/chrome-linux64/chrome",
+  "port": 8792,
+  "widths": [320, 390, 500, 768, 900, 1024, 1025, 1100, 1280, 1281, 1366, 1440, 1520, 1536, 1600, 1920],
+  "pages": [
+    {
+      "name": "home-en",
+      "path": "/en/",
+      "checks": {
+        "header": { "selector": ".au-topbar", "maxH": 70 },
+        "fab": { "selector": ".au-menu-fab", "mustBeVisibleBelow": 1024 }
+      }
+    },
+    {
+      "name": "contact-en",
+      "path": "/en/modules/contact/",
+      "checks": {
+        "form": { "form": "#site-contact-form", "field": ".au-field", "button": "button[type=submit]" }
+      }
+    }
+  ]
+}

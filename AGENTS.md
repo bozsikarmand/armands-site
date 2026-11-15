@@ -58,6 +58,10 @@ színt vagy viselkedést változtatsz, az mind a 4 oldalon egyszerre érvényes�
 - Paritás: localStorage `theme` = `dark`/`monolight` per origin beállítandó;
   a Playwright perzisztens profil cache-el → `?<kulcs>=<timestamp>` cache-bust
   vagy új port.
+- Reszponzív audit: `node visual/audit.mjs` (a repó gyökeréből) – strukturális
+  invariánsok szélesség-mátrixon (túlcsordulás, fejléc-törés, FAB a drawer-
+  sávban, hover-stabilitás, anchor a fejléc alatt, űrlap-gomb térköve, ≥44px
+  fejléc-célok). Commit előtt minden változásnál le kell futnia hiba nélkül.
 - Lighthouse 100 a cél (perf/a11y/bp/seo); a CF challenge-platform inline
   injekciója miatt a bp élőn 92 lehet — az nem a mi kódunk.
 - A blog workflow: blog-theme (origin main) commit → vendored másolás a
