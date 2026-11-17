@@ -9,33 +9,47 @@ mintájára. Utoljára frissítve: 2026. november.
 
 ## Hardver
 
-- **ThinkPad T14 Gen 4** – fő fejlesztőgép (Fedora)
-- **Egyedi asztali gép** – homelab munkaállomás: k3s clusternode, GitLab runner-ek, CI build-ek
-- **Raspberry Pi 4** – mindig futó, kis erőforrás-igényű szolgáltatások
-- **Keychron mechanikus billentyűzet** + vertikális egér
-- **Bose QuietComfort** fejhallgató – a mélymunka alapja
+- **Egyedi asztali gép** – Gigabyte X570 AORUS ELITE alaplap, AMD Ryzen 7
+  3700X (8 mag / 16 szál), 60 GB RAM, Radeon RX 5500
+- **Tárhely** – WD Black SN750 1 TB NVMe (rendszer) + WD Blue 1 TB SATA +
+  WD Blue 500 GB SATA + Samsung 830 120 GB
+- **Kijelzők** – három 2560×1080 ultrawide monitor
+- **Kensington Expert Mouse** trackball
+- **Logitech MX Brio** webkamera
 
 ## Szoftver
 
-- **Fedora Linux** – mindennapi rendszer, laptopon és szerveren egyaránt
-- **Neovim** + tmux – a legtöbb szerkesztés itt történik
-- **VS Code** – amikor GUI-s debugger vagy preview kifizetődő
-- **Firefox** – fő böngésző, megerősített profillal
-- **Git** self-hosted GitLabon – a publikus munka GitHubra tükrözve
-- **Cloudflare** – DNS, Workers, D1, KV, R2, Tunnelek; az egész portfólió a free tieren fut
-- **Oracle APEX** – enterprise RAD, a professzionális eszköztár
-- **Hugo** + Astro – statikus oldalak (mint ez is)
+- **Ubuntu 26.04 LTS** – mindennapi rendszer
+- **VS Code** + nano – szerkesztés (nincs szerkesztő-vallás, ami épp kéznél van)
+- **Firefox** + Chromium – fő böngésző + tesztelés
+- **Git** GitLabbal (kanonikus) + GitHubbal (tükör)
+- **Node.js 26** (nvm) + Python 3.14 + OpenJDK 21
+- **Docker + DDEV** – helyi fejlesztés (WordPress, saját stack-ek)
+- **Oracle APEX / ORDS** – enterprise RAD, a professzionális eszköztár
+  (lokális 26ai példányok Dockerben)
+- **Hugo + Astro** – statikus oldalak (mint ez is)
+- **Thunderbird, Bitwarden, Steam, VLC, Zoom** – napi appok
 
 ## Homelab
 
-- **k3s Kubernetes** Argo CD GitOps-szal – minden szolgáltatás Git-ben deklarálva
-- **Self-hosted GitLab** – családi repók, CI runner-ek, container registry
-- **Cloudflare Tunnelök** – nulla nyitott port, Access-szabályzatokkal
-- **ntfy** – self-hosted értesítések (homelab + projekt-riasztások)
+- **Proxmox VE 8+** – VM-platform, API-tokennel kezelve
+- **OpenTofu / Terraform** – minden infrastruktúra kód mint
+  `cloud-init-*` + `provisioner-*` modulok (Argo CD, Keycloak, OpenBao,
+  PostgreSQL HA, PowerDNS, Redis, step-ca, WireGuard, Prometheus,
+  GitLab CE + runner, Ceph RGW…)
+- **Homelab Orchestrator** – saját web UI VM-/szolgáltatás- és
+  secret-kezeléshez, Cloudflare DNS/tunnel integrációval
+- **Cloudflare Tunnels + Access** – publikus kifutás nulla nyitott
+  porttal
 
 ## Szolgáltatások
 
-- **Cloudflare Pages** – az összes armands.* oldal statikus hosztolása
+- **Cloudflare** – DNS, Workers, D1, KV, R2, Pages; az egész portfólió
+  a free tieren fut
+- **GitLab CE** – self-hosted a homelabban (Terraform-modul kész, a
+  migráció folyamatban) + gitlab.com a kanonikus tárhely
+- **GitHub** – minden repó tükre
 - **Zoho Mail** – a kapcsolati űrlapok mögött (Cloudflare Workeren keresztül)
 - **Netlify** – legacy build-ek (blogtükör)
-- **GitLab CI** + GitHub Actions – build pipeline-ok mindenhol
+- **GitLab CI** – pipeline-ok (a GitHub Actions-os rendszerek
+  átállítása folyamatban)
