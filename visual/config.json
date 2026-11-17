@@ -31,6 +31,22 @@
     {
       "name": "contact-en",
       "path": "/en/modules/contact/"
+    },
+    {
+      "name": "uses-en",
+      "path": "/en/uses/"
+    },
+    {
+      "name": "uses-hu",
+      "path": "/hu/uses/"
+    },
+    {
+      "name": "now-en",
+      "path": "/en/now/"
+    },
+    {
+      "name": "now-hu",
+      "path": "/hu/now/"
     }
   ]
 }

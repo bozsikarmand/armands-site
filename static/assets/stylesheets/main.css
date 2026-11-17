@@ -899,8 +899,85 @@ input[type="file"] {
 
 /* A sáv keskeny végén (pane ≈ 512–640px) a menü + váltók nem férnek el
    a pane-ben (audit: a .au-topbar__tools 12px-el kinyúlt a viewportból) –
-   kompakt menü-méretek a 1025–1280 sávra. */
-@media only screen and (min-width: 1025px) and (max-width: 1280px) {
-  .au-topbar__menu { gap: 0.2rem; }
-  .au-topbar__menu a { padding: 0 0.25rem; font-size: 0.85rem; }
+   kompakt menü-méretek. A uses/now lapok nav-bővítése után a 7 tétel
+   ~1366-ig igényli (audit: 1100/1281/1366 px-en kinyúlt). */
+@media only screen and (min-width: 1025px) and (max-width: 1600px) {
+  .au-topbar__menu { gap: 0.1rem; }
+  .au-topbar__menu a {
+    padding: 0 0.15rem; font-size: 0.85rem;
+    /* rövid feliratok (CV, Now) kis paddinggel 44px alá mennének szélességben */
+    min-width: 44px; justify-content: center;
+  }
+  /* 8 tétel + ikonok már nem férnek el a keskeny pane-ben – ikon nélkül igen */
+  .au-topbar__menu a .au-icon { display: none; }
+}
+/* a legkeskenyebb pane-sávban (viewport 1025–1180) még a szöveg is sok:
+   ikon-only mód (a szöveg a DOM-ban marad, képernyőolvasóknak olvasható) */
+@media only screen and (min-width: 1025px) and (max-width: 1180px) {
+  .au-topbar__menu a { font-size: 0; gap: 0; padding: 0; }
+  .au-topbar__menu a .au-icon {
+    display: inline-flex; font-size: 1rem;
+    width: 1.15rem; height: 1.15rem;
+  }
+}
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .au-topbar__menu a { min-height: 44px; }
+}
+
+/* PROSE: hosszabb szöveges oldalak (uses, now) – a reset után visszaállított
+   tipográfia a layer tokenjeivel; csak .prose kontextusban (shim-minta) */
+.prose h2 {
+  font-size: var(--au-fs-h2, clamp(1.4rem, 2.5vw, 1.9rem));
+  font-weight: 600;
+  color: var(--text);
+  margin: 2.2rem 0 0.8rem;
+}
+
+.prose h3 {
+  font-size: var(--au-fs-h3, clamp(1.15rem, 2vw, 1.4rem));
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.6rem 0 0.6rem;
+}
+
+.prose ul {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.prose li {
+  padding-bottom: 0.4rem;
+  color: var(--muted);
+}
+
+.prose strong {
+  color: var(--text);
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.prose table {
+  width: 100%;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 1.6rem;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--au-border, rgba(128, 128, 128, 0.25));
+}
+
+.prose th {
+  color: var(--text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
 }

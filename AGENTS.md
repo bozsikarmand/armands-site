@@ -1,16 +1,17 @@
 # AGENTS.md — Az armands ökoszisztéma működési szabályai
 
-4 Hugo-oldal (armands.dev, armands.site, armands.cv, armands.blog) + egy közös
+5 Hugo-oldal (armands.dev, armands.site, armands.cv, armands.blog,
+armands-labs) + egy közös
 dizájnrendszer-réteg (`armands-ui`). A réteg a single-source: ha komponenst,
-színt vagy viselkedést változtatsz, az mind a 4 oldalon egyszerre érvényesül.
+színt vagy viselkedést változtatsz, az mind az 5 oldalon egyszerre érvényesül.
 
 ## 1. A réteg (`armands-ui`, v1.2.2)
 
-- **Fájlok**: dev/site `static/assets/stylesheets/armands-ui.css`; CV
+- **Fájlok**: dev/site/labs `static/assets/stylesheets/armands-ui.css`; CV
   `themes/hugo-theme-cv/assets/sass/_armands-ui.scss`; blog-theme
   `assets/sass/_armands-ui.scss` + vendored másolat az
   `armands-blog/themes/armands-blog/assets/sass/_` alatt.
-- **Szinkron**: „1 szerkesztés + 3 másolás + 5 push” — nem npm, nem submodule.
+- **Szinkron**: „1 szerkesztés + 4 másolás + 5 push” — nem npm, nem submodule.
   Minden módosításnál a fájl nevében/verzió-kommentjében (pl. `v1.2.2`) tartasd
   nyilván, hogy az eltérések azonnal látszanak (`grep "v1\.2" <fájl>`).
 - **Szerződés**: a réteg definiálja a szerkezeti tokeneket (távolság, radius,
